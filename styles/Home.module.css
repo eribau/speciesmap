@@ -1,0 +1,12 @@
+.center {
+  box-sizing: content-box;
+  margin-left: auto;
+  margin-right: auto;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.margins {
+  margin-top: 50px;
+}

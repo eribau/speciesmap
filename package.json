@@ -1,0 +1,22 @@
+{
+  "name": "speciesmap",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@juggle/resize-observer": "^3.3.1",
+    "d3": "^7.3.0",
+    "next": "12.0.10",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "redux": "^4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "8.9.0",
+    "eslint-config-next": "12.0.10"
+  }
+}
