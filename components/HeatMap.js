@@ -7,6 +7,8 @@ import { useEffect } from 'react'
 
 import speciesPerCountry from '../public/countries.json'
 
+import speciesPerCountryCode from '../public/countrycodes.json'
+
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
 
@@ -59,6 +61,8 @@ const HeatMap = () => {
             for (const prop in speciesPerCountryJSONdata){
                 // TODO: Match the countries from the RedList data
                 // with the countries from the tsv file...
+                // Could do this using POSTAL codes, since they are available in both
+                // datasets!
                 numSpeciesByCountry[prop] = speciesPerCountryJSONdata[prop].length
             }
 
@@ -70,6 +74,7 @@ const HeatMap = () => {
             const countryNamesByTopoId = {};
             tsvData.forEach(d => {
                 // use d.adm0_a3 for ids on the elements, since names have spaces in them
+                // consider using POSTAL CODE: .postal
                 countryNamesByTopoId[d.iso_n3] = [d.adm0_a3, d.name];
             });
             
