@@ -75,7 +75,7 @@ const HeatMap = () => {
             tsvData.forEach(d => {
                 // use d.adm0_a3 for ids on the elements, since names have spaces in them
                 // consider using POSTAL CODE: .postal
-                countryNamesByTopoId[d.iso_n3] = [d.adm0_a3, d.name];
+                countryNamesByTopoId[d.iso_n3] = [d.iso_a2, d.name];
             });
             
             // for (const prop in countryNamesByTopoId){
