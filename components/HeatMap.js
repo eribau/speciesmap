@@ -1,10 +1,12 @@
 import * as d3 from 'd3'
 import { feature } from 'topojson'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import speciesPerCountry from '../public/countries.json'
 import speciesPerCountryCode from '../public/countrycodes.json'
 import topoJSONdataTemp from '../public/topo.json'
+
+import PopupWindow from './PopupWindow'
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -27,7 +29,18 @@ const mouseLeave = (d, i) => {
 };
 
 const HeatMap = () => {
+    const [displayBox, setDisplay] = useState(false);
+    const [code, setCode] = useState("");
+    const [country, setCountry] = useState("");
 
+    const onClick = (d) => {
+        console.log(d.target.id)
+        setCode(d.target.id)
+        setDisplay(true)
+    };
+    const closeWindow = () => {
+        setDisplay(false)
+    }
     // Need this for d3 to work with react.
     useEffect( () => {
 
@@ -141,6 +154,7 @@ const HeatMap = () => {
             .attr('stroke-opacity', '0.5')
             .on('mouseover', mouseOver)
             .on('mouseleave', mouseLeave)
+            .on('click', onClick)
             .append('title').text(d => {
                 // d.id is iso_n3, which is what is used to identify each country topology in topo.json
                 const countryCode = countryNamesByTopoId[d.id][0]; // <-  [0] is iso_a2
@@ -160,6 +174,7 @@ const HeatMap = () => {
         >
           <svg width={1600} height={800}>
           </svg>
+          {displayBox && <PopupWindow closeWindow={closeWindow} code={code}/>}
         </div>
       )
 };

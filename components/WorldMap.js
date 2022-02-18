@@ -1,7 +1,8 @@
 import * as d3 from 'd3'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import countryShapes from '../public/countries.geo.json'
 import { useChartDimensions } from '../utilities/useChartDimensions'
+import PopupWindow from './PopupWindow'
 
 const mouseOver = (d) => {
   d3.select('#' + d.target.id)
@@ -14,6 +15,20 @@ const mouseLeave = (d) => {
 }
 
 const WorldMap = () => {
+
+  const [displayBox, setDisplay] = useState(false);
+  const [code, setCode] = useState("");
+  const [country, setCountry] = useState("");
+
+  const onClick = (d) => {
+      setCode(d.target.__data__.properties.ISO_A2)
+      setDisplay(true)
+      setCountry(d.target.value)
+  };
+  const closeWindow = () => {
+      setDisplay(false)
+  }
+
   const dimensions = {
     'width': 1400,
     'height': 1000,
@@ -72,6 +87,7 @@ const WorldMap = () => {
       })
       .on("mouseover", mouseOver)
       .on("mouseleave", mouseLeave)
+      .on("click", onClick)
   }, [])
 
    return (
@@ -82,6 +98,7 @@ const WorldMap = () => {
      >
        <svg width={dms.width} height={height} ref={ref}>
        </svg>
+       {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code}/>}
      </div>
    )
  }
