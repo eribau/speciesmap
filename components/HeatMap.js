@@ -35,19 +35,26 @@ const HeatMap = () => {
 
         const projection = d3.geoNaturalEarth1().fitWidth(1600, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
-
-        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#d43547"]});
+        // #3d0006 #d43547 #db000f
+        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
 
         // Zoom did not work for some reason
-        //const g = svg.append('g');
+        // const g = svg.append('g');
 
         // g.append('path')
         // .attr('class', 'sphere')
         // .attr('d', pathGenerator({type: 'Sphere'}));
         
         // svg.call(d3.zoom().on('zoom', () => {
-        //     g.attr('transform', d3.event.transform);
+        //     svg.attr('transform', d3.zoomTransform(this));
         //   }));
+        // This is how zoom works in d3 7.3, d3.event is not a global anymore.
+        svg.call(d3.zoom().on('zoom', (e) => {
+            //console.log("zooming or panning");
+            console.log(e);
+            // this does not work though!
+            //svg.attr('transform', transform);
+        }));
 
         // Loading multiple data sets at once
         Promise.all([
@@ -125,10 +132,8 @@ const HeatMap = () => {
             
             //console.log(countries);
 
-            const paths = svg.selectAll('path').data(countries.features);
-
-            // creates a path element for each datapoint in countries.features
-            paths.enter().append('path')
+            svg.selectAll('path').data(countries.features)
+            .enter().append('path')
             .attr('d', d => pathGenerator(d))
             .attr('id', d => countryNamesByTopoId[d.id][0]) // <- iso_a2
             .attr('fill', d => {
@@ -137,8 +142,8 @@ const HeatMap = () => {
 
                 return '' + getColor(numSpecies);
             }) 
-            .attr('stroke', '#fff')
-            .attr('stroke-opacity', '0.5')
+            .attr('stroke', '#212226')
+            .attr('stroke-opacity', '0.25')
             .on('mouseover', mouseOver)
             .on('mouseleave', mouseLeave)
             .append('title').text(d => {
@@ -147,7 +152,8 @@ const HeatMap = () => {
                 const countryName = countryNamesByTopoId[d.id][1]; // <-  [1] is country name
                 const numSpecies = numSpeciesByCountry[countryCode];
                 return countryName + ":" + numSpecies;
-            }) // <- actual country name, d.id is their id in topoJSONdata
+            });
+    
         });
 
     }, [])
