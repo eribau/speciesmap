@@ -3,6 +3,8 @@ import { useEffect } from 'react'
 import countryShapes from '../public/countries.geo.json'
 import { useChartDimensions } from '../utilities/useChartDimensions'
 
+//moved in order to add tooltip
+/*
 const mouseOver = (d) => {
   d3.select('#' + d.target.id)
     .attr('fill', '#970e13')
@@ -12,7 +14,7 @@ const mouseLeave = (d) => {
   d3.select('#' + d.target.id)
     .attr('fill', '#f94346')
 }
-
+*/
 const WorldMap = () => {
   const dimensions = {
     'width': 1400,
@@ -44,6 +46,38 @@ const WorldMap = () => {
    const height = y1
 
   useEffect(() => {
+    
+    //create tooltip, inspo: https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html, http://bl.ocks.org/lwhitaker3/e8090246a20d9515789b
+
+    //a tooltip appears when hovering over a country, however the position is currently the same, why doesnt absolut pos work?
+    var Tooltip = d3.select("#world_map").append("div")
+    .attr("class", "tooltip")
+   .style("opacity", 1)
+   .style("background-color", "white")
+   .style("border", "solid")
+   .style("border-width", "2px")
+   .style("border-radius", "5px")
+   .style("padding", "5px")
+   .style("position", "absolute")
+   
+   var mouseOver = (d) => {
+     d3.select('#' + d.target.id)
+       .attr('fill', '#970e13')
+     Tooltip.html(d.target.id)
+      .style("opacity", 1)
+      .style("left", 100 + "px")
+      .style("top", 100 + "px")
+   //.style("left", d3.select(this).attr("cx") + "px")
+   //.style("top", d3.select(this).attr("cy") + "px")
+   }
+   
+   var mouseLeave = (d) => {
+     d3.select('#' + d.target.id)
+       .attr('fill', '#f94346')
+     Tooltip.style("opacity", 0)
+   }
+   
+    
     const svg = d3.select(ref.current)
     
     svg.append('g')
@@ -76,6 +110,8 @@ const WorldMap = () => {
 
    return (
      <div
+     //tooltip
+     id={ "world_map" }
        style={{
          width: "100%",
        }}
