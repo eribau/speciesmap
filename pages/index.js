@@ -1,6 +1,5 @@
 import Layout from '../components/Layout.js'
 import WorldMap from '../components/WorldMap.js'
-import Filters from '../components/Filters.js'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {

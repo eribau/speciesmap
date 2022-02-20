@@ -9,7 +9,6 @@ import topoJSONdataTemp from '../public/topo.json'
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
 import Filters from '../components/Filters.js'
-import arrow from "./arrow.jpg"
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -36,10 +35,10 @@ const HeatMap = (props) => {
     const [code, setCode] = useState("");
     const [country, setCountry] = useState("");
     const [dispayFilter, setdispayFilter] = useState(false)
-    const [category, setCategory] = useState("")
+    const [category, setCategory] = useState("All") //Selected values for red list catrgory
 
     const onClick = (d) => {
-        console.log(d.target.id)
+        setCountry(d.target.name)
         setCode(d.target.id)
         setDisplay(true)
     };
@@ -150,6 +149,7 @@ const HeatMap = (props) => {
                 }
                 else{
                     countryNamesByTopoId[d.iso_n3] = [d.iso_a2, d.name];
+                    console.log( countryNamesByTopoId[d.iso_n3][1])
                 }
 
             });
@@ -163,6 +163,7 @@ const HeatMap = (props) => {
             .enter().append('path')
             .attr('d', d => pathGenerator(d))
             .attr('id', d => countryNamesByTopoId[d.id][0]) // <- iso_a2
+            .attr('name', d => countryNamesByTopoId[d.id][1]) // <- name
             .attr('fill', d => {
                 const countryCode = countryNamesByTopoId[d.id][0];
                 const numSpecies = numSpeciesByCountry[countryCode];
@@ -188,13 +189,15 @@ const HeatMap = (props) => {
     return (
         <div
           style={{
-            width: "100%",
-            background: "#212226",
+              position: "absolute",
+              left: "0px",
+              width: "100%",
+              background: "#212226",
           }}
         >
         <svg width={1600} height={800}>
         </svg>
-        {displayBox && <PopupWindow closeWindow={closeWindow} code={code} category={category}/>}
+        {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
         {dispayFilter && <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
             <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow']} rotate="90" onClick={changeFilter}/>

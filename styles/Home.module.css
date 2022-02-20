@@ -1,14 +1,12 @@
 .center {
-  position: absolute;
-  left: 0;
   box-sizing: content-box;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
   display:flex;
   flex-direction: column;
   align-items: center;
 }
 
 .margins {
-  margin: 0 auto;
+  margin-top: 0px;
 }

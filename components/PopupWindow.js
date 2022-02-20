@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styles from '../styles/PopupWindow.module.css'
 import countriesData from "../public/countrycodes.json"
 import summary from "../public/summary.json"
@@ -8,6 +9,7 @@ const { Text } = Typography;
 
 function PopupWindow(props){
     const {country, code, category} = props
+    const [countSpecies, setCount] = useState([]);
     function  renderSpecies(ID){
         const countryData = summary.find(item => (item.assessmentId === ID && category.indexOf(item.redlistCategory) > -1) || (item.assessmentId === ID && category === "All"))
         return(
@@ -34,6 +36,7 @@ function PopupWindow(props){
                 }})
             }
             {category === "Non" && <Text strong>Please set filters</Text>}
+            {countSpecies === 0 && <>Nope</>}
             </tbody>
             </table>
         </div>

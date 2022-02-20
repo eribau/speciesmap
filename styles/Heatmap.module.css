@@ -12,6 +12,7 @@
     right: 0;
     background-color: white;
     border-radius: 10px 0px 0px 10px;
+    box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.05);
   }
  .right_min{ 
     padding: 10px;
@@ -25,10 +26,11 @@
     right: 0;
     background-color: white;
     border-radius: 10px 0px 0px 10px;
+    box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.2);
  }
  .arrow_min{
      margin-top: 40vh;
-     width: 50px;
+     width: 40px;
      height:auto;
      transform: rotate(90deg);
  }
