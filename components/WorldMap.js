@@ -16,9 +16,9 @@ const mouseLeave = (d) => {
 
 const WorldMap = () => {
 
-  const [displayBox, setDisplay] = useState(false);
-  const [code, setCode] = useState("");
-  const [country, setCountry] = useState("");
+  const [displayBox, setDisplay] = useState(false)
+  const [code, setCode] = useState("")
+  const [country, setCountry] = useState("")
 
   const onClick = (d) => {
       setCode(d.target.__data__.properties.ISO_A2)
@@ -93,12 +93,12 @@ const WorldMap = () => {
    return (
      <div
        style={{
-         width: "100%",
+         width: "50%",
        }}
      >
        <svg width={dms.width} height={height} ref={ref}>
        </svg>
-       {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code}/>}
+       {displayBox && <PopupWindow category="All" country={country} closeWindow={closeWindow} code={code}/>}
      </div>
    )
  }

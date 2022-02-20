@@ -7,6 +7,8 @@ import speciesPerCountryCode from '../public/countrycodes.json'
 import topoJSONdataTemp from '../public/topo.json'
 
 import PopupWindow from './PopupWindow'
+import styles from '../styles/Heatmap.module.css'
+import Filters from '../components/Filters.js'
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -28,10 +30,12 @@ const mouseLeave = (d, i) => {
         .attr('opacity', '1');
 };
 
-const HeatMap = () => {
+const HeatMap = (props) => {
     const [displayBox, setDisplay] = useState(false);
     const [code, setCode] = useState("");
     const [country, setCountry] = useState("");
+    const [dispayFilter, setdispayFilter] = useState(false)
+    const [category, setCategory] = useState("")
 
     const onClick = (d) => {
         console.log(d.target.id)
@@ -40,6 +44,15 @@ const HeatMap = () => {
     };
     const closeWindow = () => {
         setDisplay(false)
+    }
+    function changeFilter(){
+        if (dispayFilter)
+            setdispayFilter(false)
+        else
+            setdispayFilter(true)
+    }
+    function onCategoryChanges(value){
+        setCategory(value)
     }
     // Need this for d3 to work with react.
     useEffect( () => {
@@ -178,9 +191,13 @@ const HeatMap = () => {
             background: "#212226",
           }}
         >
-          <svg width={1600} height={800}>
-          </svg>
-          {displayBox && <PopupWindow closeWindow={closeWindow} code={code}/>}
+        <svg width={1600} height={800}>
+        </svg>
+        {displayBox && <PopupWindow closeWindow={closeWindow} code={code} category={category}/>}
+        {dispayFilter && <div className={styles['right']} >
+            <Filters onCategoryChanges={onCategoryChanges}/>
+        </div>}
+        {!dispayFilter &&  <div className={styles['right_min']} onClick={changeFilter}></div>}
         </div>
       )
 };

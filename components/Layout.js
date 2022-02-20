@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import styles from '../styles/Layout.module.css'
 
+
 const Layout = ({children}) => {
+   
    return (
       <div>
          <nav className={styles["navbar"]}>

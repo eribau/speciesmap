@@ -1,8 +1,10 @@
 .navbar {
    display: flex;
    flex-direction: row;
+   color:white;
+   width: 100%;
+   background-color: #33333E;
 }
-
 .navbar {
    margin: 0;
 }
@@ -10,4 +12,32 @@
 .navitem {
    margin: 0;
    padding: 10px 50px;
+}
+.right {
+   font-family: Geneva, Arial, Helvetica, sans-serif;
+   font-size: 32px;
+   padding-left: 20px;
+   height: 100%;
+   width: 18%;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   overflow-x: hidden;
+   padding-top: 20px;
+   right: 0;
+   background-color: white;
+   border-radius: 10px 0px 0px 10px;
+ }
+.right_min{ 
+   padding: 10px;
+   height: 100%;
+   width: 5%;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   overflow-x: hidden;
+   padding-top: 20px;
+   right: 0;
+   background-color: #33333E;
+   border-radius: 10px 0px 0px 10px;
 }
