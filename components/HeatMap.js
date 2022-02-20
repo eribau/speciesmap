@@ -9,6 +9,7 @@ import topoJSONdataTemp from '../public/topo.json'
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
 import Filters from '../components/Filters.js'
+import arrow from "./arrow.jpg"
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -196,8 +197,11 @@ const HeatMap = (props) => {
         {displayBox && <PopupWindow closeWindow={closeWindow} code={code} category={category}/>}
         {dispayFilter && <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
+            <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow']} rotate="90" onClick={changeFilter}/>
         </div>}
-        {!dispayFilter &&  <div className={styles['right_min']} onClick={changeFilter}></div>}
+        {!dispayFilter &&  <div className={styles['right_min']}>
+                <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow_min']} rotate="90" onClick={changeFilter}/>
+            </div>}
         </div>
       )
 };
