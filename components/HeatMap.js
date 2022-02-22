@@ -15,6 +15,7 @@ import Filters from '../components/Filters.js'
 
 // TODO: Color gradient legend
 // https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient/
+// http://bl.ocks.org/nbremer/5cd07f2cb4ad202a9facfbd5d2bc842e
 
 // Blockbuilder.org is very useful for prototyping.
 
@@ -106,6 +107,8 @@ const HeatMap = (props) => {
             });
             //console.log(d3.select(this).attr("id"));
         });
+
+        d3.select("rect").selectChild("title").text("0 - " + maxSpeciesAggregated);
     }
 
     // Need this for d3 to work with react.
@@ -236,8 +239,42 @@ const HeatMap = (props) => {
                 const numSpecies = numSpeciesByCountry[countryCode];
                 return countryName + ":" + numSpecies;
             });
-    
         });
+
+        
+        //Append a defs (for definition) element to your SVG
+        var defs = svg.append("defs");
+
+        //Append a linearGradient element to the defs and give it a unique id
+        var linearGradient = defs.append("linearGradient")
+        .attr("id", "linear-gradient");
+        
+        //Vertical gradient
+        linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+
+        //Set the color for the start (0%)
+        linearGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#ffffff"); 
+
+        //Set the color for the end (100%)
+        linearGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#db000f"); 
+
+        //Draw the rectangle and fill with gradient
+        svg.append("rect")
+        .attr("width", 20)
+        .attr("height", 500)
+        .style("fill", "url(#linear-gradient)")
+        .append("title").text("0 - 4293");
+        
+
+
 
     }, [])
     return (
