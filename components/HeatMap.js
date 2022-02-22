@@ -2,9 +2,9 @@ import * as d3 from 'd3'
 import { feature } from 'topojson'
 import { useEffect, useState } from 'react'
 
-import speciesPerCountry from '../public/countries.json'
 import speciesPerCountryCode from '../public/countrycodes.json'
 import topoJSONdataTemp from '../public/topo.json'
+import redListByCountryCode from '../public/redListByCountryCode.json'
 
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
@@ -53,13 +53,58 @@ const HeatMap = (props) => {
     }
     function onCategoryChanges(value){
         setCategory(value)
+
+        updateHeatmap(value);
     }
+
+    function updateHeatmap(checked){
+        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
+        console.log("Mine:");
+        console.log(checked);
+        if (checked == "All" || checked == null) {
+            checked = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened"];
+        }
+
+        let maxSpeciesAggregated = 0;
+        let numSpeciesByCountryAggregate = {};
+        for (const code in redListByCountryCode) {
+            let numSpecies = 0;
+            for (const e in checked) {
+                const val = checked[e];
+                numSpecies += redListByCountryCode[code][val];
+            }
+            if (numSpecies > maxSpeciesAggregated) {
+                maxSpeciesAggregated = numSpecies;
+            }
+            
+            numSpeciesByCountryAggregate[code] = numSpecies;
+        }
+        
+        const getColor = (v) => {
+            const scaledValue = v / maxSpeciesAggregated;
+            return interpolation(scaledValue).colors;
+        };
+
+        const svg = d3.select('svg');
+        const paths = svg.selectChildren('path');
+        paths.each(function(d) {
+            // Works, nice...
+            let currElem = d3.select(this);
+            const currId = currElem.attr('id');
+            const numSpecies = numSpeciesByCountryAggregate[currId];
+            const newColor = getColor(numSpecies);
+            //console.log(newColor);
+            d3.select(this).attr('fill', newColor);
+            //console.log(d3.select(this).attr("id"));
+        });
+    }
+
     // Need this for d3 to work with react.
     useEffect( () => {
 
         const svg = d3.select('svg');
 
-        const projection = d3.geoNaturalEarth1().fitWidth(1600, { type: 'Sphere' });
+        const projection = d3.geoNaturalEarth1().fitWidth(1400, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
         // #3d0006 #d43547 #db000f
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
@@ -149,7 +194,7 @@ const HeatMap = (props) => {
                 }
                 else{
                     countryNamesByTopoId[d.iso_n3] = [d.iso_a2, d.name];
-                    console.log( countryNamesByTopoId[d.iso_n3][1])
+                    //console.log( countryNamesByTopoId[d.iso_n3][1])
                 }
 
             });
