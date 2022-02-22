@@ -1,0 +1,2502 @@
+{
+  "PW": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 28,
+    "Endangered": 41,
+    "Vulnerable": 138,
+    "Near Threatened": 152,
+    "Lower Risk/conservation dependent": 4,
+    "Lower Risk/near threatened": 1
+  },
+  "US": {
+    "Extinct": 265,
+    "Extinct in the Wild": 9,
+    "Critically Endangered": 581,
+    "Endangered": 582,
+    "Vulnerable": 749,
+    "Near Threatened": 389,
+    "Lower Risk/conservation dependent": 6,
+    "Lower Risk/near threatened": 65
+  },
+  "CA": {
+    "Extinct": 10,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 29,
+    "Endangered": 54,
+    "Vulnerable": 119,
+    "Near Threatened": 118,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "ZA": {
+    "Extinct": 8,
+    "Extinct in the Wild": 3,
+    "Critically Endangered": 151,
+    "Endangered": 305,
+    "Vulnerable": 353,
+    "Near Threatened": 321,
+    "Lower Risk/conservation dependent": 4,
+    "Lower Risk/near threatened": 13
+  },
+  "TT": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 32,
+    "Endangered": 49,
+    "Vulnerable": 74,
+    "Near Threatened": 52,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 2
+  },
+  "PA": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 81,
+    "Endangered": 202,
+    "Vulnerable": 258,
+    "Near Threatened": 199,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 28
+  },
+  "CO": {
+    "Extinct": 3,
+    "Extinct in the Wild": 5,
+    "Critically Endangered": 304,
+    "Endangered": 575,
+    "Vulnerable": 668,
+    "Near Threatened": 416,
+    "Lower Risk/conservation dependent": 5,
+    "Lower Risk/near threatened": 27
+  },
+  "AI": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 25,
+    "Vulnerable": 45,
+    "Near Threatened": 24,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CR": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 62,
+    "Endangered": 225,
+    "Vulnerable": 302,
+    "Near Threatened": 213,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 22
+  },
+  "PR": {
+    "Extinct": 6,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 43,
+    "Endangered": 63,
+    "Vulnerable": 77,
+    "Near Threatened": 64,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "GP": {
+    "Extinct": 7,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 31,
+    "Vulnerable": 63,
+    "Near Threatened": 43,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AG": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 25,
+    "Vulnerable": 48,
+    "Near Threatened": 32,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "NI": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 33,
+    "Endangered": 79,
+    "Vulnerable": 150,
+    "Near Threatened": 115,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 14
+  },
+  "LC": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 32,
+    "Vulnerable": 52,
+    "Near Threatened": 35,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GT": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 115,
+    "Endangered": 255,
+    "Vulnerable": 245,
+    "Near Threatened": 121,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 8
+  },
+  "MS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 23,
+    "Vulnerable": 49,
+    "Near Threatened": 28,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SR": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 36,
+    "Vulnerable": 83,
+    "Near Threatened": 53,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "MQ": {
+    "Extinct": 6,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 11,
+    "Endangered": 25,
+    "Vulnerable": 47,
+    "Near Threatened": 35,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GY": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 63,
+    "Vulnerable": 112,
+    "Near Threatened": 62,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 7
+  },
+  "VE": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 153,
+    "Endangered": 293,
+    "Vulnerable": 410,
+    "Near Threatened": 223,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 32
+  },
+  "DM": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 27,
+    "Vulnerable": 57,
+    "Near Threatened": 42,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "VG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 16,
+    "Endangered": 43,
+    "Vulnerable": 55,
+    "Near Threatened": 39,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "HT": {
+    "Extinct": 10,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 165,
+    "Endangered": 134,
+    "Vulnerable": 142,
+    "Near Threatened": 65,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "VI": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 14,
+    "Endangered": 40,
+    "Vulnerable": 48,
+    "Near Threatened": 42,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "BZ": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 74,
+    "Vulnerable": 103,
+    "Near Threatened": 66,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "BR": {
+    "Extinct": 16,
+    "Extinct in the Wild": 4,
+    "Critically Endangered": 381,
+    "Endangered": 845,
+    "Vulnerable": 840,
+    "Near Threatened": 447,
+    "Lower Risk/conservation dependent": 31,
+    "Lower Risk/near threatened": 56
+  },
+  "JM": {
+    "Extinct": 6,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 68,
+    "Endangered": 110,
+    "Vulnerable": 175,
+    "Near Threatened": 51,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 73
+  },
+  "BS": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 53,
+    "Vulnerable": 70,
+    "Near Threatened": 61,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "HN": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 116,
+    "Endangered": 177,
+    "Vulnerable": 175,
+    "Near Threatened": 117,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 7
+  },
+  "GF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 35,
+    "Vulnerable": 77,
+    "Near Threatened": 48,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 2
+  },
+  "GD": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 24,
+    "Vulnerable": 49,
+    "Near Threatened": 31,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "VC": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 26,
+    "Vulnerable": 51,
+    "Near Threatened": 34,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "DO": {
+    "Extinct": 8,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 49,
+    "Endangered": 97,
+    "Vulnerable": 130,
+    "Near Threatened": 73,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "BB": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 23,
+    "Vulnerable": 47,
+    "Near Threatened": 32,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "TC": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 8,
+    "Endangered": 32,
+    "Vulnerable": 52,
+    "Near Threatened": 38,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "BM": {
+    "Extinct": 5,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 35,
+    "Endangered": 23,
+    "Vulnerable": 41,
+    "Near Threatened": 31,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "MX": {
+    "Extinct": 25,
+    "Extinct in the Wild": 12,
+    "Critically Endangered": 425,
+    "Endangered": 989,
+    "Vulnerable": 831,
+    "Near Threatened": 380,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 9
+  },
+  "AW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 22,
+    "Vulnerable": 39,
+    "Near Threatened": 28,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CU": {
+    "Extinct": 16,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 72,
+    "Endangered": 163,
+    "Vulnerable": 176,
+    "Near Threatened": 82,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 4
+  },
+  "KN": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 22,
+    "Vulnerable": 47,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "KY": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 24,
+    "Endangered": 36,
+    "Vulnerable": 45,
+    "Near Threatened": 35,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "BQ": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 21,
+    "Vulnerable": 52,
+    "Near Threatened": 33,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 25,
+    "Vulnerable": 43,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "MF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 22,
+    "Vulnerable": 42,
+    "Near Threatened": 20,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SX": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 22,
+    "Vulnerable": 41,
+    "Near Threatened": 21,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CN": {
+    "Extinct": 7,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 244,
+    "Endangered": 523,
+    "Vulnerable": 639,
+    "Near Threatened": 367,
+    "Lower Risk/conservation dependent": 5,
+    "Lower Risk/near threatened": 21
+  },
+  "VN": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 163,
+    "Endangered": 321,
+    "Vulnerable": 439,
+    "Near Threatened": 318,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 15
+  },
+  "LA": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 50,
+    "Endangered": 107,
+    "Vulnerable": 161,
+    "Near Threatened": 125,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 4
+  },
+  "PE": {
+    "Extinct": 1,
+    "Extinct in the Wild": 3,
+    "Critically Endangered": 113,
+    "Endangered": 326,
+    "Vulnerable": 556,
+    "Near Threatened": 280,
+    "Lower Risk/conservation dependent": 5,
+    "Lower Risk/near threatened": 29
+  },
+  "MG": {
+    "Extinct": 13,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 685,
+    "Endangered": 1797,
+    "Vulnerable": 1250,
+    "Near Threatened": 544,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 1
+  },
+  "IT": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 98,
+    "Endangered": 199,
+    "Vulnerable": 286,
+    "Near Threatened": 291,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 13
+  },
+  "ID": {
+    "Extinct": 4,
+    "Extinct in the Wild": 3,
+    "Critically Endangered": 395,
+    "Endangered": 701,
+    "Vulnerable": 1127,
+    "Near Threatened": 863,
+    "Lower Risk/conservation dependent": 8,
+    "Lower Risk/near threatened": 68
+  },
+  "EC": {
+    "Extinct": 11,
+    "Extinct in the Wild": 6,
+    "Critically Endangered": 390,
+    "Endangered": 935,
+    "Vulnerable": 1305,
+    "Near Threatened": 494,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 16
+  },
+  "ZW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 42,
+    "Vulnerable": 86,
+    "Near Threatened": 60,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "BW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 5,
+    "Endangered": 15,
+    "Vulnerable": 22,
+    "Near Threatened": 29,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AR": {
+    "Extinct": 3,
+    "Extinct in the Wild": 4,
+    "Critically Endangered": 54,
+    "Endangered": 105,
+    "Vulnerable": 186,
+    "Near Threatened": 159,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "MW": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 30,
+    "Endangered": 56,
+    "Vulnerable": 66,
+    "Near Threatened": 76,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 2
+  },
+  "AO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 29,
+    "Endangered": 72,
+    "Vulnerable": 138,
+    "Near Threatened": 110,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "NA": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 45,
+    "Vulnerable": 85,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AU": {
+    "Extinct": 44,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 245,
+    "Endangered": 565,
+    "Vulnerable": 1041,
+    "Near Threatened": 647,
+    "Lower Risk/conservation dependent": 5,
+    "Lower Risk/near threatened": 59
+  },
+  "UY": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 26,
+    "Endangered": 43,
+    "Vulnerable": 73,
+    "Near Threatened": 54,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "BI": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 28,
+    "Endangered": 94,
+    "Vulnerable": 85,
+    "Near Threatened": 58,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 1
+  },
+  "TZ": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 246,
+    "Endangered": 594,
+    "Vulnerable": 647,
+    "Near Threatened": 344,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 8
+  },
+  "MZ": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 55,
+    "Endangered": 183,
+    "Vulnerable": 300,
+    "Near Threatened": 241,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 4
+  },
+  "NZ": {
+    "Extinct": 29,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 52,
+    "Endangered": 106,
+    "Vulnerable": 143,
+    "Near Threatened": 84,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 16
+  },
+  "PT": {
+    "Extinct": 10,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 154,
+    "Endangered": 188,
+    "Vulnerable": 229,
+    "Near Threatened": 227,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "CL": {
+    "Extinct": 2,
+    "Extinct in the Wild": 3,
+    "Critically Endangered": 49,
+    "Endangered": 108,
+    "Vulnerable": 128,
+    "Near Threatened": 104,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 10
+  },
+  "BO": {
+    "Extinct": 1,
+    "Extinct in the Wild": 4,
+    "Critically Endangered": 63,
+    "Endangered": 145,
+    "Vulnerable": 270,
+    "Near Threatened": 160,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 9
+  },
+  "PY": {
+    "Extinct": 0,
+    "Extinct in the Wild": 3,
+    "Critically Endangered": 10,
+    "Endangered": 24,
+    "Vulnerable": 54,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 7
+  },
+  "FJ": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 59,
+    "Endangered": 85,
+    "Vulnerable": 219,
+    "Near Threatened": 174,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 7
+  },
+  "SV": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 17,
+    "Endangered": 54,
+    "Vulnerable": 97,
+    "Near Threatened": 60,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "PG": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 217,
+    "Endangered": 381,
+    "Vulnerable": 509,
+    "Near Threatened": 397,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 18
+  },
+  "EE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 4,
+    "Endangered": 8,
+    "Vulnerable": 51,
+    "Near Threatened": 44,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 6
+  },
+  "DE": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 42,
+    "Endangered": 94,
+    "Vulnerable": 141,
+    "Near Threatened": 130,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 14
+  },
+  "BE": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 12,
+    "Endangered": 17,
+    "Vulnerable": 70,
+    "Near Threatened": 69,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "NL": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 15,
+    "Vulnerable": 73,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 9
+  },
+  "LV": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 4,
+    "Endangered": 6,
+    "Vulnerable": 42,
+    "Near Threatened": 41,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 9
+  },
+  "LT": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 7,
+    "Vulnerable": 36,
+    "Near Threatened": 38,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 7
+  },
+  "GB": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 42,
+    "Endangered": 44,
+    "Vulnerable": 136,
+    "Near Threatened": 94,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 10
+  },
+  "SK": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 16,
+    "Endangered": 45,
+    "Vulnerable": 80,
+    "Near Threatened": 79,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "HU": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 23,
+    "Endangered": 47,
+    "Vulnerable": 84,
+    "Near Threatened": 72,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 12
+  },
+  "PL": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 39,
+    "Vulnerable": 83,
+    "Near Threatened": 85,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 13
+  },
+  "FR": {
+    "Extinct": 9,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 55,
+    "Endangered": 154,
+    "Vulnerable": 288,
+    "Near Threatened": 243,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 15
+  },
+  "UA": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 53,
+    "Vulnerable": 88,
+    "Near Threatened": 76,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 10
+  },
+  "RU": {
+    "Extinct": 4,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 42,
+    "Endangered": 98,
+    "Vulnerable": 194,
+    "Near Threatened": 167,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 14
+  },
+  "ES": {
+    "Extinct": 3,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 179,
+    "Endangered": 312,
+    "Vulnerable": 389,
+    "Near Threatened": 392,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 10
+  },
+  "CZ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 49,
+    "Vulnerable": 75,
+    "Near Threatened": 85,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 9
+  },
+  "KE": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 88,
+    "Endangered": 219,
+    "Vulnerable": 354,
+    "Near Threatened": 261,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 12
+  },
+  "SO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 24,
+    "Endangered": 74,
+    "Vulnerable": 149,
+    "Near Threatened": 169,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 28
+  },
+  "PH": {
+    "Extinct": 15,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 336,
+    "Endangered": 582,
+    "Vulnerable": 677,
+    "Near Threatened": 473,
+    "Lower Risk/conservation dependent": 7,
+    "Lower Risk/near threatened": 25
+  },
+  "FM": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 39,
+    "Vulnerable": 155,
+    "Near Threatened": 153,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "GH": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 46,
+    "Endangered": 86,
+    "Vulnerable": 183,
+    "Near Threatened": 112,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 9
+  },
+  "CM": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 245,
+    "Endangered": 446,
+    "Vulnerable": 520,
+    "Near Threatened": 176,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 29
+  },
+  "MR": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 27,
+    "Endangered": 36,
+    "Vulnerable": 77,
+    "Near Threatened": 54,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SN": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 29,
+    "Endangered": 62,
+    "Vulnerable": 102,
+    "Near Threatened": 79,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "SL": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 41,
+    "Endangered": 104,
+    "Vulnerable": 176,
+    "Near Threatened": 115,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 5
+  },
+  "CV": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 29,
+    "Endangered": 55,
+    "Vulnerable": 54,
+    "Near Threatened": 46,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "IE": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 20,
+    "Vulnerable": 72,
+    "Near Threatened": 61,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "MA": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 45,
+    "Endangered": 100,
+    "Vulnerable": 146,
+    "Near Threatened": 129,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "BJ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 30,
+    "Endangered": 53,
+    "Vulnerable": 77,
+    "Near Threatened": 73,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "ST": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 15,
+    "Endangered": 62,
+    "Vulnerable": 73,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 10
+  },
+  "LR": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 45,
+    "Endangered": 111,
+    "Vulnerable": 175,
+    "Near Threatened": 111,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "GA": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 86,
+    "Endangered": 243,
+    "Vulnerable": 303,
+    "Near Threatened": 130,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 13
+  },
+  "TG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 32,
+    "Endangered": 44,
+    "Vulnerable": 74,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "GW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 28,
+    "Endangered": 40,
+    "Vulnerable": 77,
+    "Near Threatened": 63,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CI": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 41,
+    "Endangered": 102,
+    "Vulnerable": 219,
+    "Near Threatened": 138,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 9
+  },
+  "NG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 69,
+    "Endangered": 157,
+    "Vulnerable": 263,
+    "Near Threatened": 124,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 11
+  },
+  "CG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 23,
+    "Endangered": 83,
+    "Vulnerable": 162,
+    "Near Threatened": 104,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 3
+  },
+  "GQ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 31,
+    "Endangered": 111,
+    "Vulnerable": 173,
+    "Near Threatened": 94,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 12
+  },
+  "CD": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 86,
+    "Endangered": 287,
+    "Vulnerable": 375,
+    "Near Threatened": 203,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 8
+  },
+  "EH": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 15,
+    "Endangered": 28,
+    "Vulnerable": 56,
+    "Near Threatened": 36,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GN": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 66,
+    "Endangered": 166,
+    "Vulnerable": 202,
+    "Near Threatened": 128,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 2
+  },
+  "GM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 26,
+    "Endangered": 36,
+    "Vulnerable": 71,
+    "Near Threatened": 58,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 35,
+    "Vulnerable": 57,
+    "Near Threatened": 48,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 2
+  },
+  "EG": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 35,
+    "Endangered": 53,
+    "Vulnerable": 153,
+    "Near Threatened": 135,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "LY": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 21,
+    "Endangered": 24,
+    "Vulnerable": 61,
+    "Near Threatened": 39,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GR": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 107,
+    "Endangered": 193,
+    "Vulnerable": 309,
+    "Near Threatened": 197,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 6
+  },
+  "UZ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 14,
+    "Endangered": 20,
+    "Vulnerable": 36,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "TM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 12,
+    "Endangered": 16,
+    "Vulnerable": 36,
+    "Near Threatened": 34,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "TR": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 142,
+    "Endangered": 158,
+    "Vulnerable": 169,
+    "Near Threatened": 133,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 12
+  },
+  "IQ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 15,
+    "Endangered": 30,
+    "Vulnerable": 69,
+    "Near Threatened": 77,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "IR": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 33,
+    "Endangered": 59,
+    "Vulnerable": 114,
+    "Near Threatened": 119,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "SY": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 33,
+    "Endangered": 76,
+    "Vulnerable": 91,
+    "Near Threatened": 61,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "IL": {
+    "Extinct": 4,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 35,
+    "Endangered": 78,
+    "Vulnerable": 162,
+    "Near Threatened": 152,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "JO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 32,
+    "Vulnerable": 102,
+    "Near Threatened": 130,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "LB": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 34,
+    "Endangered": 94,
+    "Vulnerable": 83,
+    "Near Threatened": 58,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "PS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 11,
+    "Endangered": 25,
+    "Vulnerable": 30,
+    "Near Threatened": 33,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "PF": {
+    "Extinct": 61,
+    "Extinct in the Wild": 12,
+    "Critically Endangered": 76,
+    "Endangered": 40,
+    "Vulnerable": 94,
+    "Near Threatened": 67,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 16
+  },
+  "MM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 70,
+    "Endangered": 166,
+    "Vulnerable": 256,
+    "Near Threatened": 323,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 8
+  },
+  "TH": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 89,
+    "Endangered": 251,
+    "Vulnerable": 489,
+    "Near Threatened": 435,
+    "Lower Risk/conservation dependent": 6,
+    "Lower Risk/near threatened": 20
+  },
+  "MY": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 316,
+    "Endangered": 553,
+    "Vulnerable": 1217,
+    "Near Threatened": 656,
+    "Lower Risk/conservation dependent": 95,
+    "Lower Risk/near threatened": 63
+  },
+  "GI": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 14,
+    "Vulnerable": 48,
+    "Near Threatened": 27,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AL": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 29,
+    "Endangered": 60,
+    "Vulnerable": 93,
+    "Near Threatened": 100,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "DZ": {
+    "Extinct": 2,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 29,
+    "Endangered": 64,
+    "Vulnerable": 109,
+    "Near Threatened": 94,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "TN": {
+    "Extinct": 11,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 26,
+    "Endangered": 36,
+    "Vulnerable": 82,
+    "Near Threatened": 75,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "HR": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 40,
+    "Endangered": 72,
+    "Vulnerable": 144,
+    "Near Threatened": 122,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "MC": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 9,
+    "Vulnerable": 31,
+    "Near Threatened": 13,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "SI": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 52,
+    "Vulnerable": 146,
+    "Near Threatened": 88,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "BA": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 50,
+    "Vulnerable": 77,
+    "Near Threatened": 79,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "MT": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 20,
+    "Endangered": 15,
+    "Vulnerable": 52,
+    "Near Threatened": 33,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "JP": {
+    "Extinct": 14,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 75,
+    "Endangered": 207,
+    "Vulnerable": 327,
+    "Near Threatened": 319,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 6
+  },
+  "TW": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 46,
+    "Endangered": 126,
+    "Vulnerable": 279,
+    "Near Threatened": 237,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 7
+  },
+  "HK": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 20,
+    "Endangered": 36,
+    "Vulnerable": 59,
+    "Near Threatened": 42,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 0
+  },
+  "DK": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 11,
+    "Endangered": 15,
+    "Vulnerable": 85,
+    "Near Threatened": 67,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "NO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 14,
+    "Endangered": 35,
+    "Vulnerable": 101,
+    "Near Threatened": 80,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 8
+  },
+  "SE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 11,
+    "Endangered": 23,
+    "Vulnerable": 99,
+    "Near Threatened": 96,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 10
+  },
+  "IS": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 7,
+    "Vulnerable": 35,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "ME": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 25,
+    "Endangered": 69,
+    "Vulnerable": 88,
+    "Near Threatened": 98,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "BG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 21,
+    "Endangered": 36,
+    "Vulnerable": 98,
+    "Near Threatened": 97,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "RO": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 23,
+    "Endangered": 64,
+    "Vulnerable": 92,
+    "Near Threatened": 86,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 10
+  },
+  "CY": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 25,
+    "Endangered": 35,
+    "Vulnerable": 64,
+    "Near Threatened": 54,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "MK": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 20,
+    "Endangered": 52,
+    "Vulnerable": 85,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "RS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 48,
+    "Vulnerable": 73,
+    "Near Threatened": 76,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "CH": {
+    "Extinct": 6,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 64,
+    "Vulnerable": 110,
+    "Near Threatened": 108,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 14
+  },
+  "AT": {
+    "Extinct": 3,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 34,
+    "Endangered": 93,
+    "Vulnerable": 118,
+    "Near Threatened": 120,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 11
+  },
+  "LI": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 5,
+    "Vulnerable": 13,
+    "Near Threatened": 28,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "UG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 57,
+    "Endangered": 90,
+    "Vulnerable": 150,
+    "Near Threatened": 93,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 5
+  },
+  "IN": {
+    "Extinct": 2,
+    "Extinct in the Wild": 2,
+    "Critically Endangered": 214,
+    "Endangered": 493,
+    "Vulnerable": 610,
+    "Near Threatened": 416,
+    "Lower Risk/conservation dependent": 4,
+    "Lower Risk/near threatened": 21
+  },
+  "VU": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 34,
+    "Vulnerable": 129,
+    "Near Threatened": 144,
+    "Lower Risk/conservation dependent": 4,
+    "Lower Risk/near threatened": 4
+  },
+  "JE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 1,
+    "Vulnerable": 14,
+    "Near Threatened": 3,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 0,
+    "Vulnerable": 5,
+    "Near Threatened": 5,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "KH": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 51,
+    "Endangered": 105,
+    "Vulnerable": 210,
+    "Near Threatened": 201,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 4
+  },
+  "BD": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 43,
+    "Endangered": 94,
+    "Vulnerable": 119,
+    "Near Threatened": 107,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "NP": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 20,
+    "Endangered": 40,
+    "Vulnerable": 77,
+    "Near Threatened": 87,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "BT": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 22,
+    "Endangered": 45,
+    "Vulnerable": 69,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 3
+  },
+  "BN": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 31,
+    "Endangered": 110,
+    "Vulnerable": 228,
+    "Near Threatened": 221,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 15
+  },
+  "SG": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 36,
+    "Endangered": 79,
+    "Vulnerable": 269,
+    "Near Threatened": 266,
+    "Lower Risk/conservation dependent": 11,
+    "Lower Risk/near threatened": 18
+  },
+  "TV": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 3,
+    "Endangered": 21,
+    "Vulnerable": 101,
+    "Near Threatened": 115,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "CK": {
+    "Extinct": 16,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 23,
+    "Vulnerable": 61,
+    "Near Threatened": 53,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 0
+  },
+  "WF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 3,
+    "Endangered": 19,
+    "Vulnerable": 86,
+    "Near Threatened": 95,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "WS": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 30,
+    "Vulnerable": 88,
+    "Near Threatened": 86,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 1
+  },
+  "TK": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 17,
+    "Vulnerable": 57,
+    "Near Threatened": 57,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "AS": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 5,
+    "Endangered": 28,
+    "Vulnerable": 86,
+    "Near Threatened": 84,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 1
+  },
+  "MH": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 18,
+    "Vulnerable": 101,
+    "Near Threatened": 123,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "RE": {
+    "Extinct": 22,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 22,
+    "Endangered": 42,
+    "Vulnerable": 107,
+    "Near Threatened": 109,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "MU": {
+    "Extinct": 47,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 94,
+    "Endangered": 76,
+    "Vulnerable": 142,
+    "Near Threatened": 126,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 1
+  },
+  "KM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 46,
+    "Vulnerable": 101,
+    "Near Threatened": 118,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "ZM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 17,
+    "Endangered": 52,
+    "Vulnerable": 69,
+    "Near Threatened": 65,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "LK": {
+    "Extinct": 18,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 206,
+    "Endangered": 294,
+    "Vulnerable": 347,
+    "Near Threatened": 198,
+    "Lower Risk/conservation dependent": 5,
+    "Lower Risk/near threatened": 3
+  },
+  "NC": {
+    "Extinct": 9,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 190,
+    "Endangered": 349,
+    "Vulnerable": 413,
+    "Near Threatened": 346,
+    "Lower Risk/conservation dependent": 7,
+    "Lower Risk/near threatened": 1
+  },
+  "YE": {
+    "Extinct": 5,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 21,
+    "Endangered": 74,
+    "Vulnerable": 256,
+    "Near Threatened": 172,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 9
+  },
+  "PK": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 34,
+    "Endangered": 76,
+    "Vulnerable": 135,
+    "Near Threatened": 121,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "OM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 17,
+    "Endangered": 49,
+    "Vulnerable": 94,
+    "Near Threatened": 104,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "SC": {
+    "Extinct": 22,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 107,
+    "Endangered": 178,
+    "Vulnerable": 189,
+    "Near Threatened": 141,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "YT": {
+    "Extinct": 5,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 30,
+    "Vulnerable": 94,
+    "Near Threatened": 115,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "TO": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 15,
+    "Endangered": 32,
+    "Vulnerable": 87,
+    "Near Threatened": 72,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "SB": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 22,
+    "Endangered": 58,
+    "Vulnerable": 226,
+    "Near Threatened": 218,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 7
+  },
+  "DJ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 33,
+    "Vulnerable": 100,
+    "Near Threatened": 123,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "KI": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 24,
+    "Vulnerable": 110,
+    "Near Threatened": 119,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "MV": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 29,
+    "Vulnerable": 66,
+    "Near Threatened": 98,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "SD": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 22,
+    "Endangered": 40,
+    "Vulnerable": 122,
+    "Near Threatened": 132,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 3
+  },
+  "ER": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 17,
+    "Endangered": 37,
+    "Vulnerable": 113,
+    "Near Threatened": 138,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 2
+  },
+  "SA": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 18,
+    "Endangered": 46,
+    "Vulnerable": 120,
+    "Near Threatened": 142,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "IO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 3,
+    "Endangered": 18,
+    "Vulnerable": 82,
+    "Near Threatened": 107,
+    "Lower Risk/conservation dependent": 2,
+    "Lower Risk/near threatened": 0
+  },
+  "NR": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 15,
+    "Vulnerable": 90,
+    "Near Threatened": 114,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "MP": {
+    "Extinct": 2,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 28,
+    "Vulnerable": 81,
+    "Near Threatened": 99,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "GU": {
+    "Extinct": 5,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 10,
+    "Endangered": 34,
+    "Vulnerable": 81,
+    "Near Threatened": 97,
+    "Lower Risk/conservation dependent": 3,
+    "Lower Risk/near threatened": 0
+  },
+  "NU": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 21,
+    "Vulnerable": 50,
+    "Near Threatened": 54,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CX": {
+    "Extinct": 4,
+    "Extinct in the Wild": 2,
+    "Critically Endangered": 3,
+    "Endangered": 19,
+    "Vulnerable": 39,
+    "Near Threatened": 32,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "CC": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 16,
+    "Vulnerable": 40,
+    "Near Threatened": 26,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "UM": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 17,
+    "Vulnerable": 69,
+    "Near Threatened": 79,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 0
+  },
+  "KR": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 24,
+    "Endangered": 69,
+    "Vulnerable": 93,
+    "Near Threatened": 77,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "KP": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 11,
+    "Endangered": 54,
+    "Vulnerable": 69,
+    "Near Threatened": 49,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SH": {
+    "Extinct": 37,
+    "Extinct in the Wild": 2,
+    "Critically Endangered": 73,
+    "Endangered": 65,
+    "Vulnerable": 54,
+    "Near Threatened": 19,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "BL": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 19,
+    "Vulnerable": 34,
+    "Near Threatened": 15,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "TL": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 10,
+    "Endangered": 28,
+    "Vulnerable": 30,
+    "Near Threatened": 44,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "DT": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 8,
+    "Vulnerable": 16,
+    "Near Threatened": 5,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "MO": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 5,
+    "Endangered": 13,
+    "Vulnerable": 14,
+    "Near Threatened": 5,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 19,
+    "Endangered": 28,
+    "Vulnerable": 88,
+    "Near Threatened": 55,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 7
+  },
+  "ET": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 33,
+    "Endangered": 90,
+    "Vulnerable": 112,
+    "Near Threatened": 59,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 18
+  },
+  "PN": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 3,
+    "Endangered": 15,
+    "Vulnerable": 38,
+    "Near Threatened": 24,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 0
+  },
+  "QA": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 21,
+    "Vulnerable": 48,
+    "Near Threatened": 55,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 14,
+    "Endangered": 32,
+    "Vulnerable": 60,
+    "Near Threatened": 70,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "BH": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 13,
+    "Endangered": 19,
+    "Vulnerable": 42,
+    "Near Threatened": 57,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "NF": {
+    "Extinct": 9,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 4,
+    "Endangered": 15,
+    "Vulnerable": 42,
+    "Near Threatened": 34,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AZ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 21,
+    "Endangered": 29,
+    "Vulnerable": 54,
+    "Near Threatened": 57,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "AM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 26,
+    "Endangered": 50,
+    "Vulnerable": 44,
+    "Near Threatened": 47,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 5
+  },
+  "TD": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 12,
+    "Endangered": 19,
+    "Vulnerable": 28,
+    "Near Threatened": 26,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "ML": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 10,
+    "Endangered": 30,
+    "Vulnerable": 40,
+    "Near Threatened": 33,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 22,
+    "Vulnerable": 36,
+    "Near Threatened": 26,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 3
+  },
+  "TJ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 14,
+    "Vulnerable": 30,
+    "Near Threatened": 26,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 9,
+    "Endangered": 17,
+    "Vulnerable": 41,
+    "Near Threatened": 42,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "RW": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 15,
+    "Endangered": 77,
+    "Vulnerable": 91,
+    "Near Threatened": 51,
+    "Lower Risk/conservation dependent": 1,
+    "Lower Risk/near threatened": 1
+  },
+  "BF": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 9,
+    "Endangered": 19,
+    "Vulnerable": 24,
+    "Near Threatened": 25,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GL": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 3,
+    "Endangered": 5,
+    "Vulnerable": 28,
+    "Near Threatened": 15,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "FO": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 5,
+    "Vulnerable": 28,
+    "Near Threatened": 21,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "MD": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 5,
+    "Vulnerable": 27,
+    "Near Threatened": 32,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 6
+  },
+  "KZ": {
+    "Extinct": 1,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 20,
+    "Endangered": 24,
+    "Vulnerable": 53,
+    "Near Threatened": 39,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 7
+  },
+  "AD": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 4,
+    "Vulnerable": 13,
+    "Near Threatened": 25,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "LU": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 3,
+    "Endangered": 5,
+    "Vulnerable": 21,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 4
+  },
+  "BY": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 6,
+    "Vulnerable": 31,
+    "Near Threatened": 36,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 8
+  },
+  "FI": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 12,
+    "Vulnerable": 63,
+    "Near Threatened": 58,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 8
+  },
+  "MN": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 6,
+    "Endangered": 14,
+    "Vulnerable": 30,
+    "Near Threatened": 30,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 4
+  },
+  "KG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 17,
+    "Vulnerable": 36,
+    "Near Threatened": 28,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 1
+  },
+  "SJ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 3,
+    "Vulnerable": 16,
+    "Near Threatened": 15,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "KW": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 12,
+    "Endangered": 21,
+    "Vulnerable": 53,
+    "Near Threatened": 59,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "VA": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 0,
+    "Vulnerable": 2,
+    "Near Threatened": 3,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "TF": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 7,
+    "Endangered": 13,
+    "Vulnerable": 23,
+    "Near Threatened": 17,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "NE": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 8,
+    "Endangered": 18,
+    "Vulnerable": 24,
+    "Near Threatened": 23,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "LS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 13,
+    "Vulnerable": 16,
+    "Near Threatened": 25,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "SZ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 1,
+    "Critically Endangered": 8,
+    "Endangered": 19,
+    "Vulnerable": 31,
+    "Near Threatened": 34,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GG": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 1,
+    "Vulnerable": 12,
+    "Near Threatened": 3,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "IM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 3,
+    "Vulnerable": 4,
+    "Near Threatened": 3,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "FK": {
+    "Extinct": 1,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 1,
+    "Endangered": 17,
+    "Vulnerable": 22,
+    "Near Threatened": 22,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "PM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 2,
+    "Endangered": 5,
+    "Vulnerable": 18,
+    "Near Threatened": 23,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "GS": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 6,
+    "Vulnerable": 7,
+    "Near Threatened": 10,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AQ": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 7,
+    "Vulnerable": 13,
+    "Near Threatened": 7,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "HM": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 4,
+    "Vulnerable": 9,
+    "Near Threatened": 7,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "BV": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 2,
+    "Vulnerable": 5,
+    "Near Threatened": 3,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  },
+  "AX": {
+    "Extinct": 0,
+    "Extinct in the Wild": 0,
+    "Critically Endangered": 0,
+    "Endangered": 0,
+    "Vulnerable": 1,
+    "Near Threatened": 0,
+    "Lower Risk/conservation dependent": 0,
+    "Lower Risk/near threatened": 0
+  }
+}

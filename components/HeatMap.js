@@ -2,14 +2,20 @@ import * as d3 from 'd3'
 import { feature } from 'topojson'
 import { useEffect, useState } from 'react'
 
-import speciesPerCountry from '../public/countries.json'
 import speciesPerCountryCode from '../public/countrycodes.json'
 import topoJSONdataTemp from '../public/topo.json'
+import redListByCountryCode from '../public/redListByCountryCode.json'
 
 import PopupWindow from './PopupWindow'
+import styles from '../styles/Heatmap.module.css'
+import Filters from '../components/Filters.js'
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
+
+// TODO: Color gradient legend
+// https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient/
+// http://bl.ocks.org/nbremer/5cd07f2cb4ad202a9facfbd5d2bc842e
 
 // Blockbuilder.org is very useful for prototyping.
 
@@ -28,25 +34,89 @@ const mouseLeave = (d, i) => {
         .attr('opacity', '1');
 };
 
-const HeatMap = () => {
+const HeatMap = (props) => {
     const [displayBox, setDisplay] = useState(false);
     const [code, setCode] = useState("");
     const [country, setCountry] = useState("");
+    const [dispayFilter, setdispayFilter] = useState(false)
+    const [category, setCategory] = useState("All") //Selected values for red list catrgory
 
     const onClick = (d) => {
-        console.log(d.target.id)
+        setCountry(d.target.name)
         setCode(d.target.id)
         setDisplay(true)
     };
     const closeWindow = () => {
         setDisplay(false)
     }
+    function changeFilter(){
+        if (dispayFilter)
+            setdispayFilter(false)
+        else
+            setdispayFilter(true)
+    }
+    function onCategoryChanges(value){
+        setCategory(value)
+
+        updateHeatmap(value);
+    }
+
+    function updateHeatmap(checked){
+        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
+        console.log("Mine:");
+        console.log(checked);
+        if (checked == "All" || checked == null) {
+            checked = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened"];
+        }
+
+        let maxSpeciesAggregated = 0;
+        let numSpeciesByCountryAggregate = {};
+        for (const code in redListByCountryCode) {
+            let numSpecies = 0;
+            for (const e in checked) {
+                const val = checked[e];
+                numSpecies += redListByCountryCode[code][val];
+            }
+            if (numSpecies > maxSpeciesAggregated) {
+                maxSpeciesAggregated = numSpecies;
+            }
+            
+            numSpeciesByCountryAggregate[code] = numSpecies;
+        }
+        
+        const getColor = (v) => {
+            const scaledValue = v / maxSpeciesAggregated;
+            return interpolation(scaledValue).colors;
+        };
+
+        const svg = d3.select('svg');
+        const paths = svg.selectChildren('path');
+        paths.each(function(d) {
+            // Works, nice...
+            let currElem = d3.select(this);
+            const currId = currElem.attr('id');
+            const numSpecies = numSpeciesByCountryAggregate[currId];
+            const newColor = getColor(numSpecies);
+            //console.log(newColor);
+            currElem.attr('fill', newColor);
+            
+            currElem.selectChild('title').text(() => {
+                const countryName = currElem.attr("name");
+                const numSpecies = numSpeciesByCountryAggregate[currId];
+                return countryName + ":" + numSpecies;
+            });
+            //console.log(d3.select(this).attr("id"));
+        });
+
+        d3.select("rect").selectChild("title").text("0 - " + maxSpeciesAggregated);
+    }
+
     // Need this for d3 to work with react.
     useEffect( () => {
 
         const svg = d3.select('svg');
 
-        const projection = d3.geoNaturalEarth1().fitWidth(1600, { type: 'Sphere' });
+        const projection = d3.geoNaturalEarth1().fitWidth(1400, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
         // #3d0006 #d43547 #db000f
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
@@ -136,6 +206,7 @@ const HeatMap = () => {
                 }
                 else{
                     countryNamesByTopoId[d.iso_n3] = [d.iso_a2, d.name];
+                    //console.log( countryNamesByTopoId[d.iso_n3][1])
                 }
 
             });
@@ -149,6 +220,7 @@ const HeatMap = () => {
             .enter().append('path')
             .attr('d', d => pathGenerator(d))
             .attr('id', d => countryNamesByTopoId[d.id][0]) // <- iso_a2
+            .attr('name', d => countryNamesByTopoId[d.id][1]) // <- name
             .attr('fill', d => {
                 const countryCode = countryNamesByTopoId[d.id][0];
                 const numSpecies = numSpeciesByCountry[countryCode];
@@ -167,20 +239,63 @@ const HeatMap = () => {
                 const numSpecies = numSpeciesByCountry[countryCode];
                 return countryName + ":" + numSpecies;
             });
-    
         });
+
+        
+        //Append a defs (for definition) element to your SVG
+        var defs = svg.append("defs");
+
+        //Append a linearGradient element to the defs and give it a unique id
+        var linearGradient = defs.append("linearGradient")
+        .attr("id", "linear-gradient");
+        
+        //Vertical gradient
+        linearGradient
+        .attr("x1", "0%")
+        .attr("y1", "0%")
+        .attr("x2", "0%")
+        .attr("y2", "100%");
+
+        //Set the color for the start (0%)
+        linearGradient.append("stop")
+        .attr("offset", "0%")
+        .attr("stop-color", "#ffffff"); 
+
+        //Set the color for the end (100%)
+        linearGradient.append("stop")
+        .attr("offset", "100%")
+        .attr("stop-color", "#db000f"); 
+
+        //Draw the rectangle and fill with gradient
+        svg.append("rect")
+        .attr("width", 20)
+        .attr("height", 500)
+        .style("fill", "url(#linear-gradient)")
+        .append("title").text("0 - 4293");
+        
+
+
 
     }, [])
     return (
         <div
           style={{
-            width: "100%",
-            background: "#212226",
+              position: "absolute",
+              left: "0px",
+              width: "100%",
+              background: "#212226",
           }}
         >
-          <svg width={1600} height={800}>
-          </svg>
-          {displayBox && <PopupWindow closeWindow={closeWindow} code={code}/>}
+        <svg width={1600} height={800}>
+        </svg>
+        {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
+        {dispayFilter && <div className={styles['right']} >
+            <Filters onCategoryChanges={onCategoryChanges}/>
+            <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow']} rotate="90" onClick={changeFilter}/>
+        </div>}
+        {!dispayFilter &&  <div className={styles['right_min']}>
+                <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow_min']} rotate="90" onClick={changeFilter}/>
+            </div>}
         </div>
       )
 };

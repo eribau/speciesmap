@@ -16,6 +16,20 @@ const mouseLeave = (d) => {
 }
 */
 const WorldMap = () => {
+
+  const [displayBox, setDisplay] = useState(false)
+  const [code, setCode] = useState("")
+  const [country, setCountry] = useState("")
+
+  const onClick = (d) => {
+      setCode(d.target.__data__.properties.ISO_A2)
+      setDisplay(true)
+      setCountry(d.target.value)
+  };
+  const closeWindow = () => {
+      setDisplay(false)
+  }
+
   const dimensions = {
     'width': 1400,
     'height': 1000,
@@ -113,11 +127,12 @@ const WorldMap = () => {
      //tooltip
      id={ "world_map" }
        style={{
-         width: "100%",
+         width: "50%",
        }}
      >
        <svg width={dms.width} height={height} ref={ref}>
        </svg>
+       {displayBox && <PopupWindow category="All" country={country} closeWindow={closeWindow} code={code}/>}
      </div>
    )
  }
