@@ -1,8 +1,7 @@
 import * as d3 from 'd3'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import countryShapes from '../public/countries.geo.json'
 import { useChartDimensions } from '../utilities/useChartDimensions'
-import PopupWindow from './PopupWindow'
 
 //moved in order to add tooltip
 /*
@@ -17,20 +16,6 @@ const mouseLeave = (d) => {
 }
 */
 const WorldMap = () => {
-
-  const [displayBox, setDisplay] = useState(false);
-  const [code, setCode] = useState("");
-  const [country, setCountry] = useState("");
-
-  const onClick = (d) => {
-      setCode(d.target.__data__.properties.ISO_A2)
-      setDisplay(true)
-      setCountry(d.target.value)
-  };
-  const closeWindow = () => {
-      setDisplay(false)
-  }
-
   const dimensions = {
     'width': 1400,
     'height': 1000,
@@ -80,8 +65,8 @@ const WorldMap = () => {
        .attr('fill', '#970e13')
      Tooltip.html(d.target.id)
       .style("opacity", 1)
-      .style("left", 100 + "px")
-      .style("top", 100 + "px")
+      .style("left", d.clientX + "px")
+      .style("top", d.clientX + "px")
    //.style("left", d3.select(this).attr("cx") + "px")
    //.style("top", d3.select(this).attr("cy") + "px")
    }
@@ -91,7 +76,7 @@ const WorldMap = () => {
        .attr('fill', '#f94346')
      Tooltip.style("opacity", 0)
    }
-   
+   // HELLO
     
     const svg = d3.select(ref.current)
     
@@ -121,7 +106,6 @@ const WorldMap = () => {
       })
       .on("mouseover", mouseOver)
       .on("mouseleave", mouseLeave)
-      .on("click", onClick)
   }, [])
 
    return (
@@ -134,7 +118,6 @@ const WorldMap = () => {
      >
        <svg width={dms.width} height={height} ref={ref}>
        </svg>
-       {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code}/>}
      </div>
    )
  }
