@@ -30,7 +30,7 @@ function Filters(props){
       };
     const options_redList = [
         { label: 'Extinct', value: 'Extinct' },
-        { label: 'Extinct in the wild', value: 'Extinct in the wild' },
+        { label: 'Extinct in the Wild', value: 'Extinct in the Wild' },
         { label: 'Critically Endangered', value: 'Critically Endangered' },
         { label: 'Endangered', value: 'Endangered' },
         { label: 'Vulnerable', value: 'Vulnerable' },
