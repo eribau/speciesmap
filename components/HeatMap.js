@@ -13,6 +13,9 @@ import Filters from '../components/Filters.js'
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
 
+// TODO: Color gradient legend
+// https://www.visualcinnamon.com/2016/05/smooth-color-legend-d3-svg-gradient/
+
 // Blockbuilder.org is very useful for prototyping.
 
 const mouseOver = (d, i) => {
@@ -94,7 +97,13 @@ const HeatMap = (props) => {
             const numSpecies = numSpeciesByCountryAggregate[currId];
             const newColor = getColor(numSpecies);
             //console.log(newColor);
-            d3.select(this).attr('fill', newColor);
+            currElem.attr('fill', newColor);
+            
+            currElem.selectChild('title').text(() => {
+                const countryName = currElem.attr("name");
+                const numSpecies = numSpeciesByCountryAggregate[currId];
+                return countryName + ":" + numSpecies;
+            });
             //console.log(d3.select(this).attr("id"));
         });
     }
