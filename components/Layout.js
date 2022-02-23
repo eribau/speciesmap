@@ -13,16 +13,11 @@ const Layout = ({children}) => {
          <nav className={styles["navbar"]}>
             <h1 className={styles["navitem"]}>
                <Link href="/">
-                  <a><Text>Species Map</Text></a>
+                  <a><Text>Species Heat Map</Text></a>
                </Link>
             </h1>
-            <h1 className={styles["navitem"]}>
-               {/* This href needs to have the same name as corresponding /pages file. 
-               The <Link> element is from Next.js and links the element to the corresponding page (routing).*/}
-               <Link href="/heatmaptemp">
-                  <a><Text>Species Heat Map (temporary)</Text></a>
-               </Link>
-            </h1>
+            {/* This href needs to have the same name as corresponding /pages file. 
+            The <Link> element is from Next.js and links the element to the corresponding page (routing).*/}
             <h2 className={styles["navitem"]}>
                <Link href="/about">
                   <a><Text>About</Text></a>

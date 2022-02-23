@@ -1,5 +1,5 @@
 import Layout from '../components/Layout.js'
-import WorldMap from '../components/WorldMap.js'
+import HeatMap from '../components/HeatMap.js'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
     <Layout>
       <div className={styles['center']}>
         <div className={styles['margins']}>
-          <WorldMap/>
+          <HeatMap/>
         </div>
       </div>
     </Layout>
