@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import speciesPerCountryCode from '../public/countrycodes.json'
 import topoJSONdataTemp from '../public/topo.json'
 import redListByCountryCode from '../public/redListByCountryCode.json'
+import tsvData from '../public/topoInfoByISOn3.json'
 
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
@@ -141,12 +142,12 @@ const HeatMap = (props) => {
 
         // Loading multiple data sets at once
         Promise.all([
-            d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/110m.tsv')
+            //d3.tsv('https://unpkg.com/world-atlas@1.1.4/world/110m.tsv')
             //d3.json('https://unpkg.com/world-atlas@1.1.4/world/110m.json') using local data now
             //d3.tsv('../public/topo.id.info.tsv') how do I get the file to work locally?
             //d3.json('../public/topo.json')
-        ]).then(([tsvData, topoJSONdata]) => { // destructuring syntax (packing up multiple values)
-            
+        ]).then(([tsv, topoJSONdata]) => { // destructuring syntax (packing up multiple values)
+            tsv = tsvData;
             //topoJSONdata = topoJSONdataTemp;
             //console.log(topoJSONdata);
             
