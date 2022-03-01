@@ -22,16 +22,12 @@ import Filters from '../components/Filters.js'
 
 const mouseOver = (d, i) => {
     d3.select('#' + d.target.id)
-        .transition()
-        .duration(100)
         .attr('opacity', '.5');
 };
 
 
 const mouseLeave = (d, i) => {
     d3.select('#' + d.target.id)
-        .transition()
-        .duration(150)
         .attr('opacity', '1');
 };
 const HeatMap = (props) => {
@@ -121,24 +117,14 @@ const HeatMap = (props) => {
         const pathGenerator = d3.geoPath().projection(projection);
         // #3d0006 #d43547 #db000f
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
-
+        var centered = false;
         // Zoom did not work for some reason
         // const g = svg.append('g');
 
         // g.append('path')
         // .attr('class', 'sphere')
         // .attr('d', pathGenerator({type: 'Sphere'}));
-        
-        // svg.call(d3.zoom().on('zoom', () => {
-        //     svg.attr('transform', d3.zoomTransform(this));
-        //   }));
-        // This is how zoom works in d3 7.3, d3.event is not a global anymore.
-        svg.call(d3.zoom().on('zoom', (e) => {
-            //console.log("zooming or panning");
-            console.log(e);
-            // this does not work though!
-            //svg.attr('transform', transform);
-        }));
+
 
         // Loading multiple data sets at once
         Promise.all([
@@ -233,6 +219,7 @@ const HeatMap = (props) => {
             .on('mouseover', mouseOver)
             .on('mouseleave', mouseLeave)
             .on('click', onClick)
+            .lower()
             .append('title').text(d => {
                 // d.id is iso_n3, which is what is used to identify each country topology in topo.json
                 const countryCode = countryNamesByTopoId[d.id][0]; // <-  [0] is iso_a2
@@ -242,8 +229,71 @@ const HeatMap = (props) => {
             });
         });
 
+                // svg.call(d3.zoom().on('zoom', () => {
+        //     svg.attr('transform', d3.zoomTransform(this));
+        //   }));
+        // This is how zoom works in d3 7.3, d3.event is not a global anymore.
+        var k_global = 1;
+        svg.call(d3.zoom().on('zoom', (e) => {
+            //console.log("zooming or panning");
+            
+            //e.transform.k = Math.max(e.transform.k, 0.8); //clamp
+            //e.transform.k = Math.min(e.transform.k, 10);
+            // to remove the jittering, 
+            // only apply scale transform if k <= 0.8
+            if (centered) {
+                svg.selectAll("path")
+                .transition()
+                .duration("300")
+                .attr("transform", "translate(" + 0 + "," + 0 + ")scale(" + e.transform.k + ")");    
+                centered = false;
+            } else {
+                svg.selectAll("path")
+                .attr("transform", e.transform);
+            }
+            k_global = e.transform.k;
+            //console.log(e.transform);
+            // this does not work though!
+            //svg.attr('transform', transform);
+        }));
+        //https://bl.ocks.org/mbostock/2206590
         
-        //Append a defs (for definition) element to your SVG
+        svg.on("click", function(e) {
+            //console.log(e.path[0]);
+            // e.transform.k = 1.3;
+            // svg.selectAll("path")
+            // .transition()
+            // .duration(1000)
+            // .attr("transform", e.transform);
+            //"translate(" + e.x*0.1 + "," + e.y*0.1 + ")" + " scale(1.2)")
+            var width = 1400;
+            var height = 900;
+            var x, y, k;
+            let d=e.path[0];
+            if (!centered) {
+              var bbox = d.getBBox();
+              var centroid = [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+              console.log(centroid);
+              x = centroid[0];
+              y = centroid[1];
+              k = 6;
+              centered = true;
+            } else {
+              x = width / 2;
+              y = height / 2;
+              k = 1;
+              centered = false;
+            }
+            
+            
+            svg.selectAll("path")
+            .transition()
+                .duration(750)
+                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
+                //.style("stroke-width", 1.5 / k + "px");
+          
+        });
+                       //Append a defs (for definition) element to your SVG
         var defs = svg.append("defs");
 
         //Append a linearGradient element to the defs and give it a unique id
@@ -273,9 +323,6 @@ const HeatMap = (props) => {
         .attr("height", 500)
         .style("fill", "url(#linear-gradient)")
         .append("title").text("0 - 4293");
-        
-
-
 
     }, [])
     return (
