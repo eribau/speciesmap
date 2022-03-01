@@ -16,8 +16,8 @@ function PopupWindow(props){
             <>
             {countryData && category && <tr key={ID}>
                 <td key={ID}>{ID} </td>
-                <td key="name">{countryData.scientificName}</td>
-                <td key="category">{countryData.redlistCategory}</td>
+                <td key={"name" + ID}>{countryData.scientificName}</td>
+                <td key={"category" + ID}>{countryData.redlistCategory}</td>
             </tr>}
             </>)
     }

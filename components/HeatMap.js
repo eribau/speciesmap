@@ -34,7 +34,6 @@ const mouseLeave = (d, i) => {
         .duration(150)
         .attr('opacity', '1');
 };
-
 const HeatMap = (props) => {
     const [displayBox, setDisplay] = useState(false);
     const [code, setCode] = useState("");
@@ -43,7 +42,8 @@ const HeatMap = (props) => {
     const [category, setCategory] = useState("All") //Selected values for red list catrgory
 
     const onClick = (d) => {
-        setCountry(d.target.name)
+        //console.log(d)
+        setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
         setCode(d.target.id)
         setDisplay(true)
     };
