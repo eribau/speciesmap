@@ -304,11 +304,7 @@ const HeatMap = (props) => {
         {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
         <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
-            <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow']} rotate="90" onClick={changeFilter}/>
         </div>
-        <div className={styles['right_min']}>
-                <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow_min']} rotate="90" onClick={changeFilter}/>
-            </div>
         </div>
       )
 };
