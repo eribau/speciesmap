@@ -113,8 +113,12 @@ const HeatMap = (props) => {
         const getColor = (v, countryCode) => {
             let scaledValue = v;
             if (isRelativeHeatmap) {
+                numSpeciesByCountry[countryCode] = 
+                    numSpeciesByCountry[countryCode] == 0 ? 1 : numSpeciesByCountry[countryCode];
+                
                 scaledValue /= numSpeciesByCountry[countryCode];
             } else {
+                maxSpecies = maxSpecies == 0 ? 1 : maxSpecies;
                 scaledValue /= maxSpecies;
             }
             return interpolation(scaledValue).colors;
