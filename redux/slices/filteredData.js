@@ -15,9 +15,11 @@ export const setFilteredData = filteredData => {
 
 function myFilter(filters) {
 
-   const threats = filters.threats;
-   const categories = filters.categories;
-   const kingdoms = filters.kingdoms;
+   console.log("Test")
+
+   const threats = filters["threats"];
+   const categories = filters["category"];
+   const kingdoms = filters["kingdom"];
 
    if (!threats.length && !categories.length && !kingdoms.length) {
        return countryCodes;

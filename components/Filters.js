@@ -13,8 +13,7 @@ function Filters(props){
         kingdom: [],
     });
     const [checkAll, setCheckAll] = useState(true);
-    if (checkAll)
-        props.onCategoryChanges("All")
+
     function onChange(checkedValues) {
         console.log('checked = ', checkedValues);
         /*setCheckedArray({
@@ -30,7 +29,7 @@ function Filters(props){
         if(checkedValues.length < 1)
             props.onCategoryChanges({
                 threats: [],
-                category: ['Extinct', 'Extinct in the Wild', 'Critically Endangered', 'Endangered', 'Vulnerable', 'Near Threatened'],
+                category: [],
                 kingdom: [],
             })   
     }

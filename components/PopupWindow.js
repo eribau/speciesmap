@@ -8,7 +8,7 @@ import { Typography, Checkbox } from 'antd';
 const { Text } = Typography;
 
 function PopupWindow(props){
-    const {country, code, filter} = props
+    const {country, code, category} = props
     const [countSpecies, setCount] = useState([]);
     function  renderSpecies(ID){
         const countryData = summary.find(item => (item.assessmentId === ID && category.indexOf(item.filter.category) > -1) || (item.assessmentId === ID && category === "All"))
