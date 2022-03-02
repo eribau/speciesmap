@@ -56,6 +56,7 @@ const HeatMap = (props) => {
             setdispayFilter(true)
     }
     function onCategoryChanges(value){
+        console.log(value)
         setCategory(value)
 
         updateHeatmap(value);
