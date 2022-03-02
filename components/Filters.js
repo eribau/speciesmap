@@ -71,18 +71,18 @@ function Filters(props){
     ];
 
     const options_threats = [
-        { label: 'Residential and commercial development', value: 'Residential and commercial development'},
-        { label: 'Agriculture and aquaculture', value: 'Agriculture and aquaculture' },
-        { label: 'Energy production and mining', value: 'Energy production and mining' },
-        { label: 'Transportation and service corridors', value: 'Transportation and service corridors' },
-        { label: 'Biological resource use', value: 'Biological resource use' },
-        { label: 'Human intrusions and disturbance', value: 'Human intrusions and disturbance' },
-        { label: 'Natural system modification', value: 'Natural system modification' },
-        { label: 'Invasive and other problematic species, genes and diseases', value: 'Invasive and other problematic species, genes and diseases' },
-        { label: 'Pollution', value: 'Pollution' },
-        { label: 'Geological events', value: 'Geological events' },
-        { label: 'Climate change and severe weather', value: 'Climate change and severe weather' },
-        { label: 'Other', value: 'Other' },
+        { label: 'Residential and commercial development', value: '1'},
+        { label: 'Agriculture and aquaculture', value: '2' },
+        { label: 'Energy production and mining', value: '3' },
+        { label: 'Transportation and service corridors', value: '4' },
+        { label: 'Biological resource use', value: '5' },
+        { label: 'Human intrusions and disturbance', value: '6' },
+        { label: 'Natural system modification', value: '7' },
+        { label: 'Invasive and other problematic species, genes and diseases', value: '8' },
+        { label: 'Pollution', value: '9' },
+        { label: 'Geological events', value: '10' },
+        { label: 'Climate change and severe weather', value: '11' },
+        { label: 'Other', value: '12' },
     ];
 
     const options_kingdom = [
