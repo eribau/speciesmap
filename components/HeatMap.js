@@ -9,6 +9,7 @@ import redListByCountryCode from '../public/redListByCountryCode.json'
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
 import Filters from '../components/Filters.js'
+import { useChartDimensions } from '../utilities/useChartDimensions'
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -60,6 +61,17 @@ const HeatMap = (props) => {
 
         updateHeatmap(value);
     }
+
+    const dimensions = {
+        'width': 1400,
+        'height': 1000,
+        'marginTop': 20,
+        'marginRight': 10
+      }
+    
+    
+       // grab our custom React hook we defined above
+       const [ref, dms] = useChartDimensions(dimensions)
 
     function updateHeatmap(checked){
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
@@ -116,7 +128,7 @@ const HeatMap = (props) => {
 
         const svg = d3.select('svg');
 
-        const projection = d3.geoNaturalEarth1().fitWidth(1400, { type: 'Sphere' });
+        const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
         // #3d0006 #d43547 #db000f
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
