@@ -227,9 +227,13 @@ const HeatMap = (props) => {
         ///- Gradient Legend -///
 
         /// Zoom and Pan ///
+        // https://bl.ocks.org/mbostock/4987520
         var centered = false;
-        // Zoom anywhere on the svg
-        svg.call(d3.zoom().on('zoom', (e) => {
+        var allowZoomOnClick = false;
+        //Zoom anywhere on the svg
+        svg.call(d3.zoom()
+        .scaleExtent([1, 6])
+        .on('zoom', (e) => {
             
             // If centered on a country, zoom out first
             if (centered) {
@@ -241,13 +245,16 @@ const HeatMap = (props) => {
 
             } else {
                 d3.selectAll("path")
-                .attr("transform", e.transform);
+                .attr("transform", e.transform)
             }
 
         }));
         
         // Click only on countries
+        // https://observablehq.com/@d3/d3-interpolatezoom
         layerHeatmap.on("click", function(e) {
+            if (!allowZoomOnClick) return;
+
             var width = dimensions.width;
             var height = dimensions.height;
             var x, y, k;
