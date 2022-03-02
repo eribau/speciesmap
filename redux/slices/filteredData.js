@@ -15,7 +15,7 @@ export const setFilteredData = filteredData => {
 
 function myFilter(filters) {
 
-   console.log("Test")
+   console.log(filters)
 
    const threats = filters["threats"];
    const categories = filters["category"];
@@ -34,40 +34,55 @@ function myFilter(filters) {
 
        // For each assessment
        const filtered_assessments = assessments.filter(e => {
+           // Filter logic:
+           // threat1 or threat2 or ... or threat_n
+           // and
+           // category1 or category2 or ... or category_n
+           // and
+           // kingdom1 or kingdom2 or ... or kingdom_n
 
            // Get the data for the current assessment
            const assessmentData = speciesData[e];
 
            // For each filter
 
+            // if none is checked, then include all threats
+           let hasThreat = !threats.length ? true : false;
            // filter by threat
            for (const prop in threats) {
                const threat = threats[prop];
 
                // if the threat does not exist, don't include
                if (assessmentData.threatsList.indexOf(threat) != -1) {
-                   return true;
+                   hasThreat = true;
                }
            }
 
-           
+           // filter by category
+           let hasCategory = !categories.length ? true : false;
+
            for (const prop in categories) {
                const category = categories[prop];
 
                if (assessmentData.redlistCategory == category) {
-                   return true;
+                   hasCategory = true;
                }
            }
+
+           // filture by kingdom
+           let hasKingdom = !kingdoms.length ? true : false;
 
            for (const prop in kingdoms) {
                const kingdom = kingdoms[prop];
 
-               if (assessmentData.redlistCategory == kingdom) {
-                   return true;
+               if (assessmentData.kingdomName == kingdom) {
+                   hasKingdom = true;
                }
            }
 
-           return false;
+           let isValid = hasThreat && hasCategory && hasKingdom;
+
+           return isValid;
 
        });
        
