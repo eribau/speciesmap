@@ -2,10 +2,10 @@ import * as d3 from 'd3'
 import { feature } from 'topojson'
 import { useEffect, useState } from 'react'
 
-import speciesPerCountryCode from '../public/countrycodes.json'
-import topoJSONdataTemp from '../public/topo.json'
+import assessmentsByCountryCode from '../public/countrycodes.json'
+import topoJSONdata from '../public/topo.json'
 import redListByCountryCode from '../public/redListByCountryCode.json'
-import tsvData from '../public/topoInfoByISOn3.json'
+import countryDataByISOn3 from '../public/topoInfoByISOn3.json'
 
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
@@ -15,16 +15,6 @@ import { useChartDimensions } from '../utilities/useChartDimensions'
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 
-const mouseOver = (d, i) => {
-    d3.select('#' + d.target.id)
-        .attr('opacity', '.5');
-};
-
-
-const mouseLeave = (d, i) => {
-    d3.select('#' + d.target.id)
-        .attr('opacity', '1');
-};
 const HeatMap = (props) => {
 
     /// PopupWindow & Filtering ///
@@ -40,81 +30,33 @@ const HeatMap = (props) => {
     const onClick = (d) => {
         //console.log(d)
         setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
-        setCode(d.target.id)
-        setDisplay(true)
+        //console.log("d:")
+        //console.log(d.target);
+        //setCountry(d.target.name);
+        setCode(d.target.id);
+        setDisplay(true);
     };
 
     const closeWindow = () => {
-        setDisplay(false)
+        setDisplay(false);
     };
 
     function changeFilter(){
         if (dispayFilter)
-            setdispayFilter(false)
+            setdispayFilter(false);
         else
-            setdispayFilter(true)
+            setdispayFilter(true);
     }
 
     function onCategoryChanges(value){
-        store.dispatch(setFilteredData(value))
-        setCategory(value)
+        store.dispatch(setFilteredData(value));
+        setCategory(value);
 
         updateHeatmap(value["category"]);
     }
 
-    /// PopupWindow & Filtering ///
+    ///- PopupWindow & Filtering -///
 
-
-    function updateHeatmap(checked){
-        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
-        console.log("Mine:");
-        console.log(checked);
-        if (checked == "All" || checked == null) {
-            checked = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened"];
-        }
-
-        console.log(store.getState())
-        let maxSpeciesAggregated = 0;
-        let numSpeciesByCountryAggregate = {};
-        for (const code in redListByCountryCode) {
-            let numSpecies = 0;
-            for (const e in checked) {
-                const val = checked[e];
-                numSpecies += redListByCountryCode[code][val];
-            }
-            if (numSpecies > maxSpeciesAggregated) {
-                maxSpeciesAggregated = numSpecies;
-            }
-            
-            numSpeciesByCountryAggregate[code] = numSpecies;
-        }
-        
-        const getColor = (v) => {
-            const scaledValue = v / maxSpeciesAggregated;
-            return interpolation(scaledValue).colors;
-        };
-
-        const svg = d3.select('svg');
-        const paths = svg.selectChildren('path');
-        paths.each(function(d) {
-            // Works, nice...
-            let currElem = d3.select(this);
-            const currId = currElem.attr('id');
-            const numSpecies = numSpeciesByCountryAggregate[currId];
-            const newColor = getColor(numSpecies);
-            //console.log(newColor);
-            currElem.attr('fill', newColor);
-            
-            currElem.selectChild('title').text(() => {
-                const countryName = currElem.attr("name");
-                const numSpecies = numSpeciesByCountryAggregate[currId];
-                return countryName + ":" + numSpecies;
-            });
-            //console.log(d3.select(this).attr("id"));
-        });
-
-        d3.select("rect").selectChild("title").text("0 - " + maxSpeciesAggregated);
-    }
 
     /// Heatmap ///
     const dimensions = {
@@ -122,173 +64,137 @@ const HeatMap = (props) => {
         'height': 1000,
         'marginTop': 20,
         'marginRight': 10
-      }
+    }
 
     const [ref, dms] = useChartDimensions(dimensions)
+
+    const heatmapInterpolationColors = {lowest: '#ffffff', highest: '#db000f'};
+    const topologyStroke = {color: '#212226', opacity: '0.25'};
+
+    const interpolation = d3.interpolate(
+        {colors: [heatmapInterpolationColors.lowest]}, 
+        {colors: [heatmapInterpolationColors.highest]}
+        );
+
+    function mouseOver(d) {
+        d3.select(this)
+        .attr('opacity', '.5');
+    };
+    
+    
+    function mouseLeave(d) {
+        d3.select(this)
+        .attr('opacity', '1');
+    };
+
+    function updateHeatmap(){
+        
+        let isRelativeHeatmap = false;
+
+        let filteredAssessmentsPerCountry = store.getState().filteredData.countryCodes;
+
+        if (typeof filteredAssessmentsPerCountry === 'undefined') {
+            filteredAssessmentsPerCountry = assessmentsByCountryCode;
+        }
+
+        // Get number of species that matches the filters for each country
+        let maxSpecies = 0;
+        let numFilteredSpeciesByCountry = {};
+        let numSpeciesByCountry = {};
+        for (const countryCode in filteredAssessmentsPerCountry) {
+            let numSpecies = filteredAssessmentsPerCountry[countryCode].length;
+            numFilteredSpeciesByCountry[countryCode] = numSpecies;
+
+            numSpeciesByCountry[countryCode] = assessmentsByCountryCode[countryCode].length;
+
+            if (numSpecies > maxSpecies) maxSpecies = numSpecies;
+        }
+
+        const getColor = (v, countryCode) => {
+            let scaledValue = v;
+            if (isRelativeHeatmap) {
+                scaledValue /= numSpeciesByCountry[countryCode];
+            } else {
+                scaledValue /= maxSpecies;
+            }
+            return interpolation(scaledValue).colors;
+        };
+
+        // Update the fill color of all path elements
+        // based on their number of species which matched the filters
+        const paths = d3.selectAll('path');
+        
+        paths.each(function(d) {
+
+            let currElem = d3.select(this);
+            const currId = currElem.attr('id');
+            const numSpecies = numFilteredSpeciesByCountry[currId];
+            const newColor = getColor(numSpecies, currId);
+
+            currElem.attr('fill', newColor);
+            
+            currElem.selectChild('title').text(() => {
+                const countryName = currElem.attr("name");
+                const numSpecies = numFilteredSpeciesByCountry[currId];
+                return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[currId];
+            });
+
+        });
+
+        // Update the gradient legend
+        d3.select('rect').selectChild('title').text("0 - " + maxSpecies);
+    }
 
     useEffect( () => {
 
         const svg = d3.select('svg');
 
+        var layerHeatmap = svg.append('g');
+        layerHeatmap.attr('id', 'layerHeatmap');
+
+        var layerGradient = svg.append('g');
+        layerGradient.attr('id', 'layerGradient');
+
         const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
-        // #3d0006 #d43547 #db000f
-        const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
-        var centered = false;
-            
-        // Testing with local data, seems to work, TODO: clean up code when both files work locally...
-        topoJSONdata = topoJSONdataTemp;
-            
-        //console.log(topoJSONdataTemp);
-
-        const speciesPerCountryJSONdata = speciesPerCountryCode; // ~250 entries
-            
-        // HEATMAP STUFF
-        // Get array of species lengths.
-        const numSpeciesByCountry = {};
-
-        let maxSpecies = 0;
-        for (const prop in speciesPerCountryJSONdata){
-            const numSpecies = speciesPerCountryJSONdata[prop].length;
-            if (numSpecies > maxSpecies){
-                maxSpecies = numSpecies;
+        
+        // Create dictionary for relating a topology data with respective country
+        // The topology file (topo.json) has property "id", which is
+        // iso_n3. To get country code (iso_a2), and name, of a country with the
+        // specified iso_n3, we use the topoInfoByISOn3.json file.  
+        const countryNamesByIdInTopoJSON = {};
+        countryDataByISOn3.forEach(d => {
+            countryNamesByIdInTopoJSON[d.iso_n3] = {
+                code: d.iso_a2,
+                name: d.name
             }
-            // prop is country code iso_a2
-            numSpeciesByCountry[prop] = numSpecies;
-        }
-        const getColor = (v) => {
-            const scaledValue = v / maxSpecies;
-            return interpolation(scaledValue).colors;
-        };
-
-        //console.log(numSpeciesByCountry);
-        //console.log(speciesPerCountryJSONdata); // 250 entries
-        //console.log(tsvData); // 177 entries
-        //console.log(topoJSONdata); // 177 countries
-        // Construct lookup table for id:s to names.
-        // That is, from iso_n3 to: country name, and iso_a2
-        const countryNamesByTopoId = {};
-        tsvData.forEach(d => {
-
-            // TODO: just edit the data later, these if statements are temporary?
-            // Some countries do not have an iso_n3 or iso_a2 code. 
-            if (d.iso_a2 == "-99"){
-                console.log(d.name);
-                console.log(d.iso_n3);
-                // I have set the ids in the topo.json file to
-                // Kosovo:101, Somaliland:102, N.Cyprus:103
-                // If we want to remove the ifs, then we need to edit in the tsv file as well
-                // but then we need to use it locally first.
-                if (d.name == "Somaliland"){
-                    countryNamesByTopoId["102"] = ["AAB", d.name]; // self proclaimed, I set it to "AAB"
-                } else if (d.name == "Kosovo") {
-                    countryNamesByTopoId["101"] = ["XK", d.name]; // XK is the official one for Kosovo
-                } else if (d.name == "N. Cyprus"){
-                    countryNamesByTopoId["103"] = ["ABB", d.name]; // self proclaimed, I set it to "ABB"
-                }
-            }
-            else{
-                countryNamesByTopoId[d.iso_n3] = [d.iso_a2, d.name];
-                //console.log( countryNamesByTopoId[d.iso_n3][1])
-            }
-
         });
 
         // Use topojson to get the features from the topoJSONdata that we want
+        // Converts to GeoJSON
         const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
-        
         //console.log(countries);
-        svg.selectAll('path').data(countries.features)
-        .enter().append('path')
-        .attr('d', d => pathGenerator(d))
-        .attr('id', d => countryNamesByTopoId[d.id][0]) // <- iso_a2
-        .attr('name', d => countryNamesByTopoId[d.id][1]) // <- name
-        .attr('fill', d => {
-            const countryCode = countryNamesByTopoId[d.id][0];
-            const numSpecies = numSpeciesByCountry[countryCode];
-            return '' + getColor(numSpecies);
-        }) 
-        .attr('stroke', '#212226')
-        .attr('stroke-opacity', '0.25')
+        
+        // Draw the topology on the heatmap layer
+        layerHeatmap.selectAll('path')
+        .data(countries.features) // geopermissible objects (GeoJSON)
+        .enter()
+        .append('path')
+        .attr('d', d => pathGenerator(d)) // Path generator takes a geopermissible object
+        .attr('id', d => countryNamesByIdInTopoJSON[d.id].code)
+        .attr('name', d => countryNamesByIdInTopoJSON[d.id].name)
+        .attr('fill', d => '#ffffff')
+        .attr('stroke', topologyStroke.color)
+        .attr('stroke-opacity', topologyStroke.opacity)
         .on('mouseover', mouseOver)
         .on('mouseleave', mouseLeave)
         .on('click', onClick)
-        .lower()
-        .append('title').text(d => {
-            // d.id is iso_n3, which is what is used to identify each country topology in topo.json
-            const countryCode = countryNamesByTopoId[d.id][0]; // <-  [0] is iso_a2
-            const countryName = countryNamesByTopoId[d.id][1]; // <-  [1] is country name
-            const numSpecies = numSpeciesByCountry[countryCode];
-            return countryName + ":" + numSpecies;
-        });
-        
+        .append('title')
+        .text(d => 'None');
 
-                // svg.call(d3.zoom().on('zoom', () => {
-        //     svg.attr('transform', d3.zoomTransform(this));
-        //   }));
-        // This is how zoom works in d3 7.3, d3.event is not a global anymore.
-        var k_global = 1;
-        svg.call(d3.zoom().on('zoom', (e) => {
-            //console.log("zooming or panning");
-            
-            //e.transform.k = Math.max(e.transform.k, 0.8); //clamp
-            //e.transform.k = Math.min(e.transform.k, 10);
-            // to remove the jittering, 
-            // only apply scale transform if k <= 0.8
-            if (centered) {
-                svg.selectAll("path")
-                .transition()
-                .duration("300")
-                .attr("transform", "translate(" + 0 + "," + 0 + ")scale(" + e.transform.k + ")");    
-                centered = false;
-            } else {
-                svg.selectAll("path")
-                .attr("transform", e.transform);
-            }
-            k_global = e.transform.k;
-            //console.log(e.transform);
-            // this does not work though!
-            //svg.attr('transform', transform);
-        }));
-        //https://bl.ocks.org/mbostock/2206590
-        
-        svg.on("click", function(e) {
-            //console.log(e.path[0]);
-            // e.transform.k = 1.3;
-            // svg.selectAll("path")
-            // .transition()
-            // .duration(1000)
-            // .attr("transform", e.transform);
-            //"translate(" + e.x*0.1 + "," + e.y*0.1 + ")" + " scale(1.2)")
-            var width = 1400;
-            var height = 900;
-            var x, y, k;
-            let d=e.path[0];
-            if (!centered) {
-              var bbox = d.getBBox();
-              var centroid = [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
-              console.log(centroid);
-              x = centroid[0];
-              y = centroid[1];
-              k = 6;
-              centered = true;
-            } else {
-              x = width / 2;
-              y = height / 2;
-              k = 1;
-              centered = false;
-            }
-            
-            
-            svg.selectAll("path")
-            .transition()
-                .duration(750)
-                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")");
-                //.style("stroke-width", 1.5 / k + "px");
-          
-        });
-                       //Append a defs (for definition) element to your SVG
-        var defs = svg.append("defs");
+        /// Gradient Legend ///
+        //Append a defs (for definition) element to your SVG
+        var defs = layerGradient.append("defs");
 
         //Append a linearGradient element to the defs and give it a unique id
         var linearGradient = defs.append("linearGradient")
@@ -312,11 +218,69 @@ const HeatMap = (props) => {
         .attr("stop-color", "#db000f"); 
 
         //Draw the rectangle and fill with gradient
-        svg.append("rect")
+        layerGradient.append("rect")
         .attr("width", 20)
         .attr("height", 500)
         .style("fill", "url(#linear-gradient)")
         .append("title").text("0 - 4293");
+
+        ///- Gradient Legend -///
+
+        /// Zoom and Pan ///
+        var centered = false;
+        // Zoom anywhere on the svg
+        svg.call(d3.zoom().on('zoom', (e) => {
+            
+            // If centered on a country, zoom out first
+            if (centered) {
+                d3.selectAll("path")
+                .transition()
+                .duration("300")
+                .attr("transform", "translate(" + 0 + "," + 0 + ")scale(" + e.transform.k + ")");    
+                centered = false;
+
+            } else {
+                d3.selectAll("path")
+                .attr("transform", e.transform);
+            }
+
+        }));
+        
+        // Click only on countries
+        layerHeatmap.on("click", function(e) {
+            var width = dimensions.width;
+            var height = dimensions.height;
+            var x, y, k;
+            let d=e.path[0];
+            if (!centered) {
+              var bbox = d.getBBox();
+              var centroid = [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+              console.log(centroid);
+              x = centroid[0];
+              y = centroid[1];
+              k = 6;
+              centered = true;
+            } else {
+              x = width / 2;
+              y = height / 2;
+              k = 1;
+              centered = false;
+            }
+            
+            d3.selectAll("path")
+            .transition()
+            .duration(750)
+            .attr(
+            "transform", 
+            "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")"
+            );
+          
+        });
+
+        ///- Zoom and Pan -///
+
+        // Run update to fill in the heatmap colors
+        updateHeatmap();
 
     }, [])
     return (
@@ -328,7 +292,7 @@ const HeatMap = (props) => {
               background: "#212226",
           }}
         >
-        <svg width={1600} height={800}>
+        <svg width={1400} height={1000}>
         </svg>
         {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
         <div className={styles['right']} >
