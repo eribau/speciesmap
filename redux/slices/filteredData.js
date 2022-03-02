@@ -78,7 +78,7 @@ function myFilter(filters) {
    return result;
 }
 
-const filteredData = (state = countryCodes, action) => {
+const filteredData = (state = initialState, action) => {
    switch(action.type) {
       case 'filteredData/setData':
          return {
