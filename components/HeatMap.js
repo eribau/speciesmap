@@ -10,6 +10,10 @@ import tsvData from '../public/topoInfoByISOn3.json'
 import PopupWindow from './PopupWindow'
 import styles from '../styles/Heatmap.module.css'
 import Filters from '../components/Filters.js'
+import { useChartDimensions } from '../utilities/useChartDimensions'
+
+import store from '../redux/store'
+import { setFilteredData } from '../redux/slices/filteredData'
 
 // TODO: This page is temporary, heatmap should be included as part of the 
 // index.js map. So, this should be implemented into WorldMap.js later.
@@ -35,7 +39,10 @@ const HeatMap = (props) => {
     const [code, setCode] = useState("");
     const [country, setCountry] = useState("");
     const [dispayFilter, setdispayFilter] = useState(false)
-    const [category, setCategory] = useState("All") //Selected values for red list catrgory
+    const [category, setCategory] = useState({threats: [],
+                                            category: [],
+                                            kingdom: []
+                                        }) //Selected values for red list catrgory
 
     const onClick = (d) => {
         //console.log(d)
@@ -53,10 +60,23 @@ const HeatMap = (props) => {
             setdispayFilter(true)
     }
     function onCategoryChanges(value){
+        console.log(value)
+        store.dispatch(setFilteredData(value))
         setCategory(value)
 
-        updateHeatmap(value);
+        updateHeatmap(value["category"]);
     }
+
+    const dimensions = {
+        'width': 1400,
+        'height': 1000,
+        'marginTop': 20,
+        'marginRight': 10
+      }
+    
+    
+       // grab our custom React hook we defined above
+       const [ref, dms] = useChartDimensions(dimensions)
 
     function updateHeatmap(checked){
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
@@ -66,6 +86,7 @@ const HeatMap = (props) => {
             checked = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", "Vulnerable", "Near Threatened"];
         }
 
+        console.log(store.getState())
         let maxSpeciesAggregated = 0;
         let numSpeciesByCountryAggregate = {};
         for (const code in redListByCountryCode) {
@@ -113,7 +134,7 @@ const HeatMap = (props) => {
 
         const svg = d3.select('svg');
 
-        const projection = d3.geoNaturalEarth1().fitWidth(1400, { type: 'Sphere' });
+        const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
         // #3d0006 #d43547 #db000f
         const interpolation = d3.interpolate({colors: ["#FFFFFF"]}, {colors: ["#db000f"]});
@@ -337,13 +358,13 @@ const HeatMap = (props) => {
         <svg width={1600} height={800}>
         </svg>
         {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
-        {dispayFilter && <div className={styles['right']} >
+        <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
             <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow']} rotate="90" onClick={changeFilter}/>
-        </div>}
-        {!dispayFilter &&  <div className={styles['right_min']}>
+        </div>
+        <div className={styles['right_min']}>
                 <img src="https://cdn.icon-icons.com/icons2/3247/PNG/512/angle_down_icon_199563.png" alt="arrow" className={styles['arrow_min']} rotate="90" onClick={changeFilter}/>
-            </div>}
+            </div>
         </div>
       )
 };
