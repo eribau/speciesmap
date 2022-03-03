@@ -1,7 +1,7 @@
 .sidebar{
     position: absolute;
-    top: 15%;
-    left: 35%;
+    top: 2%;
+    left: 15%;
     width: auto;
     height: auto;
     background: #FFFFFF;
@@ -11,12 +11,13 @@
     padding-bottom: 30px;
 }
 .image{
-    width: 20px;
+    width: 30px;
     margin-top: 20px;
     margin-left: 90%;
 }
 .table {
-    width: 600px;
+    width: 800px;
+    overflow-y: auto;
  }
 .th, .td {
     padding: 10px 15px;
