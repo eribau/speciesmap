@@ -95,7 +95,7 @@ function Filters(props){
         <div className={styles["filters"]}>
             
             <Title level={2}>Filters</Title>
-            <Text strong>Select Red list category</Text>
+            <Text strong>Select Red List categories</Text>
             <div className={styles["category"]}>
                 <Checkbox.Group options={options_redList} onChange={onChange_Category}/>
             </div>
@@ -103,7 +103,7 @@ function Filters(props){
             <div className={styles["category_threats"]}>
                 <Checkbox.Group options={options_threats} onChange={onChange_Threats}/>
             </div>
-            <Text strong>Select kingdom</Text>
+            <Text strong>Select kingdoms</Text>
             <div className={styles["category"]}>
                 <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom}/>
             </div>
