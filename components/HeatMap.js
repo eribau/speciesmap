@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 
 import assessmentsByCountryCode from '../public/countrycodes.json'
 import topoJSONdata from '../public/topo.json'
-//unused? import redListByCountryCode from '../public/redListByCountryCode.json'
 import countryDataByISOn3 from '../public/topoInfoByISOn3.json'
 
 import PopupWindow from './PopupWindow'
@@ -14,7 +13,6 @@ import { useChartDimensions } from '../utilities/useChartDimensions'
 
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
-import { transition } from 'd3'
 
 const HeatMap = (props) => {
 
@@ -27,16 +25,6 @@ const HeatMap = (props) => {
                                             category: [],
                                             kingdom: []
                                         }); //Selected values for red list catrgory
-
-    // const onClick = (d) => {
-    //     //console.log(d)
-    //     setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
-    //     //console.log("d:")
-    //     //console.log(d.target);
-    //     //setCountry(d.target.name);
-    //     setCode(d.target.id);
-    //     setDisplay(true);
-    // };
 
     const closeWindow = () => {
         setDisplay(false);
@@ -70,28 +58,33 @@ const HeatMap = (props) => {
     const [ref, dms] = useChartDimensions(dimensions);
 
     const heatmapInterpolationColors = {lowest: '#ffffff', highest: '#db000f'};
-    const topologyStroke = {color: '#212226', opacity: '0.25'};
+    const topologyStroke = {color: '#212226', opacity: '1', width: '0.5'};
 
     const interpolation = d3.interpolate(
         {colors: [heatmapInterpolationColors.lowest]}, 
         {colors: [heatmapInterpolationColors.highest]}
         );
-
-    // function mouseOver(d) {
-    //     d3.select(this)
-    //     .attr('opacity', '.5');
-    // };
     
-    
-    // function mouseLeave(d) {
-    //     d3.select(this)
-    //     .attr('opacity', '1');
-    // };
+    // Could not get country name, instead create an object to get country name when text creates in the tooptip
+    // Create dictionary for relating a topology data with respective country
+    // The topology file (topo.json) has property "id", which is
+    // iso_n3. To get country code (iso_a2), and name, of a country with the
+    // specified iso_n3, we use the topoInfoByISOn3.json file.  
+    const countryNamesByIdInTopoJSON = {};
+    const countryNameByIso_a2 = {};    
+    countryDataByISOn3.forEach(d => {
+        countryNamesByIdInTopoJSON[d.iso_n3] = {
+            code: d.iso_a2,
+            name: d.name
+        }
+        countryNameByIso_a2[d.iso_a2] = d.name;
+    });
+    // Use topojson to get the features from the topoJSONdata that we want
+    // Converts to GeoJSON
+    const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
+    //console.log(countries);
 
-    let numFilteredSpeciesByCountry = {};
-    let numSpeciesByCountry = {};
-
-    function updateHeatmap(){
+    function updateHeatmap() {
         
         let isRelativeHeatmap = false;
 
@@ -103,11 +96,9 @@ const HeatMap = (props) => {
 
         // Get number of species that matches the filters for each country
         let maxSpecies = 0;
-        // Moved above:
-        // let numFilteredSpeciesByCountry = {};
-        // let numSpeciesByCountry = {};
-        numFilteredSpeciesByCountry = {};
-        numSpeciesByCountry = {};
+        let numFilteredSpeciesByCountry = {};
+        let numSpeciesByCountry = {};
+
         for (const countryCode in filteredAssessmentsPerCountry) {
             let numSpecies = filteredAssessmentsPerCountry[countryCode].length;
             numFilteredSpeciesByCountry[countryCode] = numSpecies;
@@ -136,36 +127,32 @@ const HeatMap = (props) => {
         const paths = d3.selectAll('path');
         
         paths.each(function(d) {
-
             let currElem = d3.select(this);
             const currId = currElem.attr('id');
             const numSpecies = numFilteredSpeciesByCountry[currId];
+            
             const newColor = getColor(numSpecies, currId);
 
+            if (newColor == "rgb(0, 0, 0)") {
+                newColor = "rgb(128, 128, 128)";
+                currElem.style("fill", newColor);
+            }
+            
             currElem.attr('fill', newColor);
-            
-            
-            // currElem.selectChild('title').text(() => {
-            //     const countryName = currElem.attr("name");
-            //     const numSpecies = numFilteredSpeciesByCountry[currId];
-            //     return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[currId];
-            // });
-
         });
 
         // Update the gradient legend
-        d3.select('rect')
-        .selectChild('title')
-        .text("0 - " + maxSpecies);
-        
         d3.select('#legend-text-start')
         .text("0")
         
-        d3.select('#legend-text-stop')
+        let legendStop = d3.select('#legend-text-stop');
+        let currentValueLegendStop = legendStop.text(); // for some reason I have to do this
+
+        legendStop
         .transition()
-        .duration(500)
+        .duration(200)
         .tween("text", function() {
-            let i = d3.interpolate(0, maxSpecies);
+            let i = d3.interpolate(currentValueLegendStop, maxSpecies);
             return function(t) { this.textContent = Math.round(i(t)) };
         });
 
@@ -174,45 +161,48 @@ const HeatMap = (props) => {
             totalSpecies += filteredAssessmentsPerCountry[prop].length;
         }
 
-        d3.select("#total-species-text")
-        .text("Species count: " + totalSpecies);
+        let totalSpeciesText = d3.select("#total-species-text");
+        let currentValueTotalText = totalSpeciesText.text().split(":")[1];
+
+        totalSpeciesText
+        .transition()
+        .duration(200)
+        .tween("text", function() {
+            let i = d3.interpolate(currentValueTotalText, totalSpecies);
+            return function(t) { this.textContent = "Species count: " + Math.round(i(t)) };   
+        });
     }
+    
+    // const getTooltipContent = (country_iso_a2, country_name) => {
+    function getTooltipContent(country_iso_a2) {
+        // Had to change since functions called inside of the 
+        // useEffect() doesn't update their dependent variables
+        // resulting in the tooltips number of filtered species not
+        // updating. Now getting the number from the global state.
+        let filteredSpecies = store.getState().filteredData.countryCodes[country_iso_a2];
+        
+        const species = assessmentsByCountryCode[country_iso_a2];
+        const countryName = countryNameByIso_a2[country_iso_a2];
+        
+        if (typeof species === 'undefined') {
+            // means its kosovo, n.cyprus or somaliland
+            species = [];
+        }
+
+        // if the filteredData.countryCodes for some reason is undefined
+        // or its kosovo somaliland or n cyprus
+        if (typeof filteredSpecies === 'undefined') {
+            filteredSpecies = species;
+        }
+        
+        return countryName + ": " + filteredSpecies.length + " of " + species.length;
+        // return countryName + "<br>Redlisted species: " + numSpecies;
+    };
+
 
     useEffect( () => {
 
-        const svg = d3.select('svg');
-
-        var layerHeatmap = svg.append('g');
-        layerHeatmap.attr('id', 'layerHeatmap');
-
-        var layerGradient = svg.append('g');
-        layerGradient.attr('id', 'layerGradient');
-
-        const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
-        const pathGenerator = d3.geoPath().projection(projection);
-        
-
-        //Could not get country name, instead create an object to get country name when text creates in the tooptip
-        // Create dictionary for relating a topology data with respective country
-        // The topology file (topo.json) has property "id", which is
-        // iso_n3. To get country code (iso_a2), and name, of a country with the
-        // specified iso_n3, we use the topoInfoByISOn3.json file.  
-        const countryNamesByIdInTopoJSON = {};
-        const countryNameByIso_a2 = {};    
-        countryDataByISOn3.forEach(d => {
-            countryNamesByIdInTopoJSON[d.iso_n3] = {
-                code: d.iso_a2,
-                name: d.name
-            }
-            countryNameByIso_a2[d.iso_a2] = d.name;
-        });
-
-        // Use topojson to get the features from the topoJSONdata that we want
-        // Converts to GeoJSON
-        const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
-        //console.log(countries);
-
-        //create tooltip
+        // Create tooltip
         // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
         
         var Tooltip = d3.select("#world_map").append("div")
@@ -225,46 +215,44 @@ const HeatMap = (props) => {
         .style("padding", "5px")
         .style("position", "absolute");
 
-//        const getTooltipContent = (country_iso_a2, country_name) => {
-        const getTooltipContent = (country_iso_a2) => {
-            const numSpecies = numFilteredSpeciesByCountry[country_iso_a2];
-            const countryName = countryNameByIso_a2[country_iso_a2];
-            return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[country_iso_a2];
-//            return countryName + "<br>Redlisted species: " + numSpecies;
-        };
-
         const onClick = (d) => {
-            //console.log(d)
-            //setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
             setCountry(countryNameByIso_a2[d.target.id])
-            //console.log("d:")
-            //console.log(d.target);
-            //setCountry(d.target.name);
             setCode(d.target.id);
             setDisplay(true);
         };
     
-
         function mouseOver(d) {
             d3.select(this)
             .attr('opacity', '.5');
             Tooltip.html(getTooltipContent(d.target.id))
-//            Tooltip.html(getTooltipContent(d.target.id, d.target.name))
+            // Tooltip.html(getTooltipContent(d.target.id, d.target.name))
             .style("opacity", 1);
-//            console.log(d);
         };
         
         function mouseLeave(d) {
             d3.select(this)
             .attr('opacity', '1');
-            Tooltip.style("opacity", 0)
+            Tooltip.style("opacity", 0);
         };
 
-        function mouseMove(d) {   //prevent the tooltip from taking over mouse events
+        function mouseMove(d) { //prevent the tooltip from taking over mouse events
             Tooltip
             .style("left", (d.clientX + 10) + "px")       // d.pageX
-            .style("top", (d.clientY - 30) + "px")        // d.pageY
+            .style("top", (d.clientY - 30) + "px");        // d.pageY
         };
+
+
+        // Heatmap
+        const svg = d3.select('svg');
+
+        var layerHeatmap = svg.append('g');
+        layerHeatmap.attr('id', 'layerHeatmap');
+
+        var layerGradient = svg.append('g');
+        layerGradient.attr('id', 'layerGradient');
+
+        const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
+        const pathGenerator = d3.geoPath().projection(projection);
     
         // Draw the topology on the heatmap layer
         layerHeatmap.selectAll('path')
@@ -277,16 +265,25 @@ const HeatMap = (props) => {
         .attr('fill', d => '#ffffff')
         .attr('stroke', topologyStroke.color)
         .attr('stroke-opacity', topologyStroke.opacity)
+        .attr('stroke-width', topologyStroke.width)
         .on('mouseover', mouseOver)
         .on('mouseleave', mouseLeave)
         .on('mousemove', mouseMove)
         .on('click', onClick);
-        // .append('title')
-        // .text(d => 'None');
 
         /// Gradient Legend ///
         //Append a defs (for definition) element to your SVG
         var defs = layerGradient.append("defs");
+
+        defs.append("pattern")
+        .attr("id", "diagonal-hatch")
+        .attr('patternUnits', 'userSpaceOnUse')
+        .attr('width', 4)
+        .attr('height', 4)
+        .append('path')
+        .attr('d', 'M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2')
+        .attr('stroke', '#000000')
+        .attr('stroke-width', 0.5);
 
         //Append a linearGradient element to the defs and give it a unique id
         var linearGradient = defs.append("linearGradient");
@@ -315,14 +312,13 @@ const HeatMap = (props) => {
         layerGradient.append("rect")
         .attr("width", 20)
         .attr("height", 500)
-        .style("fill", "url(#linear-gradient)")
-        .append("title").text("0 - 4293");
+        .style("fill", "url(#linear-gradient)");
         
         // Add text
         let legendTextStart = layerGradient.append("text");
         legendTextStart
         .attr("id", "legend-text-start")
-        .text("Start")
+        .text("0")
         .attr("transform", "translate(30, 30)")
         .style("fill", "#ffffff")
         .attr("font-size", dms.height*0.025 + "");
@@ -330,7 +326,7 @@ const HeatMap = (props) => {
         let legendTextStop = layerGradient.append("text");
         legendTextStop
         .attr("id", "legend-text-stop")
-        .text("Stop")
+        .text("0")
         .attr("transform", "translate(30, 490)")
         .style("fill", "#ffffff")
         .attr("font-size", dms.height*0.025 + "");
@@ -338,7 +334,7 @@ const HeatMap = (props) => {
         let totalSpeciesText = layerGradient.append("text");
         totalSpeciesText
         .attr("id", "total-species-text")
-        .text("Total species filtered: 4000")
+        .text("Species count: 4000")
         .attr("transform", "translate(30, 600)")
         .style("fill", "#ffffff")
         .attr("font-size", dms.height*0.025 + "");
@@ -353,7 +349,7 @@ const HeatMap = (props) => {
         //Zoom anywhere on the svg
 
         let zoom = d3.zoom()
-        .scaleExtent([0.89, 6])
+        .scaleExtent([0.89, 8])
         .translateExtent([[0, 0], [dms.width + dms.width*0.1, dms.height + dms.height*0.1]])
         .on('zoom', handleZoom);
 
@@ -363,6 +359,10 @@ const HeatMap = (props) => {
         function handleZoom(e) {
             d3.selectAll("path")
             .attr("transform", e.transform)
+
+            let scale = e.transform.k;
+            d3.selectAll("path")
+            .attr("stroke-width", topologyStroke.width / scale + "");
         }
         
         // Click only on countries
