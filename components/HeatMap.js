@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 import assessmentsByCountryCode from '../public/countrycodes.json'
 import topoJSONdata from '../public/topo.json'
-import redListByCountryCode from '../public/redListByCountryCode.json'
+//unused? import redListByCountryCode from '../public/redListByCountryCode.json'
 import countryDataByISOn3 from '../public/topoInfoByISOn3.json'
 
 import PopupWindow from './PopupWindow'
@@ -27,15 +27,15 @@ const HeatMap = (props) => {
                                             kingdom: []
                                         }) //Selected values for red list catrgory
 
-    const onClick = (d) => {
-        //console.log(d)
-        setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
-        //console.log("d:")
-        //console.log(d.target);
-        //setCountry(d.target.name);
-        setCode(d.target.id);
-        setDisplay(true);
-    };
+    // const onClick = (d) => {
+    //     //console.log(d)
+    //     setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
+    //     //console.log("d:")
+    //     //console.log(d.target);
+    //     //setCountry(d.target.name);
+    //     setCode(d.target.id);
+    //     setDisplay(true);
+    // };
 
     const closeWindow = () => {
         setDisplay(false);
@@ -76,16 +76,19 @@ const HeatMap = (props) => {
         {colors: [heatmapInterpolationColors.highest]}
         );
 
-    function mouseOver(d) {
-        d3.select(this)
-        .attr('opacity', '.5');
-    };
+    // function mouseOver(d) {
+    //     d3.select(this)
+    //     .attr('opacity', '.5');
+    // };
     
     
-    function mouseLeave(d) {
-        d3.select(this)
-        .attr('opacity', '1');
-    };
+    // function mouseLeave(d) {
+    //     d3.select(this)
+    //     .attr('opacity', '1');
+    // };
+
+    let numFilteredSpeciesByCountry = {};
+    let numSpeciesByCountry = {};
 
     function updateHeatmap(){
         
@@ -99,8 +102,11 @@ const HeatMap = (props) => {
 
         // Get number of species that matches the filters for each country
         let maxSpecies = 0;
-        let numFilteredSpeciesByCountry = {};
-        let numSpeciesByCountry = {};
+        // Moved above:
+        // let numFilteredSpeciesByCountry = {};
+        // let numSpeciesByCountry = {};
+        numFilteredSpeciesByCountry = {};
+        numSpeciesByCountry = {};
         for (const countryCode in filteredAssessmentsPerCountry) {
             let numSpecies = filteredAssessmentsPerCountry[countryCode].length;
             numFilteredSpeciesByCountry[countryCode] = numSpecies;
@@ -137,11 +143,12 @@ const HeatMap = (props) => {
 
             currElem.attr('fill', newColor);
             
-            currElem.selectChild('title').text(() => {
-                const countryName = currElem.attr("name");
-                const numSpecies = numFilteredSpeciesByCountry[currId];
-                return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[currId];
-            });
+            
+            // currElem.selectChild('title').text(() => {
+            //     const countryName = currElem.attr("name");
+            //     const numSpecies = numFilteredSpeciesByCountry[currId];
+            //     return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[currId];
+            // });
 
         });
 
@@ -162,23 +169,81 @@ const HeatMap = (props) => {
         const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
         
+
+        //Could not get country name, instead create an object to get country name when text creates in the tooptip
         // Create dictionary for relating a topology data with respective country
         // The topology file (topo.json) has property "id", which is
         // iso_n3. To get country code (iso_a2), and name, of a country with the
         // specified iso_n3, we use the topoInfoByISOn3.json file.  
         const countryNamesByIdInTopoJSON = {};
+        const countryNameByIso_a2 = {};    
         countryDataByISOn3.forEach(d => {
             countryNamesByIdInTopoJSON[d.iso_n3] = {
                 code: d.iso_a2,
                 name: d.name
             }
+            countryNameByIso_a2[d.iso_a2] = d.name;
         });
 
         // Use topojson to get the features from the topoJSONdata that we want
         // Converts to GeoJSON
         const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
         //console.log(countries);
+
+        //create tooltip
+        // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
         
+        var Tooltip = d3.select("#world_map").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 1)
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
+        .style("position", "absolute");
+
+//        const getTooltipContent = (country_iso_a2, country_name) => {
+        const getTooltipContent = (country_iso_a2) => {
+            const numSpecies = numFilteredSpeciesByCountry[country_iso_a2];
+            const countryName = countryNameByIso_a2[country_iso_a2];
+            return countryName + ": " + numSpecies + " / " + numSpeciesByCountry[country_iso_a2];
+//            return countryName + "<br>Redlisted species: " + numSpecies;
+        };
+
+        const onClick = (d) => {
+            //console.log(d)
+            //setCountry(((d.target.innerHTML).split(':')[0]).split('>')[1])
+            setCountry(countryNameByIso_a2[d.target.id])
+            //console.log("d:")
+            //console.log(d.target);
+            //setCountry(d.target.name);
+            setCode(d.target.id);
+            setDisplay(true);
+        };
+    
+
+        function mouseOver(d) {
+            d3.select(this)
+            .attr('opacity', '.5');
+            Tooltip.html(getTooltipContent(d.target.id))
+//            Tooltip.html(getTooltipContent(d.target.id, d.target.name))
+            .style("opacity", 1);
+//            console.log(d);
+        };
+        
+        function mouseLeave(d) {
+            d3.select(this)
+            .attr('opacity', '1');
+            Tooltip.style("opacity", 0)
+        };
+
+        function mouseMove(d) {   //prevent the tooltip from taking over mouse events
+            Tooltip
+            .style("left", (d.clientX + 10) + "px")       // d.pageX
+            .style("top", (d.clientY - 30) + "px")        // d.pageY
+        };
+    
         // Draw the topology on the heatmap layer
         layerHeatmap.selectAll('path')
         .data(countries.features) // geopermissible objects (GeoJSON)
@@ -192,9 +257,10 @@ const HeatMap = (props) => {
         .attr('stroke-opacity', topologyStroke.opacity)
         .on('mouseover', mouseOver)
         .on('mouseleave', mouseLeave)
-        .on('click', onClick)
-        .append('title')
-        .text(d => 'None');
+        .on('mousemove', mouseMove)
+        .on('click', onClick);
+        // .append('title')
+        // .text(d => 'None');
 
         /// Gradient Legend ///
         //Append a defs (for definition) element to your SVG
@@ -296,6 +362,7 @@ const HeatMap = (props) => {
     }, [])
     return (
         <div
+          id={ "world_map" } //
           style={{
               position: "absolute",
               left: "0px",
