@@ -224,6 +224,7 @@ const HeatMap = (props) => {
         function mouseOver(d) {
             d3.select(this)
             .attr('opacity', '.5');
+            
             Tooltip.html(getTooltipContent(d.target.id))
             // Tooltip.html(getTooltipContent(d.target.id, d.target.name))
             .style("opacity", 1);
@@ -232,13 +233,15 @@ const HeatMap = (props) => {
         function mouseLeave(d) {
             d3.select(this)
             .attr('opacity', '1');
-            Tooltip.style("opacity", 0);
+            
+            Tooltip
+            .style("opacity", 0)
         };
 
         function mouseMove(d) { //prevent the tooltip from taking over mouse events
             Tooltip
-            .style("left", (d.clientX + 10) + "px")       // d.pageX
-            .style("top", (d.clientY - 30) + "px");        // d.pageY
+            .style("left", (d.clientX + 10) + "px")  // d.pageX
+            .style("top", (d.clientY - 30) + "px"); // d.pageY
         };
 
 
@@ -347,6 +350,15 @@ const HeatMap = (props) => {
         svg.call(zoom);
 
         function handleZoom(e) {
+            // Move and hide tooltip to top left corner so you
+            // don't accidentally mark the text in it
+            // or try to scroll while hovering over it.
+            Tooltip
+            .style("opacity", 0)
+            .style("left", 0 + "px")
+            .style("top", 0 + "px")
+            .html("");
+
             d3.selectAll("path")
             .attr("transform", e.transform)
 
