@@ -27,7 +27,7 @@ const Barchart = (props) => {
         store.dispatch(setFilteredData(value));
         setCategory(value);
 
-        updateHeatmap();
+        //updateHeatmap();
     }
 
     function getDataTemplate(){
@@ -72,7 +72,7 @@ const Barchart = (props) => {
     }
 
     function getChartContent(country_iso_a2) {
-
+        //console.log(store.getState().selectedCountry.country);
         // Had to change since functions called inside of the 
         // useEffect() doesn't update their dependent variables
         // resulting in the tooltips number of filtered species not
@@ -199,7 +199,8 @@ const Barchart = (props) => {
         .attr("transform",`translate(${margin.left},${margin.top})`);
 
         // Parse the Data
-        const data = getChartContent("US");
+        const storedCountryId = store.getState().selectedCountry.country;
+        const data = getChartContent(storedCountryId);
 
         //console.log(data.columns);
         //data[0].group = "babassba";
@@ -222,9 +223,10 @@ const Barchart = (props) => {
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x).tickSizeOuter(0));
 
+        let upperBound = store.getState().filteredData.countryCodes[storedCountryId].length;
         // Add Y axis
         const y = d3.scaleLinear()
-        .domain([0, 2000])
+        .domain([0, upperBound])
         .range([ height, 0 ]);
         svg.append("g")
         .call(d3.axisLeft(y));
