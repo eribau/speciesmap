@@ -460,7 +460,7 @@ const HeatMap = (props) => {
         <div
           id={ "world_map" } //
           style={{
-              position: "absolute",
+              position: "fixed",
               left: "0px",
               width: "100%",
               background: "#212226",
