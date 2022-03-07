@@ -1,5 +1,5 @@
 const initialState = {
-   country = null
+   country: null
 }
 
 export const setSelectedCountry = country => {
