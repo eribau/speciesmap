@@ -15,6 +15,8 @@ import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 import { setSelectedCountry } from '../redux/slices/selectedCountry'
 
+import { useRouter } from 'next/router'
+
 const HeatMap = (props) => {
 
     /// PopupWindow & Filtering ///
@@ -201,7 +203,10 @@ const HeatMap = (props) => {
     };
 
 
+    const router = useRouter();
+
     useEffect( () => {
+        
 
         // Create tooltip
         // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
@@ -220,7 +225,9 @@ const HeatMap = (props) => {
             setCountry(countryNameByIso_a2[d.target.id])
             setCode(d.target.id);
             setDisplay(true);
+            
             store.dispatch(setSelectedCountry(d.target.id));
+            router.push('/details')
         };
     
         function mouseOver(d) {
