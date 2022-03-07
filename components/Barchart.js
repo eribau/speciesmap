@@ -123,7 +123,11 @@ const Barchart = (props) => {
             var ass_id = filteredSpecies[i];
             for(let j = 0; j < 12; j++){
                 for(let k = 0; k < 8; k++){
-                    if( (j.toString() in allDataByAssessmentId[ass_id].threatsList) && (redlistList[k] == allDataByAssessmentId[ass_id].redlistCategory) ){
+                    // had to change from the "in" keyword, it didn't do what you would expect it to do
+                    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in
+                    // and j to j+1 since threat indices are from 1 to 12
+                    if( (allDataByAssessmentId[ass_id].threatsList.indexOf((j+1).toString()) != -1) && 
+                        (redlistList[k] == allDataByAssessmentId[ass_id].redlistCategory) ) {
                         threatlist[j][k]++;
                     }
                 }
@@ -174,10 +178,11 @@ const Barchart = (props) => {
             
         }
 
-        const mousemove = function(event, d) { //prevent the tooltip from taking over mouse events
+        const mousemove = function(d) { //prevent the tooltip from taking over mouse events
+            //console.log(d);
             tooltip
-            .style("left", d.clientX + "px")       // d.pageX
-            .style("top", d.clientY + "px");        // d.pageY
+            .style("left", d.pageX + 10 + "px")       // d.pageX
+            .style("top", d.pageY - 30 + "px");        // d.pageY
         };
 
         const mouseleave = function(event, d) {
