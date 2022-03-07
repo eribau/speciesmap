@@ -13,6 +13,7 @@ import { useChartDimensions } from '../utilities/useChartDimensions'
 
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
+import { setSelectedCountry } from '../redux/slices/selectedCountry'
 
 const HeatMap = (props) => {
 
@@ -219,6 +220,7 @@ const HeatMap = (props) => {
             setCountry(countryNameByIso_a2[d.target.id])
             setCode(d.target.id);
             setDisplay(true);
+            store.dispatch(setSelectedCountry(d.target.id));
         };
     
         function mouseOver(d) {
