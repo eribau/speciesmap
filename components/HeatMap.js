@@ -41,6 +41,7 @@ const HeatMap = (props) => {
     }
 
     function onCategoryChanges(value){
+        console.log(value)
         store.dispatch(setFilteredData(value));
         setCategory(value);
 
@@ -468,7 +469,6 @@ const HeatMap = (props) => {
         >
         <svg width={1400} height={1000}>
         </svg>
-        {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
         <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
         </div>
