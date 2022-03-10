@@ -155,6 +155,18 @@ const Barchart = (props) => {
         // return countryName + "<br>Redlisted species: " + numSpecies;
     };
 
+    const dimensions = {
+        'width': 1400,
+        'height': 800,
+        'marginTop': 10,
+        'marginRight': 30,
+        'marginBottom': 20,
+        'marginLeft': 50,
+    };
+
+
+    const [ref, dms] = useChartDimensions(dimensions);
+
     useEffect( () => {
 
         var tooltip = d3.select("#barchart")
@@ -198,7 +210,7 @@ const Barchart = (props) => {
         // append the svg object to the body of the page
         const svg = d3.select("svg")
         .append("g")
-        .attr("transform",`translate(${margin.left},${margin.top})`);
+        .attr("transform",`translate(${dms.marginLeft},${dms.marginTop})`);
 
         // Parse the Data
         const storedCountryId = store.getState().selectedCountry.country;
@@ -219,17 +231,17 @@ const Barchart = (props) => {
         // Add X axis
         const x = d3.scaleBand()
         .domain(groups)
-        .range([0, width])
+        .range([0, dms.boundedWidth])
         .padding([0.2])
         svg.append("g")
-        .attr("transform", `translate(0, ${height})`)
+        .attr("transform", `translate(0, ${dms.boundedHeight})`)
         .call(d3.axisBottom(x).tickSizeOuter(0));
 
         let upperBound = store.getState().filteredData.countryCodes[storedCountryId].length;
         // Add Y axis
         const y = d3.scaleLinear()
         .domain([0, upperBound])
-        .range([ height, 0 ]);
+        .range([ dms.boundedHeight, 0 ]);
         svg.append("g")
         .call(d3.axisLeft(y));
 
@@ -271,8 +283,8 @@ const Barchart = (props) => {
 
     return( 
         <div>
-            <div id={"barchart"}>
-                <svg width={2000} height={1000}>
+            <div id={"barchart"} ref={ref}>
+                <svg width={dms.width} height={dms.height}>
                 </svg>
             </div>
             <div className={styles['right']} >
