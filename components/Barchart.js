@@ -196,10 +196,7 @@ const Barchart = (props) => {
         height = 800 - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
-        const svg = d3.select("#barchart")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        const svg = d3.select("svg")
         .append("g")
         .attr("transform",`translate(${margin.left},${margin.top})`);
 
@@ -270,20 +267,18 @@ const Barchart = (props) => {
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
-
-        
-
-
     }, [])
+
     return( 
-    <div>
-    <div id={"barchart"}></div>
-
-    <div className={styles['right']} >
-    <Filters />
-    </div>
-
-    </div>
+        <div>
+            <div id={"barchart"}>
+                <svg width={2000} height={1000}>
+                </svg>
+            </div>
+            <div className={styles['right']} >
+                <Filters />
+            </div>
+        </div>
     )
 }
           

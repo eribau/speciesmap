@@ -454,8 +454,8 @@ const HeatMap = (props) => {
 
         // Run update to fill in the heatmap colors
         updateHeatmap();
-
     }, [])
+
     return (
         <div
           id={ "world_map" } //
@@ -468,7 +468,6 @@ const HeatMap = (props) => {
         >
         <svg width={1400} height={1000}>
         </svg>
-        {displayBox && <PopupWindow country={country} closeWindow={closeWindow} code={code} category={category}/>}
         <div className={styles['right']} >
             <Filters onCategoryChanges={onCategoryChanges}/>
         </div>
