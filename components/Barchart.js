@@ -57,7 +57,8 @@ const Barchart = (props) => {
         "Vulnerable": '3', 
         "Near Threatened": '9', 
         "Lower Risk/conservation dependent": '6', 
-        "Lower Risk/near threatened": '11'
+        "Lower Risk/near threatened": '11',
+        "total": '57',
         }
         
         for (var i = 0; i < 12; i++) {
@@ -66,7 +67,7 @@ const Barchart = (props) => {
         };
         
         data.columns = ["group", "Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", 
-            "Vulnerable", "Near Threatened", "Lower Risk/conservation dependent", "Lower Risk/near threatened"];
+            "Vulnerable", "Near Threatened", "Lower Risk/conservation dependent", "Lower Risk/near threatened", "total"];
 
         return data;
     }
@@ -133,7 +134,13 @@ const Barchart = (props) => {
                 }
             }
         }
-        
+
+        // Get the size of the threat with most species in it
+        var totals = threatlist.map(threat => {
+            return threat.reduce((a, b) => a + b, 0)
+        });
+        var max = Math.max(...totals);
+        data.push({upperBound: max})
 
         for (var i = 0; i < 12; i++) {
             data[i] = 
@@ -145,11 +152,11 @@ const Barchart = (props) => {
             "Vulnerable": threatlist[i][4].toString(), 
             "Near Threatened": threatlist[i][5].toString(), 
             "Lower Risk/conservation dependent": threatlist[i][6].toString(), 
-            "Lower Risk/near threatened": threatlist[i][7].toString()
+            "Lower Risk/near threatened": threatlist[i][7].toString(),
             };
         };
 
-        console.log(data);
+        // console.log(data);
 
         return data;
         // return countryName + "<br>Redlisted species: " + numSpecies;
@@ -157,10 +164,10 @@ const Barchart = (props) => {
 
     const dimensions = {
         'width': 1400,
-        'height': 800,
+        'height': 900,
         'marginTop': 10,
         'marginRight': 30,
-        'marginBottom': 20,
+        'marginBottom': 300,
         'marginLeft': 50,
     };
 
@@ -216,7 +223,7 @@ const Barchart = (props) => {
         const storedCountryId = store.getState().selectedCountry.country;
         const data = getChartContent(storedCountryId);
 
-        //console.log(data.columns);
+        // console.log(data.column);
         //data[0].group = "babassba";
 
 
@@ -235,9 +242,15 @@ const Barchart = (props) => {
         .padding([0.2])
         svg.append("g")
         .attr("transform", `translate(0, ${dms.boundedHeight})`)
-        .call(d3.axisBottom(x).tickSizeOuter(0));
+        .call(d3.axisBottom(x).tickSizeOuter(0))
+        .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", "rotate(-65)" );
 
-        let upperBound = store.getState().filteredData.countryCodes[storedCountryId].length;
+        let upperBound = data[12]["upperBound"] * 1.05; // take the largest bar and add a small margin
+        console.log(upperBound)
         // Add Y axis
         const y = d3.scaleLinear()
         .domain([0, upperBound])
