@@ -34,7 +34,12 @@ const Barchart = (props) => {
     const [filtersValue, setFiltersValue] = useState("");
 
     function onKingdomChanges(value){
-        //store.dispatch(setFilteredData(value));
+        const filter = {
+            threats: store.getState().filterSetting.threats,
+            category: store.getState().filterSetting.category,
+            kingdom: value
+        }
+        store.dispatch(setFilteredData(filter));
         setKingdom(value);
 
         //updateHeatmap();
