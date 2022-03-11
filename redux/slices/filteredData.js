@@ -14,9 +14,7 @@ export const setFilteredData = filteredData => {
 
 
 function myFilter(filters) {
-
-   console.log(filters)
-
+    
    const threats = filters["threats"];
    const categories = filters["category"];
    const kingdoms = filters["kingdom"];

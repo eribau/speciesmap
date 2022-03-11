@@ -1,17 +1,20 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import * as d3 from "d3";
 
 import { feature } from 'topojson'
-import { useEffect, useState } from 'react'
 
 import assessmentsByCountryCode from '../public/countrycodes.json'
 import countryDataByISOn3 from '../public/topoInfoByISOn3.json'
 import redListByCountryCode from '../public/redListByCountryCode.json'
 //import threatCodeToThreatName from '.../public/threatCodeToThreatName.json'
 import allDataByAssessmentId from '../public/allDataByAssessmentId.json'
-import styles from '../styles/Heatmap.module.css'
+import stylesHeatmap from '../styles/Heatmap.module.css'
+import stylesBarchart from '../styles/Barchart.module.css'
 import Filters from '../components/Filters.js'
+import Filter_Kingdom from '../components/Filter_Kingdom'
 import { useChartDimensions } from '../utilities/useChartDimensions'
+
+import PopupWindow from './PopupWindow'
 
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
@@ -23,9 +26,21 @@ import { setFilteredData } from '../redux/slices/filteredData'
 const Barchart = (props) => {
         ///////
 
-    function onCategoryChanges(value){
-        store.dispatch(setFilteredData(value));
-        setCategory(value);
+    const [displayBox, setDisplay] = useState(false);
+    const [code, setCode] = useState("");
+    const [threat, setThreat] = useState("");
+    const [category, setCategory] = useState("");
+    const [kingdom, setKingdom] = useState("");
+    const [filtersValue, setFiltersValue] = useState("");
+
+    function onKingdomChanges(value){
+        const filter = {
+            threats: store.getState().filterSetting.threats,
+            category: store.getState().filterSetting.category,
+            kingdom: value
+        }
+        store.dispatch(setFilteredData(filter));
+        setKingdom(value);
 
         //updateHeatmap();
     }
@@ -163,7 +178,7 @@ const Barchart = (props) => {
     };
 
     const dimensions = {
-        'width': 1400,
+        'width': 1500,
         'height': 900,
         'marginTop': 10,
         'marginRight': 30,
@@ -173,6 +188,10 @@ const Barchart = (props) => {
 
 
     const [ref, dms] = useChartDimensions(dimensions);
+
+    const closeWindow = () => {
+        setDisplay(false);
+    };
 
     useEffect( () => {
 
@@ -208,11 +227,22 @@ const Barchart = (props) => {
             tooltip
             .style("opacity", 0)
         }
+        const onClick = function(event, d) {
+            //const subgroupName = d3.select(this.parentNode).datum().key;
+            setCategory(d3.select(this.parentNode).datum().key)
+            setFiltersValue({
+                threats: [d.data.group],
+                category: [d3.select(this.parentNode).datum().key],
+                kingdom: [],
+            })
+            setThreat(d.data.group)
+            setDisplay(true)
+        }
 
         // set the dimensions and margins of the graph
-        const margin = {top: 10, right: 30, bottom: 20, left: 50},
-        width = 2000 - margin.left - margin.right,
-        height = 800 - margin.top - margin.bottom;
+        const margin = {top: 10, right: 30, bottom: 250, left: 50},
+        width = window.screen.width - margin.left - margin.right,
+        height = window.screen.height - margin.top - margin.bottom;
 
         // append the svg object to the body of the page
         const svg = d3.select("svg")
@@ -221,6 +251,7 @@ const Barchart = (props) => {
 
         // Parse the Data
         const storedCountryId = store.getState().selectedCountry.country;
+        setCode(store.getState().selectedCountry.country)
         const data = getChartContent(storedCountryId);
 
         // console.log(data.column);
@@ -292,18 +323,24 @@ const Barchart = (props) => {
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
-    }, [])
+        .on("click", onClick)
 
+        
+
+
+    }, [])
     return( 
-        <div>
-            <div id={"barchart"} ref={ref}>
-                <svg width={dms.width} height={dms.height}>
-                </svg>
-            </div>
-            <div className={styles['right']} >
-                <Filters />
-            </div>
+    <div>
+        
+        {displayBox && <PopupWindow closeWindow={closeWindow} code={code} category={category} threat={threat} filtersValue={filtersValue} kingdom={kingdom}/>}
+        <div id={"barchart"} className={stylesBarchart['barchart']} ref={ref}>
+            <svg width={dms.width} height={dms.height}>
+            </svg>
         </div>
+        <div className={stylesBarchart['finter_kingdom']} >
+            <Filter_Kingdom onKingdomChanges={onKingdomChanges}/>
+        </div>
+    </div>
     )
 }
           
@@ -311,7 +348,9 @@ const Barchart = (props) => {
 export default Barchart;
 
 
-
+/*<div className={stylesHeatmap['right']} >
+            <Filters />
+        </div>*/
 
 
 /* 

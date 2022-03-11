@@ -2,6 +2,9 @@ import styles from '../styles/Filters.module.css'
 import { useState } from 'react'
 import 'antd/dist/antd.css';
 import { Typography, Checkbox } from 'antd';
+import { setFilterThreats, setFilterCategory, setFilterKingdom } from '../redux/slices/filterSetting';
+import store from '../redux/store';
+import { useSelector } from 'react-redux';
 
 const { Title, Text } = Typography;
 
@@ -12,13 +15,18 @@ function Filters(props){
         category: [],
         kingdom: [],
     });*/
-    const [category, setCategory] = useState([])
-    const [threats, setThreats] = useState([])
-    const [kingdom, setKingdom] = useState([])
+    // const [category, setCategory] = useState([])
+    // const [threats, setThreats] = useState([])
+    // const [kingdom, setKingdom] = useState([])
+
+    const category = useSelector((state) => state.filterSetting.category)
+    const threats = useSelector((state) => state.filterSetting.threats)
+    const kingdom = useSelector((state) => state.filterSetting.kingdom)
 
     function onChange_Category(checkedValues) {
         console.log('checked = ', checkedValues);
-        setCategory(checkedValues)
+        store.dispatch(setFilterCategory(checkedValues))
+        // setCategory(checkedValues)
         props.onCategoryChanges({
             threats: threats,
             category: checkedValues,
@@ -29,11 +37,12 @@ function Filters(props){
                 threats: threats,
                 category: [],
                 kingdom: kingdom,
-            })   
+            })      
     }
     function onChange_Threats(checkedValues) {
         console.log('checked = ', checkedValues);
-        setThreats(checkedValues)
+        store.dispatch(setFilterThreats(checkedValues))
+        // setThreats(checkedValues)
         props.onCategoryChanges({
             threats: checkedValues,
             category: category,
@@ -44,11 +53,12 @@ function Filters(props){
                 threats: [],
                 category: category,
                 kingdom: kingdom,
-            })   
+            })     
     }
     function onChange_Kingdom(checkedValues) {
         console.log('checked = ', checkedValues);
-        setKingdom(checkedValues)
+        store.dispatch(setFilterKingdom(checkedValues))
+        // setKingdom(checkedValues)
         props.onCategoryChanges({
             threats: threats,
             category: category,
@@ -97,15 +107,15 @@ function Filters(props){
             <Title level={2}>Filters</Title>
             <Text strong>Select Red List categories</Text>
             <div className={styles["category"]}>
-                <Checkbox.Group options={options_redList} onChange={onChange_Category}/>
+                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category}/>
             </div>
             <Text strong>Select threats</Text>
             <div className={styles["category_threats"]}>
-                <Checkbox.Group options={options_threats} onChange={onChange_Threats}/>
+                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}/>
             </div>
             <Text strong>Select kingdoms</Text>
             <div className={styles["category"]}>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom}/>
+                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
             </div>
         </div>
     )

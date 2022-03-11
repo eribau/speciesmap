@@ -1,24 +1,53 @@
 .sidebar{
     position: absolute;
-    top: 2%;
-    left: 15%;
+    margin-left: 25vw;
     width: auto;
     height: auto;
     background: #FFFFFF;
     box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.05);
     border-radius: 10px;
-    padding-left: 30px;
-    padding-bottom: 30px;
+    padding: 50px;
+    padding-top: 10px;
 }
-.image{
-    width: 30px;
-    margin-top: 20px;
-    margin-left: 90%;
+.image_close{
+    position: relative;
+    width: 20px;
+    margin-top: 0px;
+    left: 99%;
+    opacity: 70%;
+}
+.image_min{
+    position: relative;
+    width: 20px;
+    margin-top: 0px;
+    left: 98%;
+    opacity: 70%;
+}
+.image_close:hover{
+    width: 20.5px;
+    opacity: 100%;
+}
+.image_min:hover{
+    width: 20.5px;
+    opacity: 100%;
 }
 .table {
-    width: 800px;
+    margin-top: 20px;
+    width: 50vw;
     overflow-y: auto;
  }
 .th, .td {
-    padding: 10px 15px;
+    padding: 15px 15px;
+}
+.dots{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 45%;
+    margin-bottom: 50px;
+    opacity: 70%;
+}
+.dots:hover{
+    width: 53px;
+    opacity: 100%;
 }

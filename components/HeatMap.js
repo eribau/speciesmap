@@ -14,6 +14,7 @@ import { useChartDimensions } from '../utilities/useChartDimensions'
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 import { setSelectedCountry } from '../redux/slices/selectedCountry'
+import filterSetting, { setFilterSetting } from '../redux/slices/filterSetting'
 
 import { useRouter } from 'next/router'
 
@@ -41,6 +42,8 @@ const HeatMap = (props) => {
     }
 
     function onCategoryChanges(value){
+        console.log(value)
+        //store.dispatch(setFilterSetting(value))
         store.dispatch(setFilteredData(value));
         setCategory(value);
 
