@@ -12,7 +12,7 @@ import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 import { setSelectedCountry } from '../redux/slices/selectedCountry'
 
-const { Text } = Typography;
+const { Text, Link } = Typography;
 
 function PopupWindow(props){
     const {category, threat, code, filtersValue, kingdom} = props
@@ -33,11 +33,16 @@ function PopupWindow(props){
         console.log(speciesData.threatsList + " - " + speciesData.threatsList[0])
         if (speciesData.redlistCategory === category && (speciesData.threatsList).find(item =>convertThreat[item] == threat) && (kingdom.length === 0 || kingdom.find(item => item == speciesData.kingdomName))){
             count++
+            console.log(speciesData)
             if(count < 20 && !displayAll)
                 return(
                     <>
                     <tr key={ID}>
-                        <td key={"name" + ID}>{speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName}</td>
+                        <td key={"name" + ID}>
+                            <Link href={`https://www.iucnredlist.org/species/${speciesData.internalTaxonId}/${speciesData.assessmentId}`} target="_blank">
+                                {speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName}
+                            </Link>
+                        </td>
                         <td key={"category" + ID}>{speciesData.redlistCategory}</td>
                         <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
                         <td key={"kingdom" + ID}>{speciesData.kingdomName}</td>
@@ -52,7 +57,9 @@ function PopupWindow(props){
                 return(
                     <>
                     {speciesData.redlistCategory === category && (speciesData.threatsList).find(item =>convertThreat[item] == threat) && (kingdom.length === 0 || kingdom.find(item => item == speciesData.kingdomName)) && <tr key={ID}>
-                        <td key={"name" + ID}>{speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName}</td>
+                        <td key={"name" + ID}>
+                            <Link href="https://www.iucnredlist.org/species/21460801/21567809" title= {speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName} />
+                        </td>
                         <td key={"category" + ID}>{speciesData.redlistCategory}</td>
                         <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
                         <td key={"kingdom" + ID}>{speciesData.kingdomName}</td>
