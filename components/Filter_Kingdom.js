@@ -36,7 +36,7 @@ function Filter_Kingdom(props){
     return (
         <div className={styles["filters"]}>
             
-            <Title level={4}>Select kingdoms</Title>
+            <Title level={4}>Select kingdom</Title>
             <div className={styles["category"]}>
                 <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
             </div>

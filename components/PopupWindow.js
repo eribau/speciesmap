@@ -17,24 +17,30 @@ const { Text, Link } = Typography;
 function PopupWindow(props){
     const {category, threat, code, filtersValue, kingdom} = props
     
-    console.log(props.category + " - " +  props.threat + " - " + props.code + " - " + kingdom)
+    //console.log(props.category + " - " +  props.threat + " - " + props.code + " - " + kingdom)
     const [displayAll, setDisplayAll] = useState(false);
+    const [allThreats, setAllThreats] = useState(false);
+    const [arrayN, setArrayN] = useState("");
     const count = 0;
 
     let dataStore = store.getState().filteredData.countryCodes;
     if (typeof dataStore === "undefined") dataStore = countriesData;
 
     //store.dispatch(setFilteredData(filtersValue));
-    
+    function moreThreats(e){
+        console.log(e.target.key)
+        setAllThreats(!allThreats)
+        setArrayN(count)
+    }
 
     function  renderSpecies(ID){
         //const countryData = summary.find(item => (item.assessmentId === ID && category.indexOf(item.filter.category) > -1) || (item.assessmentId === ID && category === "All"))
         const speciesData = assessmentDataById[ID];
-        console.log(speciesData.threatsList + " - " + speciesData.threatsList[0])
+        //console.log(speciesData.threatsList + " - " + speciesData.threatsList[0])
+        
         if (speciesData.redlistCategory === category && (speciesData.threatsList).find(item =>convertThreat[item] == threat) && (kingdom.length === 0 || kingdom.find(item => item == speciesData.kingdomName))){
             count++
-            console.log(speciesData)
-            if(count < 20 && !displayAll)
+            if((count < 20 && !displayAll) || displayAll){
                 return(
                     <>
                     <tr key={ID}>
@@ -44,27 +50,34 @@ function PopupWindow(props){
                             </Link>
                         </td>
                         <td key={"category" + ID}>{speciesData.redlistCategory}</td>
-                        <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
+                        {(speciesData.threatsList.length > 1 && !allThreats) || (speciesData.threatsList.length > 1 && allThreats && arrayN && ID !== arrayN)? //IF number of threats is > 1 && we need to check if we already displaying all threats
+                            <td id={ID} key={"threat" + ID} className={styles["threats"]}>
+                                <div value="1111" onClick={() => {//Function will allow display all threats && save ID of animal which threats need to be displayed
+                                    setAllThreats(true);
+                                    setArrayN(ID)
+                                }}>
+                                {`${convertThreat[speciesData.threatsList[0]]} ...`}
+                                </div>
+                            </td> : 
+                            speciesData.threatsList.length > 1 && allThreats && arrayN && ID === arrayN? //statement to find specific animal which threats should be showed to user
+                            <td id={ID} key={"threat" + ID} className={styles["threats"]} onClick={() => {
+                                setAllThreats(false);
+                                setArrayN("")
+                            }}>
+                                {speciesData.threatsList.map(thr => <div className={styles["allThreats"]}>{convertThreat[thr]}</div>)}
+                            </td> :
+                            <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
+                        }
                         <td key={"kingdom" + ID}>{speciesData.kingdomName}</td>
                     </tr>
                     </>)
-            else if(count === 20 && !displayAll)
-            return(
-                <>
-                <img src='https://cdn-icons-png.flaticon.com/512/512/512142.png' alt="dots" className={styles["dots"]} onClick={handleMore}/>
-                </>)
-            else if (displayAll)
+            }
+            else if(count === 20 && !displayAll){
                 return(
                     <>
-                    {speciesData.redlistCategory === category && (speciesData.threatsList).find(item =>convertThreat[item] == threat) && (kingdom.length === 0 || kingdom.find(item => item == speciesData.kingdomName)) && <tr key={ID}>
-                        <td key={"name" + ID}>
-                            <Link href="https://www.iucnredlist.org/species/21460801/21567809" title= {speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName} />
-                        </td>
-                        <td key={"category" + ID}>{speciesData.redlistCategory}</td>
-                        <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
-                        <td key={"kingdom" + ID}>{speciesData.kingdomName}</td>
-                    </tr>}
+                        <img src='https://cdn-icons-png.flaticon.com/512/512/512142.png' alt="dots" className={styles["dots"]} onClick={handleMore}/>
                     </>)
+            }
         }
     }
     function handleClose(){
@@ -83,10 +96,10 @@ function PopupWindow(props){
             <table className={styles["table"]}>
             <tbody>
             <tr key="Header">
-                <td key="name"><h3>Name</h3></td>
-                <td key="category"><h3>Category</h3></td>
-                <td key="threat"><h3>Threats</h3></td>
-                <td key="kingdom"><h3>Kingdom</h3></td>
+                <td key="name" className={styles["name"]}><h3>Name</h3></td>
+                <td key="category" className={styles["category"]}><h3>Category</h3></td>
+                <td key="threat" className={styles["threat"]}><h3>Threats</h3></td>
+                <td key="kingdom" className={styles["kingdom"]}><h3>Kingdom</h3></td>
             </tr>
             {
                 dataStore[props.code].map(renderSpecies)

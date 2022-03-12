@@ -51,3 +51,21 @@
     width: 53px;
     opacity: 100%;
 }
+.threats:hover{
+    font-weight: 200;
+}
+.allThreats{
+    font-weight: bold;
+}
+.name{
+    width: 100px;
+}
+.category{
+    width: 100px;
+}
+.threat{
+    width: 200px;
+}
+.kingdom{
+    width: 80px;
+}
