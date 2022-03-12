@@ -115,7 +115,7 @@ function Filters(props){
             </div>
             <Text strong>Select kingdoms</Text>
             <div className={styles["category"]}>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
+                <Checkbox.Group className={styles["category"]} options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
             </div>
         </div>
     )

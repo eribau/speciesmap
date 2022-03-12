@@ -44,12 +44,12 @@ function PopupWindow(props){
                 return(
                     <>
                     <tr key={ID}>
-                        <td key={"name" + ID}>
+                        <td key={"name" + ID} className={styles["td"]}>
                             <Link href={`https://www.iucnredlist.org/species/${speciesData.internalTaxonId}/${speciesData.assessmentId}`} target="_blank">
                                 {speciesData.commonName=="unknown" ? speciesData.scientificName : speciesData.commonName}
                             </Link>
                         </td>
-                        <td key={"category" + ID}>{speciesData.redlistCategory}</td>
+                        <td key={"category" + ID} className={styles["td"]}>{speciesData.redlistCategory}</td>
                         {(speciesData.threatsList.length > 1 && !allThreats) || (speciesData.threatsList.length > 1 && allThreats && arrayN && ID !== arrayN)? //IF number of threats is > 1 && we need to check if we already displaying all threats
                             <td id={ID} key={"threat" + ID} className={styles["threats"]}>
                                 <div value="1111" onClick={() => {//Function will allow display all threats && save ID of animal which threats need to be displayed
@@ -60,15 +60,15 @@ function PopupWindow(props){
                                 </div>
                             </td> : 
                             speciesData.threatsList.length > 1 && allThreats && arrayN && ID === arrayN? //statement to find specific animal which threats should be showed to user
-                            <td id={ID} key={"threat" + ID} className={styles["threats"]} onClick={() => {
+                            <td id={ID} key={"threat" + ID} className={styles["allThreats"]} onClick={() => {
                                 setAllThreats(false);
                                 setArrayN("")
                             }}>
-                                {speciesData.threatsList.map(thr => <div className={styles["allThreats"]}>{convertThreat[thr]}</div>)}
+                                {speciesData.threatsList.map(thr => <div>🔴{convertThreat[thr]}</div>)}
                             </td> :
-                            <td key={"threat" + ID}>{convertThreat[speciesData.threatsList[0]]}</td>
+                            <td key={"threat" + ID} className={styles["td"]}>{convertThreat[speciesData.threatsList[0]]}</td>
                         }
-                        <td key={"kingdom" + ID}>{speciesData.kingdomName}</td>
+                        <td key={"kingdom" + ID} className={styles["td"]}>{speciesData.kingdomName}</td>
                     </tr>
                     </>)
             }
@@ -90,7 +90,7 @@ function PopupWindow(props){
         setDisplayAll(false)
     }
     return (
-        <div className={styles["sidebar"]}>
+        <div className={styles["popupWindow"]}>
             {displayAll && <img src="https://cdn-icons-png.flaticon.com/512/251/251282.png" onClick={handleMin} className={styles["image_min"]} alt="logo" />}
             <img src="https://cdn-icons-png.flaticon.com/512/251/251319.png" onClick={handleClose} className={styles["image_close"]} alt="logo" />
             <table className={styles["table"]}>
