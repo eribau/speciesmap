@@ -7,6 +7,10 @@ import { Typography, Checkbox } from 'antd';
 import assessmentDataById from '../public/allDataByAssessmentId.json'
 import convertThreat from '../public/threatCodeToThreatName.json'
 
+import dots from "../styles/dots.png"
+import close from "../styles/close.png"//"https://cdn-icons-png.flaticon.com/512/251/251319.png" 
+import min from "../styles/min.png" //https://cdn-icons-png.flaticon.com/512/251/251282.png
+
 
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
@@ -52,7 +56,7 @@ function PopupWindow(props){
                         <td key={"category" + ID} className={styles["td"]}>{speciesData.redlistCategory}</td>
                         {(speciesData.threatsList.length > 1 && !allThreats) || (speciesData.threatsList.length > 1 && allThreats && arrayN && ID !== arrayN)? //IF number of threats is > 1 && we need to check if we already displaying all threats
                             <td id={ID} key={"threat" + ID} className={styles["threats"]}>
-                                <div value="1111" onClick={() => {//Function will allow display all threats && save ID of animal which threats need to be displayed
+                                <div value="1111" className={styles["threats"]} onClick={() => {//Function will allow display all threats && save ID of animal which threats need to be displayed
                                     setAllThreats(true);
                                     setArrayN(ID)
                                 }}>
@@ -75,7 +79,7 @@ function PopupWindow(props){
             else if(count === 20 && !displayAll){
                 return(
                     <>
-                        <img src='https://cdn-icons-png.flaticon.com/512/512/512142.png' alt="dots" className={styles["dots"]} onClick={handleMore}/>
+                        <img src={dots} alt="dots" className={styles["dots"]} onClick={handleMore}/>
                     </>)
             }
         }
@@ -91,15 +95,15 @@ function PopupWindow(props){
     }
     return (
         <div className={styles["popupWindow"]}>
-            {displayAll && <img src="https://cdn-icons-png.flaticon.com/512/251/251282.png" onClick={handleMin} className={styles["image_min"]} alt="logo" />}
-            <img src="https://cdn-icons-png.flaticon.com/512/251/251319.png" onClick={handleClose} className={styles["image_close"]} alt="logo" />
+            {displayAll && <img src={min} onClick={handleMin} className={styles["image_min"]} alt="logo" />}
+            <img src={close} onClick={handleClose} className={styles["image_close"]} alt="logo" />
             <table className={styles["table"]}>
             <tbody>
             <tr key="Header">
-                <td key="name" className={styles["name"]}><h3>Name</h3></td>
-                <td key="category" className={styles["category"]}><h3>Category</h3></td>
-                <td key="threat" className={styles["threat"]}><h3>Threats</h3></td>
-                <td key="kingdom" className={styles["kingdom"]}><h3>Kingdom</h3></td>
+                <td key="name" className={styles["name"]}><h3 className={styles["text"]}>Name</h3></td>
+                <td key="category" className={styles["category"]}><h3 className={styles["text"]}>Category</h3></td>
+                <td key="threat" className={styles["threat"]}><h3 className={styles["text"]}>Threats</h3></td>
+                <td key="kingdom" className={styles["kingdom"]}><h3 className={styles["text"]}>Kingdom</h3></td>
             </tr>
             {
                 dataStore[props.code].map(renderSpecies)

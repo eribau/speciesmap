@@ -3,11 +3,14 @@
     margin-left: 25vw;
     width: auto;
     height: auto;
-    background: #FFFFFF;
+    background: #161414;
     box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
-    padding: 50px;
     padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+    margin-top: 30px;
 }
 .image_close{
     position: absolute;
@@ -37,7 +40,8 @@
     overflow-y: auto;
  }
 .th, .td {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    color: white !important;
 }
 .dots{
     position: absolute;
@@ -56,16 +60,21 @@
 }
 .allThreats{
     font-weight: 600;
+    color: white !important;
 }
 .name{
-    width: 100px;
+    width: 100px; 
 }
 .category{
     width: 100px;
 }
-.threat{
+.threats{
     width: 200px;
+    color: white !important;
 }
 .kingdom{
     width: 60px;
+}
+.text{
+    color: white !important;
 }

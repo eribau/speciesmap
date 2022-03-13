@@ -11,10 +11,11 @@
     overflow-x: hidden;
     padding-top: 20px;
     right: 0;
-    background-color: white;
+    background-color: #161414;
     border-radius: 10px 0px 0px 10px;
-    box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.05);
-    padding: 30px;
+    box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    /*border: 1px solid #E66269;*/
   }
  .right_min{ 
     padding: 10px;
