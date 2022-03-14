@@ -256,6 +256,9 @@ const HeatMap = (props) => {
             .style("top", (d.clientY - 30) + "px"); // d.pageY
         };
 
+        // refilter
+        store.dispatch(setFilteredData(store.getState().filterSetting))
+
 
         // Heatmap
         const svg = d3.select('svg');
