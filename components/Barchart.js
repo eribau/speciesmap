@@ -214,7 +214,10 @@ const Barchart = (props) => {
             tooltip
             .html("subgroup: " + subgroupName + "<br>" + "Value: " + subgroupValue)
             .style("opacity", 1)
-            
+
+            let bar = d3.select(this)
+                .attr("stroke", "black")
+                .attr("stroke-width", 2)
         }
 
         const mousemove = function(d) { //prevent the tooltip from taking over mouse events
@@ -227,6 +230,10 @@ const Barchart = (props) => {
         const mouseleave = function(event, d) {
             tooltip
             .style("opacity", 0)
+
+            let bar = d3.select(this)
+                .attr("stroke", "grey")
+                .attr("stroke-width", 1)
         }
         const onClick = function(event, d) {
             //const subgroupName = d3.select(this.parentNode).datum().key;
@@ -332,6 +339,8 @@ const Barchart = (props) => {
             .attr("height", d => y(d[0]) - y(d[1]))
             .attr("width",x.bandwidth())
             .attr("stroke", "grey")
+            .attr("stroke-width", 1)
+            .style('cursor', 'pointer')
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)

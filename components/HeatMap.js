@@ -284,6 +284,7 @@ const HeatMap = (props) => {
         .attr('stroke', topologyStroke.color)
         .attr('stroke-opacity', topologyStroke.opacity)
         .attr('stroke-width', topologyStroke.width)
+        .style('cursor', 'pointer')
         .on('mouseover', mouseOver)
         .on('mouseleave', mouseLeave)
         .on('mousemove', mouseMove)
