@@ -71,7 +71,7 @@ function PopupWindow(props){
                                 setAllThreats(false);
                                 setArrayN("")
                             }}>
-                                {speciesData.threatsList.map(thr => <div>🔴{convertThreat[thr]}</div>)}
+                                {speciesData.threatsList.map(thr => <div key={thr}>🔴{convertThreat[thr]}</div>)}
                             </td> :
                             <td key={"threat" + ID} className={styles["td"]}>{convertThreat[speciesData.threatsList[0]]}</td>
                         }
