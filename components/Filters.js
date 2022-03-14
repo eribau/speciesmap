@@ -120,43 +120,18 @@ function Filters(props){
     return (
         <div className={styles["filters"]}>
             
-            <Title level={2} className={styles["text"]}>Filters</Title>
+            <Title className={styles["text"]} level={2}>Filters</Title>
             <div className={styles["category"]}>
-                <Text strong className={styles["text"]}>Select Red List categories</Text>
-                <Checkbox.Group onChange={onChange_Category}>
-                    <Checkbox value="Extinct" className={styles["text"]}>Extinct</Checkbox>
-                    <Checkbox value='Extinct in the Wild' className={styles["text"]}>Extinct in the Wild</Checkbox>
-                    <Checkbox value='Critically Endangered' className={styles["text"]}>Critically Endangered</Checkbox>
-                    <Checkbox value='Endangered' className={styles["text"]}>Endangered</Checkbox>
-                    <Checkbox value='Vulnerable' className={styles["text"]}>Vulnerable</Checkbox>
-                    <Checkbox value='Near Threatened' className={styles["text"]}>Near Threatened</Checkbox>
-                </Checkbox.Group>
+                <Text className={styles["text"]} strong>Select Red List categories</Text>
+                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category}/>
             </div>
             <div className={styles["category_threats"]}>
-            <Text strong className={styles["text"]}>Select threats</Text>
-                <Checkbox.Group onChange={onChange_Threats}>
-                    <Checkbox value="1" className={styles["text"]}>Residential and commercial development</Checkbox>
-                    <Checkbox value='2' className={styles["text"]}>Agriculture and aquaculture</Checkbox>
-                    <Checkbox value='3' className={styles["text"]}>Energy production and mining</Checkbox>
-                    <Checkbox value='4' className={styles["text"]}>Transportation and service corridors</Checkbox>
-                    <Checkbox value='5' className={styles["text"]}>Biological resource use</Checkbox>
-                    <Checkbox value='6' className={styles["text"]}>Human intrusions and disturbance</Checkbox>
-                    <Checkbox value='7' className={styles["text"]}>Natural system modification</Checkbox>
-                    <Checkbox value='8' className={styles["text"]}>Invasive and other problematic species, genes and diseases</Checkbox>
-                    <Checkbox value='9' className={styles["text"]}>Pollution</Checkbox>
-                    <Checkbox value='10' className={styles["text"]}>Geological events</Checkbox>
-                    <Checkbox value='11' className={styles["text"]}>Climate change and severe weather</Checkbox>
-                    <Checkbox value='12' className={styles["text"]}>Other</Checkbox>
-                </Checkbox.Group>
+                <Text className={styles["text"]} strong>Select threats</Text>
+                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}/>
             </div>
-            <div className={styles["kingdom"]}>
-            <Text strong className={styles["text"]}>Select kingdoms</Text>
-                <Checkbox.Group onChange={onChange_Kingdom}>
-                    <Checkbox value="FUNGI" className={styles["text"]}>Fungi</Checkbox>
-                    <Checkbox value='PLANTAE' className={styles["text"]}>Plantae</Checkbox>
-                    <Checkbox value='ANIMALIA' className={styles["text"]}>Animalia</Checkbox>
-                    <Checkbox value='CHROMISTA' className={styles["text"]}>Chromista</Checkbox>
-                </Checkbox.Group>
+            <div className={styles["category"]}>
+                <Text className={styles["text"]} strong>Select kingdoms</Text>
+                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
             </div>
         </div>
     )

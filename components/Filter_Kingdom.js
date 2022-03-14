@@ -34,14 +34,9 @@ function Filter_Kingdom(props){
         { label: 'Chromista', value: 'CHROMISTA'},
     ];
     return (
-        <div className={styles["filters"]}>
-        <Text strong className={styles["text"]}>Select kingdoms</Text>
-            <Checkbox.Group onChange={onChange_Kingdom}>
-                <Checkbox value="FUNGI" className={styles["text"]}>Fungi</Checkbox>
-                <Checkbox value='PLANTAE' className={styles["text"]}>Plantae</Checkbox>
-                <Checkbox value='ANIMALIA' className={styles["text"]}>Animalia</Checkbox>
-                <Checkbox value='CHROMISTA' className={styles["text"]}>Chromista</Checkbox>
-            </Checkbox.Group>
+        <div className={styles["filters"]}>                    
+            <Text strong className={styles["text"]}>Select kingdoms</Text>
+            <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
         </div>
     )
 }

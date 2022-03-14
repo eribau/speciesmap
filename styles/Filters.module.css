@@ -1,6 +1,11 @@
-.filters{
+.filters {
     color: #ffffff;
     font-size: 18px;
+}
+.filters label {
+    color: #ffffff;
+    font-size: medium;
+    margin-left: 8px !important;
 }
 .category{
     margin-top: 10px;
