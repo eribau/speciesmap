@@ -36,7 +36,7 @@ const About = () => {
                   <img className={styles.pics} src="/images/Layer Bau.png"></img>
                   <p className={styles.pTeam}> <b>Erik Bauer</b>
                      <br></br>
-                     <a href='ebauer@kth.se'> ebauer@kth.se</a>
+                     <a href='mailto: ebauer@kth.se'> ebauer@kth.se</a>
                      <p className={styles.pTeam}>Backend</p>
                      <p className={styles.pTeam}>Frontend</p>
                      <p className={styles.pTeam}>UX</p>
@@ -47,7 +47,7 @@ const About = () => {
                   <img className={styles.pics} src="/images/Layer Chu.png"></img>
                   <p className={styles.pTeam}> <b>Anna Chuprina</b>
                      <br></br>
-                     <a href='chuprina@kth.se'> chuprina@kth.se</a>
+                     <a href='mailto: chuprina@kth.se'> chuprina@kth.se</a>
                      <p className={styles.pTeam}>Backend</p>
                      <p className={styles.pTeam}>Frontend</p>
                      <p className={styles.pTeam}>UX</p>
@@ -59,7 +59,7 @@ const About = () => {
                   <img className={styles.pics} src="/images/Layer Pop.png"></img>
                   <p className={styles.pTeam}> <b>Victoria Popova </b>
                      <br></br>
-                     <a href='vpopova@kth.se'> vpopova@kth.se</a>
+                     <a href='mailto: vpopova@kth.se'> vpopova@kth.se</a>
                      <p className={styles.pTeam}>User Testing</p>
                      <p className={styles.pTeam}>Frontend</p>
                      <p className={styles.pTeam}>UX</p>
@@ -71,7 +71,7 @@ const About = () => {
                   <img className={styles.pics} src="/images/Layer Sto.png"></img>
                   <p className={styles.pTeam}> <b>Erik Stolpe</b>
                      <br></br>
-                     <a href='estolpe@kth.se'> estolpe@kth.se</a>
+                     <a href='mailto: estolpe@kth.se'> estolpe@kth.se</a>
                      <p className={styles.pTeam}>Backend</p>
                      <p className={styles.pTeam}>Frontend</p>
                      <p className={styles.pTeam}>&nbsp;</p>
