@@ -195,6 +195,7 @@ const Barchart = (props) => {
 
     useEffect( () => {
 
+        d3.selectAll(".tooltip").remove()
         var tooltip = d3.select("#barchart")
         .append("div")
         .style("opacity", 0)
@@ -244,10 +245,18 @@ const Barchart = (props) => {
         width = window.screen.width - margin.left - margin.right,
         height = window.screen.height - margin.top - margin.bottom;
 
+        d3.selectAll("svg > *").remove();
         // append the svg object to the body of the page
         const svg = d3.select("svg")
         .append("g")
         .attr("transform",`translate(${dms.marginLeft},${dms.marginTop})`);
+
+        // refilter
+        store.dispatch(setFilteredData({
+            threats: [],
+            category: [],
+            kingdom: store.getState().filterSetting["kingdom"],
+        }))
 
         // Parse the Data
         const storedCountryId = store.getState().selectedCountry.country;
@@ -305,8 +314,11 @@ const Barchart = (props) => {
         
 
         // Show the bars
-        svg.append("g")
-        .selectAll("g")
+        let bars = svg.append("g")
+            .attr("id", "bars")
+
+
+        bars.selectAll("g")
         // Enter in the stack data = loop key per key = group per group
         .data(stackedData)
         .join("g")
@@ -328,7 +340,8 @@ const Barchart = (props) => {
         
 
 
-    }, [])
+    }, [kingdom])
+
     return( 
     <div>
         
