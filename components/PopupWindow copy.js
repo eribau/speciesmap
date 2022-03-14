@@ -1,6 +1,6 @@
-/*import {dots} from "./dots.png"
+import dots from "../styles/dots.png"
 import close from "../public/close.jpg"//"https://cdn-icons-png.flaticon.com/512/251/251319.png" 
-import min from "../public/min.jpg" //https://cdn-icons-png.flaticon.com/512/251/251282.png*/
+import min from "../public/min.jpg" //https://cdn-icons-png.flaticon.com/512/251/251282.png
 
 import styles from '../styles/PopupWindow.module.css'
 import { useState } from 'react'
@@ -82,7 +82,7 @@ function PopupWindow(props){
             else if(count === 20 && !displayAll){
                 return(
                     <>
-                        <img src="https://i.ibb.co/vYN3QsJ/dots.jpg" alt="dots" className={styles["dots"]} onClick={handleMore}/>
+                        <img src={dots} alt="dots" className={styles["dots"]} onClick={handleMore}/>
                     </>)
             }
         }
@@ -98,8 +98,8 @@ function PopupWindow(props){
     }
     return (
         <div className={styles["popupWindow"]}>
-            {displayAll && <img src="https://i.ibb.co/4PG3QWP/min.jpg" onClick={handleMin} className={styles["image_min"]} alt="logo" />}
-            <img src="https://i.ibb.co/NpL65Lm/close.jpg" onClick={handleClose} className={styles["image_close"]} alt="logo" />
+            {displayAll && <img src={min} onClick={handleMin} className={styles["image_min"]} alt="logo" />}
+            <img src={close} onClick={handleClose} className={styles["image_close"]} alt="logo" />
             <table className={styles["table"]}>
             <tbody>
             <tr key="Header">
