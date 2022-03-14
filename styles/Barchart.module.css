@@ -1,0 +1,23 @@
+.barchart{
+    width: 30%;
+}
+.finter_kingdom{
+    font-family: Geneva, Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    padding-left: 15px;
+    height: auto;
+    width: 10%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 100px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 50px;
+    margin-right: 10px;
+}
