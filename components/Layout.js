@@ -23,6 +23,12 @@ const Layout = ({children}) => {
                   <a><Text>About</Text></a>
                </Link>
             </h2>
+            <h2 className={styles["navitem"]}>
+               <Link href="/help">
+                  <a><Text>Help</Text></a>
+               </Link>
+            </h2>
+
          </nav>
          {children}
       </div>
