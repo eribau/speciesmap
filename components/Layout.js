@@ -11,23 +11,23 @@ const Layout = ({children}) => {
    return (
       <div>
          <nav className={styles["navbar"]}>
-            <h1 className={styles["navitem"]}>
+            <h1>
                <Link href="/">
-                  <a><Text>Species Heat Map</Text></a>
+                  <a className={styles["navitem"]}>Species Heat Maps</a>
                </Link>
             </h1>
             {/* This href needs to have the same name as corresponding /pages file. 
             The <Link> element is from Next.js and links the element to the corresponding page (routing).*/}
-            <h2 className={styles["navitem"]}>
+            <h1>
                <Link href="/about">
-                  <a><Text>About</Text></a>
+                  <a className={styles["navitem"]}>About</a>
                </Link>
-            </h2>
-            <h2 className={styles["navitem"]}>
+            </h1>
+            <h1>
                <Link href="/help">
-                  <a><Text>Help</Text></a>
+                  <a className={styles["navitem"]}>Help</a>
                </Link>
-            </h2>
+            </h1>
 
          </nav>
          {children}

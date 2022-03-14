@@ -3,7 +3,11 @@
    flex-direction: row;
    color:white;
    width: 100%;
-   background-color: white;
+   height: 50px;
+   background-color: #161414;
+   color: white;
+  /* background-color: #2C2C2C;
+   background-color: #242424;*/
 }
 .navbar {
    margin: 0;
@@ -11,7 +15,24 @@
 
 .navitem {
    margin: 0;
+   padding-left: 30px;
+   padding-right: 30px;
+   padding-top: 30px;
+   padding-bottom: 20px;
+   color: white;
+   text-decoration:none;
+}
+.navitem:hover{
+   transition: .5s all ease-in-out;
+   text-decoration:none;
+   background-color: #212226;
+   color: white;
+}
+.Link{
+   
+   margin: 0;
    padding: 10px 50px;
+   color: white;
 }
 .right {
    font-family: Geneva, Arial, Helvetica, sans-serif;

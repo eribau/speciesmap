@@ -1,11 +1,23 @@
 .filters{
-    color: white;
+    color: #ffffff;
     font-size: 18px;
 }
 .category{
     margin-top: 10px;
-    width: 40%;
+    color:white !important;
+    width: 80%;
 }
 .category_threats{
     width: 90%;
+    padding-top: 30px;
+    color:white !important;
+}
+.text{
+    color:white !important;
+    font-size: medium;
+    margin-left: 8px;
+}
+.kingdom{
+    width: 100%;
+    padding-top: 30px;
 }

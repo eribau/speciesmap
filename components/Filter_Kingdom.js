@@ -35,11 +35,13 @@ function Filter_Kingdom(props){
     ];
     return (
         <div className={styles["filters"]}>
-            
-            <Title level={4}>Select kingdoms</Title>
-            <div className={styles["category"]}>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
-            </div>
+        <Text strong className={styles["text"]}>Select kingdoms</Text>
+            <Checkbox.Group onChange={onChange_Kingdom}>
+                <Checkbox value="FUNGI" className={styles["text"]}>Fungi</Checkbox>
+                <Checkbox value='PLANTAE' className={styles["text"]}>Plantae</Checkbox>
+                <Checkbox value='ANIMALIA' className={styles["text"]}>Animalia</Checkbox>
+                <Checkbox value='CHROMISTA' className={styles["text"]}>Chromista</Checkbox>
+            </Checkbox.Group>
         </div>
     )
 }
