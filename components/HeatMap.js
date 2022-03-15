@@ -208,7 +208,7 @@ const HeatMap = (props) => {
 
     useEffect( () => {
         console.log("ref:")
-        console.log(ref.current.clientWidth)
+        console.log(ref.current.clientHeight)
         // Create tooltip
         // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
         
@@ -258,6 +258,7 @@ const HeatMap = (props) => {
         store.dispatch(setFilteredData(store.getState().filterSetting))
 
         const width = ref.current.clientWidth;
+        const height = ref.current.clientHeight;
         // Heatmap
         const svg = d3.select('svg');
 
@@ -359,7 +360,7 @@ const HeatMap = (props) => {
 
         let zoom = d3.zoom()
         .scaleExtent([0.89, 8])
-        .translateExtent([[0, 0], [width + width*0.1, dms.height + dms.height*0.1]])
+        .translateExtent([[0, 0], [width + width*0.1, height + height*0.1]])
         .on('zoom', handleZoom);
 
         // Attach the on zoom event to the svg
@@ -393,7 +394,7 @@ const HeatMap = (props) => {
 
             function resetZoomAndPan() {
                 d3.selectAll("path")
-                .call(zoom.translateTo, 0.5*width, 0.5*dms.height)
+                .call(zoom.translateTo, 0.5*width, 0.5*height)
                 .call(zoom.scaleTo, 1);
             }
             function zoomToOrOutOfCountry() {
@@ -470,6 +471,7 @@ const HeatMap = (props) => {
               position: "fixed",
               left: "0px",
               width: "100%",
+              height: "100% - 50px",
               background: "#212226",
           }}
           ref={ref}
