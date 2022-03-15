@@ -19,8 +19,9 @@ import PopupWindow from './PopupWindow'
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 
+import { Typography } from 'antd';
 
-
+const { Title, Text } = Typography;
 
 
 const Barchart = (props) => {
@@ -179,7 +180,7 @@ const Barchart = (props) => {
 
     const dimensions = {
         'width': 1500,
-        'height': 900,
+        'height': 850,
         'marginTop': 10,
         'marginRight': 30,
         'marginBottom': 300,
@@ -353,7 +354,9 @@ const Barchart = (props) => {
 
     return( 
     <div>
-        
+        <div className={stylesBarchart['center']}>
+            <Title>{store.getState().selectedCountry.name}</Title>
+        </div>
         {displayBox && <PopupWindow closeWindow={closeWindow} code={code} category={category} threat={threat} filtersValue={filtersValue} kingdom={kingdom}/>}
         <div id={"barchart"} className={stylesBarchart['barchart']} ref={ref}>
             <svg width={dms.width} height={dms.height}>

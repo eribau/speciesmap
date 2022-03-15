@@ -1,5 +1,6 @@
 const initialState = {
-   country: null
+   country: null,
+   name: null,
 }
 
 export const setSelectedCountry = country => {
@@ -9,11 +10,24 @@ export const setSelectedCountry = country => {
    }
 }
 
+export const setSelectedCountryName = name => {
+   return {
+      type: "selectedCountry/setCountryName",
+      payload: name,
+   }
+}
+
 const selectedCountry = (state = initialState, action) => {
    switch (action.type) {
       case 'selectedCountry/setCountry':
          return {
+            ...state,
             country: action.payload
+         }
+      case 'selectedCountry/setCountryName':
+         return {
+            ...state,
+            name: action.payload
          }
       default:
          return state

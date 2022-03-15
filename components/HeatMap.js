@@ -13,7 +13,7 @@ import { useChartDimensions } from '../utilities/useChartDimensions'
 
 import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
-import { setSelectedCountry } from '../redux/slices/selectedCountry'
+import { setSelectedCountry, setSelectedCountryName } from '../redux/slices/selectedCountry'
 import filterSetting, { setFilterSetting } from '../redux/slices/filterSetting'
 
 import { useRouter } from 'next/router'
@@ -228,6 +228,7 @@ const HeatMap = (props) => {
             setDisplay(true);
             
             store.dispatch(setSelectedCountry(d.target.id));
+            store.dispatch(setSelectedCountryName(countryNameByIso_a2[d.target.id]));
             router.push('/details')
         };
     
