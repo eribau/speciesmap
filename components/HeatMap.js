@@ -52,10 +52,8 @@ const HeatMap = (props) => {
 
     ///- PopupWindow & Filtering -///
 
-
     /// Heatmap ///
     const dimensions = {
-        'width': 1400,
         'height': 1000,
         'marginTop': 20,
         'marginRight': 10
@@ -209,8 +207,8 @@ const HeatMap = (props) => {
     const router = useRouter();
 
     useEffect( () => {
-        
-
+        console.log("ref:")
+        console.log(ref.current.clientWidth)
         // Create tooltip
         // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
         
@@ -259,9 +257,11 @@ const HeatMap = (props) => {
         // refilter
         store.dispatch(setFilteredData(store.getState().filterSetting))
 
-
+        const width = ref.current.clientWidth;
         // Heatmap
         const svg = d3.select('svg');
+
+        svg.attr("width", width)
 
         var layerHeatmap = svg.append('g');
         layerHeatmap.attr('id', 'layerHeatmap');
@@ -269,7 +269,7 @@ const HeatMap = (props) => {
         var layerGradient = svg.append('g');
         layerGradient.attr('id', 'layerGradient');
 
-        const projection = d3.geoNaturalEarth1().fitWidth(dms.width, { type: 'Sphere' });
+        const projection = d3.geoNaturalEarth1().fitWidth(width, { type: 'Sphere' });
         const pathGenerator = d3.geoPath().projection(projection);
     
         // Draw the topology on the heatmap layer
@@ -359,7 +359,7 @@ const HeatMap = (props) => {
 
         let zoom = d3.zoom()
         .scaleExtent([0.89, 8])
-        .translateExtent([[0, 0], [dms.width + dms.width*0.1, dms.height + dms.height*0.1]])
+        .translateExtent([[0, 0], [width + width*0.1, dms.height + dms.height*0.1]])
         .on('zoom', handleZoom);
 
         // Attach the on zoom event to the svg
@@ -393,7 +393,7 @@ const HeatMap = (props) => {
 
             function resetZoomAndPan() {
                 d3.selectAll("path")
-                .call(zoom.translateTo, 0.5*dms.width, 0.5*dms.height)
+                .call(zoom.translateTo, 0.5*width, 0.5*dms.height)
                 .call(zoom.scaleTo, 1);
             }
             function zoomToOrOutOfCountry() {
@@ -472,12 +472,12 @@ const HeatMap = (props) => {
               width: "100%",
               background: "#212226",
           }}
+          ref={ref}
         >
-        <svg width={1400} height={1000}>
-        </svg>
-        <div className={styles['right']} >
-            <Filters onCategoryChanges={onCategoryChanges}/>
-        </div>
+            <svg width={dms.width} height={dms.height}></svg>
+            <div className={styles['right']} >
+                <Filters onCategoryChanges={onCategoryChanges}/>
+            </div>
         </div>
       )
 };
