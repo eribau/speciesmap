@@ -1,8 +1,6 @@
 import React, {Component, useState, useEffect} from 'react';
 import * as d3 from "d3";
 
-import { feature } from 'topojson'
-
 import assessmentsByCountryCode from '../public/countrycodes.json'
 import countryDataByISOn3 from '../public/topoInfoByISOn3.json'
 import redListByCountryCode from '../public/redListByCountryCode.json'
