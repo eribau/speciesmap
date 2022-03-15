@@ -13,7 +13,7 @@ const Layout = ({children}) => {
          <nav className={styles["navbar"]}>
             <h1>
                <Link href="/">
-                  <a className={styles["navitem"]}>Species Heat Maps</a>
+                  <a className={styles["navitem"]}>Species Map</a>
                </Link>
             </h1>
             {/* This href needs to have the same name as corresponding /pages file. 

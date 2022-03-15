@@ -18,9 +18,9 @@ const Help = () => {
             <p className={styles.pHelp}>
 Here is a brief list of functionalities that will help you with exploring and understanding the contents of this application.
 
-<h3 className={styles.h3}>Interpreting the heat map:</h3>
+<h3 className={styles.h3}>Interpreting the map:</h3>
 
-In the beginning you get introduced to a heat map visualising a distribution of all species for each country. The more intense a colour of a country is, the higher the amount of species at risk it contains. 
+In the beginning you get introduced to a map visualising a distribution of all species for each country. The more intense a colour of a country is, the higher the amount of species at risk it contains. 
 
 <h3 className={styles.h3}>Filters:</h3>
 
