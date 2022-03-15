@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { feature } from 'topojson'
+import { feature } from 'topojson-client'
 import { useEffect, useState } from 'react'
 
 import assessmentsByCountryCode from '../public/countrycodes.json'
