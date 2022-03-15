@@ -262,7 +262,8 @@ const HeatMap = (props) => {
         // Heatmap
         const svg = d3.select('svg');
 
-        svg.attr("width", width)
+        svg.attr("width", width);
+        svg.attr("height", height);
 
         var layerHeatmap = svg.append('g');
         layerHeatmap.attr('id', 'layerHeatmap');
