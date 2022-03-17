@@ -15,6 +15,7 @@ import store from '../redux/store'
 import { setFilteredData } from '../redux/slices/filteredData'
 import { setSelectedCountry, setSelectedCountryName } from '../redux/slices/selectedCountry'
 import filterSetting, { setFilterSetting } from '../redux/slices/filterSetting'
+import allSpecies from '../public/allDataByAssessmentId.json'
 
 import { useRouter } from 'next/router'
 
@@ -61,7 +62,7 @@ const HeatMap = (props) => {
 
     const [ref, dms] = useChartDimensions(dimensions);
 
-    const heatmapInterpolationColors = {lowest: '#ffffff', highest: '#db000f'};
+    const heatmapInterpolationColors = {lowest: '#ffeeee', highest: '#db0000'};
     const topologyStroke = {color: '#212226', opacity: '1', width: '0.5'};
 
     const interpolation = d3.interpolate(
@@ -123,6 +124,11 @@ const HeatMap = (props) => {
                 maxSpecies = maxSpecies == 0 ? 1 : maxSpecies;
                 scaledValue /= maxSpecies;
             }
+            // var colorsss = d3.scaleLinear()
+            // .domain([0, maxSpecies/100, maxSpecies])
+            // .range(["#ffffff", "#0e16ed", "#db0000"])
+            // .interpolate(d3.interpolateHcl)
+            // return colorsss(v)
             return interpolation(scaledValue).colors;
         };
 
@@ -160,10 +166,34 @@ const HeatMap = (props) => {
             return function(t) { this.textContent = Math.round(i(t)) };
         });
 
+        // Idea to make counting species (no duplicates) fast:
+        // Loop through all assessments for all countries
+        // 1. check if assessment exists by accessing hashmap
+        // 2. if it doesn't exist, add it
+
+        // Counting and checking if duplicate in array: ~10 seconds
+        // Using concat() and Set(): ~300 ms
+        // Hashmap with init: ~150 ms
+        // Hashmap without init: fast enough
+        let speciesHashmap = new Map();
+
+        // This takes time, check if undefined instead
+        // for (const id in allSpecies) {
+        //     speciesHashmap.set(id, 0);
+        // }
         let totalSpecies = 0;
+        
         for (const prop in filteredAssessmentsPerCountry) {
-            totalSpecies += filteredAssessmentsPerCountry[prop].length;
+            let filteredSpeciesInCountry = filteredAssessmentsPerCountry[prop];
+            for (const prop2 in filteredSpeciesInCountry) {
+                let id = filteredSpeciesInCountry[prop2];
+                if (typeof speciesHashmap.get(id) === "undefined") {
+                    totalSpecies++;
+                    speciesHashmap.set(id, 1);
+                }
+            }
         }
+
 
         let totalSpeciesText = d3.select("#total-species-text");
         let currentValueTotalText = totalSpeciesText.text().split(":")[1];
@@ -313,12 +343,16 @@ const HeatMap = (props) => {
         //Set the color for the start (0%)
         linearGradient.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "#ffffff"); 
+        .attr("stop-color", heatmapInterpolationColors.lowest); 
+
+        // linearGradient.append("stop")
+        // .attr("offset", "20%")
+        // .attr("stop-color", "#00ffff"); 
 
         //Set the color for the end (100%)
         linearGradient.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "#db000f"); 
+        .attr("stop-color", heatmapInterpolationColors.highest); 
 
         //Draw the rectangle and fill with gradient
         layerGradient.append("rect")
@@ -350,6 +384,19 @@ const HeatMap = (props) => {
         .attr("transform", "translate(30, 600)")
         .style("fill", "#ffffff")
         .attr("font-size", dms.height*0.025 + "");
+
+        // Legend for no data
+        layerGradient.append("rect")
+        .attr("width", "20")
+        .attr("height", "20")
+        .style("fill", "rgb(128, 128, 128)")
+        .attr("transform", "translate(0, 530)");
+
+        layerGradient.append("text")
+        .text("No data")
+        .attr("font-size", dms.height*0.025 + "")
+        .style("fill", "#ffffff")
+        .attr("transform", "translate(30, 550)");
 
         ///- Gradient Legend -///
 
