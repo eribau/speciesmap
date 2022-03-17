@@ -211,7 +211,7 @@ const Barchart = (props) => {
             const subgroupName = d3.select(this.parentNode).datum().key;
             const subgroupValue = d.data[subgroupName];
             tooltip
-            .html("subgroup: " + subgroupName + "<br>" + "Value: " + subgroupValue)
+            .html(subgroupName + ":<br>" + subgroupValue + " species")
             .style("opacity", 1)
 
             let bar = d3.select(this)
