@@ -61,6 +61,7 @@ const Barchart = (props) => {
            ,"Geological events"
            ,"Climate change and severe weather"
            ,"Other"
+           ,"Unknown"
         ];
         
         var template = {"group": 'serial killers', 
@@ -75,7 +76,7 @@ const Barchart = (props) => {
         "total": '57',
         }
         
-        for (var i = 0; i < 12; i++) {
+        for (var i = 0; i < 13; i++) {
             template.group = JSON.parse(JSON.stringify(groups[i]));
             data.push(JSON.parse(JSON.stringify(template)));
         };
@@ -125,10 +126,12 @@ const Barchart = (props) => {
            ,"Geological events"
            ,"Climate change and severe weather"
            ,"Other"
+           ,"Unknown"
         ];
 
         var threatlist = [  [0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],
-                            [0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0]
+                            [0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0],
+                            [0,0,0,0,0,0,0,0]
                             ];
 
         var redlistList = ["Extinct", "Extinct in the Wild", "Critically Endangered", "Endangered", 
@@ -136,7 +139,7 @@ const Barchart = (props) => {
 
         for(let i = 0; i < filteredSpecies.length; i++){
             var ass_id = filteredSpecies[i];
-            for(let j = 0; j < 12; j++){
+            for(let j = 0; j < 13; j++){
                 for(let k = 0; k < 8; k++){
                     // had to change from the "in" keyword, it didn't do what you would expect it to do
                     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/in
@@ -162,7 +165,7 @@ const Barchart = (props) => {
         var max = Math.max(...totals);
         data.push({upperBound: max})
 
-        for (var i = 0; i < 12; i++) {
+        for (var i = 0; i < 13; i++) {
             data[i] = 
             {"group": groups[i], 
             "Extinct": threatlist[i][0].toString(), 
@@ -301,7 +304,7 @@ const Barchart = (props) => {
         .attr("dy", ".15em")
         .attr("transform", "rotate(-65)" );
 
-        let upperBound = data[12]["upperBound"] * 1.05; // take the largest bar and add a small margin
+        let upperBound = data[13]["upperBound"] * 1.05; // take the largest bar and add a small margin
         console.log(upperBound)
         // Add Y axis
         const y = d3.scaleLinear()

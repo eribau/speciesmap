@@ -110,6 +110,7 @@ function Filters(props){
         { label: 'Geological events', value: '10' },
         { label: 'Climate change and severe weather', value: '11' },
         { label: 'Other', value: '12' },
+        { label: 'Unknown', value: '13' },
     ];
 
     const options_kingdom = [
