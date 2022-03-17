@@ -93,6 +93,7 @@ function Filters(props){
         { label: 'Critically Endangered', value: 'Critically Endangered' },
         { label: 'Endangered', value: 'Endangered' },
         { label: 'Vulnerable', value: 'Vulnerable' },
+        { label: 'Lower Risk', value: 'Lower Risk' },
         { label: 'Near Threatened', value: 'Near Threatened' },
     ];
 

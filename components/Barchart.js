@@ -144,7 +144,13 @@ const Barchart = (props) => {
                     if( (allDataByAssessmentId[ass_id].threatsList.indexOf((j+1).toString()) != -1) && 
                         (redlistList[k] == allDataByAssessmentId[ass_id].redlistCategory) ) {
                         threatlist[j][k]++;
-                    }
+                    } // else if (
+                    //     allDataByAssessmentId[ass_id].redlistCategory == redlistList[k] && 
+                    //     !allDataByAssessmentId[ass_id].threatsList.length &&
+                    //     j == 11) {
+                    //     threatlist[j][k]++;
+                    // } uncomment the else if, if wanting to add species with no threat to the "Other" bar
+                    
                 }
             }
         }
