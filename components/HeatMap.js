@@ -229,7 +229,7 @@ const HeatMap = (props) => {
             filteredSpecies = species;
         }
         
-        return countryName + ": " + filteredSpecies.length + " of " + species.length;
+        return countryName + ":<br>" + filteredSpecies.length + " of " + species.length + " species";
         // return countryName + "<br>Redlisted species: " + numSpecies;
     };
 
