@@ -18,11 +18,12 @@ function Filters(props){
     const [categoryList, setCategory] = useState([])
     const [threatsList, setThreats] = useState([])
     const [kingdomList, setKingdom] = useState([])
-    const [isChecked, setChecked] = useState(false)
+    const [isChecked, setChecked] = useState(true)
 
     const category = useSelector((state) => state.filterSetting.category)
     const threats = useSelector((state) => state.filterSetting.threats)
     const kingdom = useSelector((state) => state.filterSetting.kingdom)
+    //alert(category)
 
     function onChange_Category(checkedValues) {
         console.log('checked1 = ', checkedValues);
@@ -127,15 +128,15 @@ function Filters(props){
             <img src="https://i.ibb.co/QrDJCt7/reset.png" onClick={handleReset} className={styles["image_reset"]} alt="logo" />
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select Red List categories</Text>
-                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category} value={isChecked ? categoryList:[]}/>
+                <Checkbox.Group options={options_redList} onChange={onChange_Category} value={isChecked ? category: []} defaultValue={category} />
             </div>
             <div className={styles["category_threats"]}>
                 <Text className={styles["text"]} strong>Select threats</Text>
-                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}  value={isChecked ? threatsList:[]}/>
+                <Checkbox.Group options={options_threats} onChange={onChange_Threats}value={isChecked ? threats: []} defaultValue={threats}/>
             </div>
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select kingdoms</Text>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom} value={isChecked ? kingdomList:[]}/>
+                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} value={isChecked ? kingdom: []} defaultValue={kingdom} />
             </div>
         </div>
     )
