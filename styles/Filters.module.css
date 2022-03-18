@@ -26,3 +26,10 @@
     width: 100%;
     padding-top: 30px;
 }
+.image_reset{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top:20px;
+    left: 45%;
+}

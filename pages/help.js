@@ -20,7 +20,7 @@ Here is a brief list of functionalities that will help you with exploring and un
 
 <h3 className={styles.h3}>Interpreting the map:</h3>
 
-In the beginning you get introduced to a map visualising a distribution of all species for each country. The more intense a colour of a country is, the higher the amount of species at risk it contains. 
+In the beginning you get introduced to a map visualising a distribution of all threatened and near threatened species for each country. The more intense a colour of a country is, the higher the amount of species at risk it contains. 
 
 <h3 className={styles.h3}>Filters:</h3>
 

@@ -60,9 +60,9 @@ function myFilter(filters) {
            let hasCategory = !categories.length ? true : false;
 
            for (const prop in categories) {
-               const category = categories[prop];
+               let category = categories[prop]; 
 
-               if (assessmentData.redlistCategory == category) {
+               if (assessmentData.redlistCategory.includes(category)) {
                    hasCategory = true;
                }
            }
