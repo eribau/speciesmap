@@ -216,7 +216,8 @@ const Barchart = (props) => {
 
             let bar = d3.select(this)
                 .attr("stroke", "black")
-                .attr("stroke-width", 2)
+                .attr("stroke-width", 1)
+                .attr("opacity", .5)
         }
 
         const mousemove = function(d) { //prevent the tooltip from taking over mouse events
@@ -233,6 +234,7 @@ const Barchart = (props) => {
             let bar = d3.select(this)
                 .attr("stroke", "grey")
                 .attr("stroke-width", 1)
+                .attr("opacity", 1)
         }
         const onClick = function(event, d) {
             //const subgroupName = d3.select(this.parentNode).datum().key;
@@ -304,6 +306,11 @@ const Barchart = (props) => {
         svg.append("g")
         .call(d3.axisLeft(y));
 
+        // Color the axis
+        svg.selectAll("line").style("stroke", "white");
+        svg.selectAll("text").style("stroke", "#dedede");
+        svg.selectAll("path").style("stroke", "white");
+
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
         .domain(subgroups)
@@ -351,7 +358,7 @@ const Barchart = (props) => {
     }, [kingdom])
 
     return( 
-    <div>
+    <div className={stylesBarchart['details']}>
         <div className={stylesBarchart['center']}>
             <Title>{store.getState().selectedCountry.name}</Title>
         </div>
