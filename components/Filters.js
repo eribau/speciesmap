@@ -18,14 +18,14 @@ function Filters(props){
     const [categoryList, setCategory] = useState([])
     const [threatsList, setThreats] = useState([])
     const [kingdomList, setKingdom] = useState([])
-    const [isChecked, setChecked] = useState([])
+    const [isChecked, setChecked] = useState(false)
 
     const category = useSelector((state) => state.filterSetting.category)
     const threats = useSelector((state) => state.filterSetting.threats)
     const kingdom = useSelector((state) => state.filterSetting.kingdom)
 
     function onChange_Category(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked1 = ', checkedValues);
         store.dispatch(setFilterCategory(checkedValues))
         // setCategory(checkedValues)
         props.onCategoryChanges({
@@ -43,7 +43,7 @@ function Filters(props){
         setChecked(true)   
     }
     function onChange_Threats(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked2 = ', checkedValues);
         store.dispatch(setFilterThreats(checkedValues))
         // setThreats(checkedValues)
         props.onCategoryChanges({
@@ -61,7 +61,7 @@ function Filters(props){
         setThreats(checkedValues)  
     }
     function onChange_Kingdom(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked3 = ', checkedValues);
         store.dispatch(setFilterKingdom(checkedValues))
         // setKingdom(checkedValues)
         props.onCategoryChanges({
@@ -86,6 +86,8 @@ function Filters(props){
         })
         setChecked(false)
         store.dispatch(setFilterCategory([]))
+        store.dispatch(setFilterThreats([]))
+        store.dispatch(setFilterKingdom([]))
     }
     const options_redList = [
         { label: 'Extinct', value: 'Extinct'},
@@ -125,15 +127,15 @@ function Filters(props){
             <img src="https://i.ibb.co/QrDJCt7/reset.png" onClick={handleReset} className={styles["image_reset"]} alt="logo" />
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select Red List categories</Text>
-                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category} value={isChecked ? categoryList:[]} checked={isChecked}/>
+                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category} value={isChecked ? categoryList:[]}/>
             </div>
             <div className={styles["category_threats"]}>
                 <Text className={styles["text"]} strong>Select threats</Text>
-                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}  value={isChecked ? threatsList:[]} checked={isChecked}/>
+                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}  value={isChecked ? threatsList:[]}/>
             </div>
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select kingdoms</Text>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom} value={isChecked ? kingdomList:[]} checked={isChecked}/>
+                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom} value={isChecked ? kingdomList:[]}/>
             </div>
         </div>
     )
