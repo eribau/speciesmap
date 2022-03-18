@@ -225,7 +225,8 @@ const Barchart = (props) => {
 
             let bar = d3.select(this)
                 .attr("stroke", "black")
-                .attr("stroke-width", 2)
+                .attr("stroke-width", 1)
+                .attr("opacity", .5)
         }
 
         const mousemove = function(d) { //prevent the tooltip from taking over mouse events
@@ -242,6 +243,7 @@ const Barchart = (props) => {
             let bar = d3.select(this)
                 .attr("stroke", "grey")
                 .attr("stroke-width", 1)
+                .attr("opacity", 1)
         }
         const onClick = function(event, d) {
             //const subgroupName = d3.select(this.parentNode).datum().key;
@@ -313,6 +315,11 @@ const Barchart = (props) => {
         svg.append("g")
         .call(d3.axisLeft(y));
 
+        // Color the axis
+        svg.selectAll("line").style("stroke", "white");
+        svg.selectAll("text").style("stroke", "#dedede");
+        svg.selectAll("path").style("stroke", "white");
+
         // color palette = one color per subgroup
         const color = d3.scaleOrdinal()
         .domain(subgroups)
@@ -322,6 +329,29 @@ const Barchart = (props) => {
         const stackedData = d3.stack()
         .keys(subgroups)
         (data)
+
+        const legend = svg.append("g")
+        legend.selectAll("dots")
+            .data(subgroups.slice(0, 8))
+            .enter()
+            .append("circle")
+            .attr("cx", 100)
+            .attr("cy", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .attr("r", 7)
+            .style("fill", function(d){ return color(d)})
+
+        legend.selectAll("labels")
+            .data(subgroups.slice(0, 8))
+            .enter()
+            .append("text")
+            .attr("x", 120)
+            .attr("y", function(d,i){ return 100 + i*25}) // 100 is where the first dot appears. 25 is the distance between dots
+            .style("fill", "white")
+            .text(function(d){ return d})
+            .attr("text-anchor", "left")
+            .style("alignment-baseline", "middle")
+
+        legend.attr("transform", "translate(1100, -50)")
 
         // ----------------
         // Create a tooltip
@@ -360,7 +390,7 @@ const Barchart = (props) => {
     }, [kingdom])
 
     return( 
-    <div>
+    <div className={stylesBarchart['details']}>
         <div className={stylesBarchart['center']}>
             <Title>{store.getState().selectedCountry.name}</Title>
         </div>

@@ -15,16 +15,18 @@ function Filters(props){
         category: [],
         kingdom: [],
     });*/
-    // const [category, setCategory] = useState([])
-    // const [threats, setThreats] = useState([])
-    // const [kingdom, setKingdom] = useState([])
+    const [categoryList, setCategory] = useState([])
+    const [threatsList, setThreats] = useState([])
+    const [kingdomList, setKingdom] = useState([])
+    const [isChecked, setChecked] = useState(true)
 
     const category = useSelector((state) => state.filterSetting.category)
     const threats = useSelector((state) => state.filterSetting.threats)
     const kingdom = useSelector((state) => state.filterSetting.kingdom)
+    //alert(category)
 
     function onChange_Category(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked1 = ', checkedValues);
         store.dispatch(setFilterCategory(checkedValues))
         // setCategory(checkedValues)
         props.onCategoryChanges({
@@ -38,15 +40,11 @@ function Filters(props){
                 category: [],
                 kingdom: kingdom,
             })  
-        
-        console.log({
-            threats: threats,
-            category: [],
-            kingdom: kingdom,
-        })    
+        setCategory(checkedValues)
+        setChecked(true)   
     }
     function onChange_Threats(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked2 = ', checkedValues);
         store.dispatch(setFilterThreats(checkedValues))
         // setThreats(checkedValues)
         props.onCategoryChanges({
@@ -60,14 +58,11 @@ function Filters(props){
                 category: category,
                 kingdom: kingdom,
         })
-        console.log({
-            threats: [],
-            category: category,
-            kingdom: kingdom,
-        })      
+        setChecked(true) 
+        setThreats(checkedValues)  
     }
     function onChange_Kingdom(checkedValues) {
-        console.log('checked = ', checkedValues);
+        console.log('checked3 = ', checkedValues);
         store.dispatch(setFilterKingdom(checkedValues))
         // setKingdom(checkedValues)
         props.onCategoryChanges({
@@ -81,11 +76,19 @@ function Filters(props){
                 category: category,
                 kingdom: [],
             })  
-        console.log({
-            threats: threats,
-            category: category,
+        setChecked(true)
+        setKingdom(checkedValues)
+    }
+    function handleReset(){
+        props.onCategoryChanges({
+            threats: [],
+            category: [],
             kingdom: [],
-        }) 
+        })
+        setChecked(false)
+        store.dispatch(setFilterCategory([]))
+        store.dispatch(setFilterThreats([]))
+        store.dispatch(setFilterKingdom([]))
     }
     const options_redList = [
         { label: 'Extinct', value: 'Extinct'},
@@ -121,19 +124,19 @@ function Filters(props){
     ];
     return (
         <div className={styles["filters"]}>
-            
             <Title className={styles["text"]} level={2}>Filters</Title>
+            <img src="https://i.ibb.co/QrDJCt7/reset.png" onClick={handleReset} className={styles["image_reset"]} alt="logo" />
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select Red List categories</Text>
-                <Checkbox.Group options={options_redList} onChange={onChange_Category} defaultValue={category}/>
+                <Checkbox.Group options={options_redList} onChange={onChange_Category} value={isChecked ? category: []} defaultValue={category} />
             </div>
             <div className={styles["category_threats"]}>
                 <Text className={styles["text"]} strong>Select threats</Text>
-                <Checkbox.Group options={options_threats} onChange={onChange_Threats} defaultValue={threats}/>
+                <Checkbox.Group options={options_threats} onChange={onChange_Threats}value={isChecked ? threats: []} defaultValue={threats}/>
             </div>
             <div className={styles["category"]}>
                 <Text className={styles["text"]} strong>Select kingdoms</Text>
-                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} defaultValue={kingdom}/>
+                <Checkbox.Group options={options_kingdom} onChange={onChange_Kingdom} value={isChecked ? kingdom: []} defaultValue={kingdom} />
             </div>
         </div>
     )
