@@ -1,5 +1,5 @@
 .barchart{
-    width: 30%;
+    width: 100%;
 }
 .finter_kingdom{
     font-family: Geneva, Arial, Helvetica, sans-serif;
@@ -32,7 +32,7 @@
 }
 
 .center h1 {
-    color: white;
+    color: white !important;
 }
 
 .details {

@@ -237,8 +237,6 @@ const HeatMap = (props) => {
     const router = useRouter();
 
     useEffect( () => {
-        console.log("ref:")
-        console.log(ref.current.clientHeight)
         // Create tooltip
         // https://www.d3-graph-gallery.com/graph/bubblemap_tooltip.html 
         

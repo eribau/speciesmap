@@ -257,16 +257,25 @@ const Barchart = (props) => {
             setDisplay(true)
         }
 
+
         // set the dimensions and margins of the graph
-        const margin = {top: 10, right: 30, bottom: 250, left: 50},
-        width = window.screen.width - margin.left - margin.right,
-        height = window.screen.height - margin.top - margin.bottom;
+        const margin = {top: 10, right: 30, bottom: 250, left: 50};
+        const width = ref.current.clientWidth;
+        const height = ref.current.clientHeight;
+        const boundedWidth = width - margin.left - margin.right - width*0.2;
+        const boundedHeight = height - margin.top - margin.bottom - 68;
+        const legendWidth = width*0.75;
+
 
         d3.selectAll("svg > *").remove();
         // append the svg object to the body of the page
         const svg = d3.select("svg")
-        .append("g")
-        .attr("transform",`translate(${dms.marginLeft},${dms.marginTop})`);
+
+        svg.attr("width", width);
+        svg.attr("height", height);
+        
+        svg = svg.append("g")
+        .attr("transform",`translate(${margin.left},${margin.top})`);
 
         // refilter
         store.dispatch(setFilteredData({
@@ -295,10 +304,10 @@ const Barchart = (props) => {
         // Add X axis
         const x = d3.scaleBand()
         .domain(groups)
-        .range([0, dms.boundedWidth])
+        .range([0, boundedWidth])
         .padding([0.2])
         svg.append("g")
-        .attr("transform", `translate(0, ${dms.boundedHeight})`)
+        .attr("transform", `translate(0, ${boundedHeight})`)
         .call(d3.axisBottom(x).tickSizeOuter(0))
         .selectAll("text")
         .style("text-anchor", "end")
@@ -311,7 +320,7 @@ const Barchart = (props) => {
         // Add Y axis
         const y = d3.scaleLinear()
         .domain([0, upperBound])
-        .range([ dms.boundedHeight, 0 ]);
+        .range([ boundedHeight, 0 ]);
         svg.append("g")
         .call(d3.axisLeft(y));
 
@@ -351,7 +360,7 @@ const Barchart = (props) => {
             .attr("text-anchor", "left")
             .style("alignment-baseline", "middle")
 
-        legend.attr("transform", "translate(1100, -50)")
+        legend.attr("transform", `translate(${legendWidth}, 150)`)
 
         // ----------------
         // Create a tooltip
