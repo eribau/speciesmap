@@ -44,7 +44,7 @@ const About = () => {
                <div>
                <h1 className={styles.h1}> Demo video </h1>
                
-               <iframe src="https://gdurl.com/ChHV" allowfullscreen width="640" height="360" allow="autoplay"></iframe>
+               <iframe src="https://gdurl.com/ChHV" width="640" height="360" allow="autoplay"></iframe>
                </div>
 
                </div>
