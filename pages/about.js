@@ -36,9 +36,17 @@ const About = () => {
                </p>
                </div>
                
+               <div className={styles.container2}>
+
                <div className={styles.img2}> 
-               <img src="/images/iucnChart.jpg" width="700" 
-     height="477" ></img>
+               <img src="/images/iucnChart.jpg" width="700" height="477" ></img>
+               </div>
+               <div>
+               <h1 className={styles.h1}> Demo video </h1>
+               
+               <iframe src="https://gdurl.com/ChHV" allowfullscreen width="640" height="360" allow="autoplay"></iframe>
+               </div>
+
                </div>
 
                </div>
